@@ -1,0 +1,108 @@
+<div class="row">
+  <div class="col-12">
+    <div
+      class="px-3 py-4 mb-3 rounded d-flex flex-row justify-content-center align-items-center navbar-detached bg-navbar-theme"
+      id="layout-navbar"
+    >
+      <h3 class="m-0">About Page</h3>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-body demo-vertical-spacing demo-only-element">
+        <form action="/admin/about-update" method="post">
+            <div class="mb-3">
+                <label for="defaultFormControlInput" class="form-label"
+                  >Text-1</label
+                >
+                <textarea
+                  type="text"
+                  class="form-control"
+                  id="defaultFormControlInput "
+                  name="text1"
+                > <%- result.text1 %></textarea>
+              </div>
+            <div class="input-group mb-3">
+                <input
+                  type="file"
+                  class="form-control"
+                  id="inputGroupFile02"
+                  name="mainImg"
+                />
+                <label class="input-group-text" for="inputGroupFile02"
+                  >Header Area Picture</label
+                >
+              </div>
+              <input type="hidden" name="id" value="<%- result.id %>">
+              <div class="mb-3">
+                <label for="defaultFormControlInput" class="form-label"
+                  >Text-2</label
+                >
+    
+                <textarea
+                  type="text"
+                  class="form-control"
+                  id="defaultFormControlInput "
+                  name="text2" 
+                > <%- result.text2 %></textarea>
+              </div>
+          <div class="input-group mb-3">
+            <input
+              type="file"
+              class="form-control"
+              id="inputGroupFile02"
+              name=" miniImg1" 
+            />
+            <label class="input-group-text" for="inputGroupFile02"
+              >Mini Left Picture</label
+            >
+          </div>
+          <div class="input-group mb-3">
+            <input
+              type="file"
+              class="form-control"
+              id="inputGroupFile02"
+              name=" miniImg2" 
+            />
+            <label class="input-group-text" for="inputGroupFile02"
+              >Mini Middle Picture</label
+            >
+          </div>
+          <div class="input-group mb-3">
+            <input
+              type="file"
+              class="form-control"
+              id="inputGroupFile02"
+              name=" miniImg3"
+            />
+            <label class="input-group-text" for="inputGroupFile02"
+              >Mini Right Picture</label
+            >
+          </div>
+     
+
+          
+          
+          <div class="mb-3">
+            <label for="defaultFormControlInput" class="form-label"
+              >Text-3</label
+            >
+            <textarea
+              type="text"
+              class="form-control"
+              id="defaultFormControlInput "
+              name="text3"
+            ><%- result.text3 %></textarea>
+          </div>
+
+          <div class="text-center">
+            <button class="btn btn-success mb-3">Update</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

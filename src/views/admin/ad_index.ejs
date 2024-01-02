@@ -18,7 +18,7 @@
       <div class="card-body demo-vertical-spacing demo-only-element">
         <form action="" method="post">
           <div class="input-group mb-3">
-            <input type="file" class="form-control mb-3" id="inputGroupFile02" name="profilImg"/>
+            <input type="file" class="form-control" id="inputGroupFile02" name="profilImg"/>
             <label class="input-group-text" for="inputGroupFile02"
               >Profile Picture</label
             >
@@ -36,7 +36,8 @@
             <input
               type="text"
               class="form-control"
-              id="defaultFormControlInput "name="mainText"
+              id="defaultFormControlInput "name="mainText" 
+              value="<%- result.mainText %>"
             />
           </div>
           <div class=" mb-3"> 
@@ -46,11 +47,12 @@
               class="form-control mb-3"
               id="defaultFormControlInput" name="card1Title"
               placeholder="Title"
+              value="<%- result.card1.title %>"
             />
   
             <textarea
             class="form-control" id="exampleFormControlTextarea1" name="card1Text" rows="3"   placeholder="Text"
-            ></textarea>
+            ><%- result.card1.text %></textarea>
           </div>
           <div class=" mb-3">
             <label for="defaultFormControlInput" class="form-label">Card-2</label>
@@ -58,12 +60,12 @@
               type="text"
               class="form-control mb-3"
               id="defaultFormControlInput" name="card2Title"
-              placeholder="Title"
+              placeholder="Title" value="<%- result.card2.title %>"
             />
   
             <textarea
             class="form-control" id="exampleFormControlTextarea1" name="card2Text"rows="3"   placeholder="Text"
-            ></textarea>
+            ><%- result.card2.title %></textarea>
           </div>
           <div class=" mb-3">
             <label for="defaultFormControlInput" class="form-label">Card-3</label>
@@ -72,11 +74,12 @@
               class="form-control mb-3"
               id="defaultFormControlInput" name="card3Title"
               placeholder="Title"
+              value="<%- result.card3.title %>"
             />
   
             <textarea
             class="form-control" id="exampleFormControlTextarea1" name="card3Text"rows="3"   placeholder="Text"
-            ></textarea>
+            ><%- result.card3.text %></textarea>
           </div>
           <div class=" mb-3">
             <label for="defaultFormControlInput" class="form-label">Card-4</label>
@@ -85,11 +88,12 @@
               class="form-control mb-3"
               id="defaultFormControlInput"name="card4Title"
               placeholder="Title"
+              value="<%- result.card4.title %>"
             />
   
             <textarea
             class="form-control" id="exampleFormControlTextarea1" name="card4Text"rows="3"   placeholder="Text"
-            ></textarea>
+            ><%- result.card4.text %></textarea>
           </div>
           <div class="text-center">
             <button class="btn btn-success  mb-3">Update</button>

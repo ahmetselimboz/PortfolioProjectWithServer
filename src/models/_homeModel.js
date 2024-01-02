@@ -58,6 +58,16 @@ const homeSchema = new Schema(
         trim: true,
       },
     },
+    card4: {
+      title: {
+        type: String,
+        trim: true,
+      },
+      text: {
+        type: String,
+        trim: true,
+      },
+    }
   },
   { collection: "home", timestamps: true }
 );

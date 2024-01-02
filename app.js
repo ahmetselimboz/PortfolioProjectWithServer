@@ -11,7 +11,7 @@ require("ejs");
 const expressLayouts = require("express-ejs-layouts");
 app.use(expressLayouts);
 app.use(express.static("public"));
-// app.use("/uploads", express.static(path.join(__dirname, "/src/uploads")))
+app.use("/uploads", express.static(path.join(__dirname, "/src/uploads")))
 app.set("view engine", "ejs");
 app.set("views", path.resolve(__dirname, "./src/views"));
 

@@ -5,10 +5,9 @@ const Contact = require("../models/_contactModel");
 const Project = require("../models/_projectModel");
 const Footer = require("../models/_footerModel");
 
-data()
+data();
 
 async function data() {
-    
   const resultHome = await Home.findOne();
   const resultAbout = await About.findOne();
   const resultBlog = await Blog.findOne();
@@ -19,9 +18,9 @@ async function data() {
   if (!resultHome) {
     const home = new Home();
     home.profilImg.imgId = ".";
-    home.profilImg.imgName = ".";
+
     home.sideImg.imgId = ".";
-    home.sideImg.imgName = ".";
+
     home.mainText = ".";
     home.card1.title = ".";
     home.card1.text = ".";
@@ -29,6 +28,8 @@ async function data() {
     home.card3.text = ".";
     home.card3.title = ".";
     home.card3.text = ".";
+    home.card4.title = ".";
+    home.card4.text = ".";
     home.save();
   }
 
@@ -38,13 +39,13 @@ async function data() {
     about.text2 = ".";
     about.text3 = ".";
     about.mainImg.imgId = ".";
-    about.mainImg.imgName = ".";
+
     about.miniImg1.imgId = ".";
-    about.miniImg1.imgName = ".";
+
     about.miniImg2.imgId = ".";
-    about.miniImg2.imgName = ".";
+
     about.miniImg3.imgId = ".";
-    about.miniImg3.imgName = ".";
+
     about.save();
   }
   if (!resultBlog) {
@@ -57,9 +58,9 @@ async function data() {
     blog.text2 = ".";
     blog.desc = ".";
     blog.mainImg.imgId = ".";
-    blog.mainImg.imgName = ".";
+
     blog.sideImg.imgId = ".";
-    blog.sideImg.imgName = ".";
+
     blog.save();
   }
   if (!resultContact) {
@@ -81,7 +82,7 @@ async function data() {
   if (!resultProject) {
     const project = new Project();
     project.mainImg.imgId = ".";
-    project.mainImg.imgName = ".";
+
     project.tag = ".";
     project.name = ".";
     project.text = ".";
@@ -92,6 +93,4 @@ async function data() {
     project.save();
     console.log("Datas create");
   }
-};
-
-
+}

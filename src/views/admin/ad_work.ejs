@@ -11,88 +11,29 @@
 
 <div class="row mt-4">
 
+  <% for( let index = 0; index < result.length; index++ ) { %>
+    <div class="col-md-6 col-lg-4 mb-3 ">
+      <div class="card  ">
+        <img class="card-img-top" src="/uploads/images/<%- result[index].mainImg.imgName %>" alt="Card image cap" />
+        <div class="card-body">
   
-        <div class="col-md-6 col-lg-4 mb-3 ">
-            <div class="card  ">
-              <img class="card-img-top" src="/frontend/assets/Başlıadsadadsksız-1.jpg" alt="Card image cap" />
-              <div class="card-body">
-        
-             
-                <div class="text-center">
-                    <h4 class="card-title ">Demir Elit İnşaat Reklam Sitesi</h4>
-                    <a href="javascript:void(0)" class="btn btn-success mx-1">Update</a>
-                    <a href="javascript:void(0)" class="btn btn-danger mx-1">Delete</a>
-                </div>
-               
-              </div>
-            </div>
+       
+          <div class="text-center">
+              <h4 class="card-title "><%- result[index].name %></h4>
+              <a href="/admin/work-update/<%- result[index].id %>" class="btn btn-success mx-1">Update</a>
+              <a href="/admin/work-delete/<%- result[index].id %>" class="btn btn-danger mx-1">Delete</a>
           </div>
+         
+        </div>
+      </div>
+    </div>
+  <% } %>
   
-        <div class="col-md-6 col-lg-4 mb-3 ">
-            <div class="card  ">
-              <img class="card-img-top" src="/frontend/assets/Başlıadsadadsksız-1.jpg" alt="Card image cap" />
-              <div class="card-body">
         
-             
-                <div class="text-center">
-                    <h4 class="card-title ">Demir Elit İnşaat Reklam Sitesi</h4>
-                    <a href="javascript:void(0)" class="btn btn-success mx-1">Update</a>
-                    <a href="javascript:void(0)" class="btn btn-danger mx-1">Delete</a>
-                </div>
-               
-              </div>
-            </div>
-          </div>
   
-        <div class="col-md-6 col-lg-4 mb-3 ">
-            <div class="card  ">
-              <img class="card-img-top" src="/frontend/assets/Başlıadsadadsksız-1.jpg" alt="Card image cap" />
-              <div class="card-body">
-        
-             
-                <div class="text-center">
-                    <h4 class="card-title ">Demir Elit İnşaat Reklam Sitesi</h4>
-                    <a href="javascript:void(0)" class="btn btn-success mx-1">Update</a>
-                    <a href="javascript:void(0)" class="btn btn-danger mx-1">Delete</a>
-                </div>
-               
-              </div>
-            </div>
-          </div>
-  
-        <div class="col-md-6 col-lg-4 mb-3 ">
-            <div class="card  ">
-              <img class="card-img-top" src="/frontend/assets/Başlıadsadadsksız-1.jpg" alt="Card image cap" />
-              <div class="card-body">
-        
-             
-                <div class="text-center">
-                    <h4 class="card-title ">Demir Elit İnşaat Reklam Sitesi</h4>
-                    <a href="javascript:void(0)" class="btn btn-success mx-1">Update</a>
-                    <a href="javascript:void(0)" class="btn btn-danger mx-1">Delete</a>
-                </div>
-               
-              </div>
-            </div>
-          </div>
-  
-        <div class="col-md-6 col-lg-4 mb-3 ">
-            <div class="card  ">
-              <img class="card-img-top" src="/frontend/assets/Başlıadsadadsksız-1.jpg" alt="Card image cap" />
-              <div class="card-body">
-        
-             
-                <div class="text-center">
-                    <h4 class="card-title ">Demir Elit İnşaat Reklam Sitesi</h4>
-                    <a href="javascript:void(0)" class="btn btn-success mx-1">Update</a>
-                    <a href="javascript:void(0)" class="btn btn-danger mx-1">Delete</a>
-                </div>
-               
-              </div>
-            </div>
-          </div>
+    
     <div class="text-center  my-3">
-        <button class="btn btn-primary btn-lg">Add</button>
+        <a href="/admin/work-add" class="btn btn-primary btn-lg">Add</a>
     </div>
          
 </div>
