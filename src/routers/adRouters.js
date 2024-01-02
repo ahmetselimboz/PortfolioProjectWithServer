@@ -7,6 +7,7 @@ const adminController = require("../controllers/adControllers")
 //const isauth = require('../middleware/isAuth')  
 
 router.get('/homepage', adminController.getHomePage);
+router.get('/work', adminController.getWorkPage);
 
 
 
