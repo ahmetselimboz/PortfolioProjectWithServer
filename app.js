@@ -62,8 +62,10 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 
+//require("./src/config/firstData");
+
 app.use("/", frRouter);
-// app.use("/admin", adminRouters);
+ app.use("/admin", adminRouters);
 
 
 app.listen(process.env.PORT, () => {
