@@ -10,40 +10,51 @@ const User = require("../models/_userModel");
 const getHomePage = async (req, res, next) => {
 
   const result = await Home.findOne();
+  const resultWork = await Work.find({});
+  const resultBlog = await Blog.find({});
+  const resultFooter = await Footer.findOne();
 
   res.render("./frontend/index", {
     layout: "./frontend/layouts/_layouts.ejs",
     title: "Ahmet Selim Boz",
-    result:result
+    result:result,
+    resultWork:resultWork,
+    resultBlog:resultBlog,
+    resultFooter:resultFooter
   });
 };
 
 const getWorkPage = async (req, res, next) => {
+  const resultFooter = await Footer.findOne();
 
   res.render("./frontend/work", {
     layout: "./frontend/layouts/_layouts.ejs",
-    title: "Work"
+    title: "Work",
+    resultFooter:resultFooter
   });
 };
 const getBlogPage = async (req, res, next) => {
-
+  const resultFooter = await Footer.findOne();
   res.render("./frontend/blog", {
     layout: "./frontend/layouts/_layouts.ejs",
-    title: "Blog"
+    title: "Blog",
+    resultFooter:resultFooter
   });
 };
 const getAboutPage = async (req, res, next) => {
-
+  const resultFooter = await Footer.findOne();
   res.render("./frontend/about", {
     layout: "./frontend/layouts/_layouts.ejs",
-    title: "About"
+    title: "About",
+    resultFooter:resultFooter
   });
 };
 const getContactPage = async (req, res, next) => {
-
+  const resultFooter = await Footer.findOne();
   res.render("./frontend/contact", {
     layout: "./frontend/layouts/_layouts.ejs",
-    title: "Contact"
+    title: "Contact",
+    resultFooter:resultFooter
   });
 };
 

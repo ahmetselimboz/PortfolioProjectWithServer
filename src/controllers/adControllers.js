@@ -204,7 +204,7 @@ const postWorkAddPage = async (req, res, next) => {
     res.redirect("/admin/homepage");
   } else {
     const project = new Work();
-    project.mainImg.imgId = ".";
+
 
     project.tag = req.body.tag;
     project.name = req.body.name;
@@ -213,6 +213,15 @@ const postWorkAddPage = async (req, res, next) => {
     project.lang = req.body.lang;
     project.link = req.body.link;
     project.desc = req.body.desc;
+
+    for (let index = 0; index < req.files.length; index++) {
+      if (req.files[index].fieldname == "mainImg") {
+        project.mainImg.imgName = req.files[index].originalname;
+      } 
+    }
+
+
+
     project.save();
     res.redirect("/admin/work");
   }
@@ -221,9 +230,9 @@ const postWorkUpdate = async (req, res, next) => {
   if (!req.body) {
     res.redirect("/admin/homepage");
   } else {
-    await Work.findByIdAndUpdate(req.body.id, {
+    var options = {
       mainImg: {
-        imgId: ".",
+        imgName: req.body.mainImgName,
       },
 
       tag: req.body.tag,
@@ -233,7 +242,17 @@ const postWorkUpdate = async (req, res, next) => {
       lang: req.body.lang,
       link: req.body.link,
       desc: req.body.desc,
-    });
+    }
+
+
+    for (let index = 0; index < req.files.length; index++) {
+      if (req.files[index].fieldname == "mainImg") {
+        options.mainImg.imgName = req.files[index].originalname;
+      } 
+    }
+
+
+    await Work.findByIdAndUpdate(req.body.id, options);
     res.redirect("/admin/work");
   }
 };
@@ -250,8 +269,15 @@ const postBlogAdd = async (req, res, next) => {
     blog.text1 = req.body.text1;
     blog.text2 = req.body.text2;
     blog.desc = req.body.desc;
-    blog.mainImg.imgId = ".";
-    blog.sideImg.imgId = ".";
+
+    for (let index = 0; index < req.files.length; index++) {
+      if (req.files[index].fieldname == "mainImg") {
+        blog.mainImg.imgName = req.files[index].originalname;
+      } else if (req.files[index].fieldname == "sideImg") {
+        blog.sideImg.imgName = req.files[index].originalname;
+      } 
+    }
+  
 
     blog.save();
     res.redirect("/admin/blog");
@@ -262,12 +288,12 @@ const postBlogUpdate = async (req, res, next) => {
   if (!req.body) {
     res.redirect("/admin/homepage");
   } else {
-    await Blog.findByIdAndUpdate(req.body.id, {
+    var options = {
       mainImg: {
-        imgId: ".",
+        imgName: req.body.mainImgName,
       },
       sideImg: {
-        imgId: ".",
+        imgName: req.body.sideImgName,
       },
       tag1: req.body.tag1,
       tag2: req.body.tag2,
@@ -276,7 +302,19 @@ const postBlogUpdate = async (req, res, next) => {
       text1: req.body.text1,
       text2: req.body.text2,
       desc: req.body.desc,
-    });
+    }
+
+    for (let index = 0; index < req.files.length; index++) {
+      if (req.files[index].fieldname == "mainImg") {
+        options.mainImg.imgName = req.files[index].originalname;
+      } else if (req.files[index].fieldname == "sideImg") {
+        options.sideImg.imgName = req.files[index].originalname;
+      } 
+    }
+
+
+
+    await Blog.findByIdAndUpdate(req.body.id, options);
     res.redirect("/admin/blog");
   }
 };
@@ -285,23 +323,42 @@ const postAboutUpdate = async (req, res, next) => {
   if (!req.body) {
     res.redirect("/admin/homepage");
   } else {
-    await About.findByIdAndUpdate(req.body.id, {
+    console.log(req.body);
+    var options = {
       mainImg: {
-        imgId: ".",
+        imgName: req.body.mainImgName,
       },
       miniImg1: {
-        imgId: ".",
+        imgName: req.body.miniImg1Name,
       },
       miniImg2: {
-        imgId: ".",
+        imgName: req.body.miniImg2Name,
       },
       miniImg3: {
-        imgId: ".",
+        imgName: req.body.miniImg3Name,
       },
       text1: req.body.text1,
       text2: req.body.text2,
       text3: req.body.text3,
-    });
+    };
+
+
+
+    for (let index = 0; index < req.files.length; index++) {
+      if (req.files[index].fieldname == "mainImg") {
+        options.mainImg.imgName = req.files[index].originalname;
+      } else if (req.files[index].fieldname == "miniImg1") {
+        options.miniImg1.imgName = req.files[index].originalname;
+      } else if (req.files[index].fieldname == "miniImg2") {
+        options.miniImg2.imgName = req.files[index].originalname;
+      } else if (req.files[index].fieldname == "miniImg3") {
+        options.miniImg3.imgName = req.files[index].originalname;
+      }
+    }
+
+    
+
+    await About.findByIdAndUpdate(req.body.id, options);
     res.redirect("/admin/about");
   }
 };
@@ -353,15 +410,15 @@ const postHomePage = async (req, res, next) => {
   if (!req.body) {
     res.redirect("/admin/homepage");
   } else {
-    const oldResult = await Home.findOne();
+    if (req.files[0]) {
+      options.sideImg.imgName = req.files[0].filename;
+    }
+
     var options = {
       profilImg: {
         imgId: ".",
       },
-      sideImg: {
-        imgId: ".",
-        imgName: req.files[0].filename,
-      },
+
       mainText: req.body.mainText,
       card1: {
         title: req.body.card1Title,
@@ -380,8 +437,6 @@ const postHomePage = async (req, res, next) => {
         text: req.body.card4Text,
       },
     };
-
-   
 
     await Home.findByIdAndUpdate(req.body.id, options);
     res.redirect("/admin/homepage");

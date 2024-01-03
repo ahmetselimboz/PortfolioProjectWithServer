@@ -25,12 +25,12 @@ router.get('/register',isAuthenticated.oturumAcilmamis, adminController.getRegis
 
 
 router.post('/homepage',multerConfig.any(),adminController.postHomePage);
-router.post("/work-add", upload.any(),adminController.postWorkAddPage)
-router.post("/work-update", upload.any(),adminController.postWorkUpdate)
-router.post('/blog-add',upload.any(), adminController.postBlogAdd);
-router.post('/blog-update', upload.any(),adminController.postBlogUpdate);
-router.post('/about-update', upload.any(),adminController.postAboutUpdate);
-router.post('/footer-update', upload.any(),adminController.postFooterUpdate);
+router.post("/work-add", multerConfig.any(),adminController.postWorkAddPage)
+router.post("/work-update", multerConfig.any(),adminController.postWorkUpdate)
+router.post('/blog-add',multerConfig.any(), adminController.postBlogAdd);
+router.post('/blog-update', multerConfig.any(),adminController.postBlogUpdate);
+router.post('/about-update', multerConfig.any(),adminController.postAboutUpdate);
+router.post('/footer-update',adminController.postFooterUpdate);
 router.post('/login', adminController.postLogin);
 router.post('/register', adminController.postRegister);
 

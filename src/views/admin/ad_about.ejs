@@ -13,48 +13,56 @@
   <div class="col-12">
     <div class="card">
       <div class="card-body demo-vertical-spacing demo-only-element">
-        <form action="/admin/about-update" method="post">
-            <div class="mb-3">
-                <label for="defaultFormControlInput" class="form-label"
-                  >Text-1</label
-                >
-                <textarea
-                  type="text"
-                  class="form-control"
-                  id="defaultFormControlInput "
-                  name="text1"
-                > <%- result.text1 %></textarea>
-              </div>
-            <div class="input-group mb-3">
-                <input
-                  type="file"
-                  class="form-control"
-                  id="inputGroupFile02"
-                  name="mainImg"
-                />
-                <label class="input-group-text" for="inputGroupFile02"
-                  >Header Area Picture</label
-                >
-              </div>
-              <input type="hidden" name="id" value="<%- result.id %>">
-              <div class="mb-3">
-                <label for="defaultFormControlInput" class="form-label"
-                  >Text-2</label
-                >
-    
-                <textarea
-                  type="text"
-                  class="form-control"
-                  id="defaultFormControlInput "
-                  name="text2" 
-                > <%- result.text2 %></textarea>
-              </div>
+        <form
+          action="/admin/about-update"
+          method="post"
+          enctype="multipart/form-data"
+        >
+          <div class="mb-3">
+            <label for="defaultFormControlInput" class="form-label"
+              >Text-1</label
+            >
+            <textarea
+              type="text"
+              class="form-control"
+              id="defaultFormControlInput "
+              name="text1"
+            >
+ <%- result.text1 %></textarea
+            >
+          </div>
           <div class="input-group mb-3">
             <input
               type="file"
               class="form-control"
               id="inputGroupFile02"
-              name=" miniImg1" 
+              name="mainImg"
+            />
+            <label class="input-group-text" for="inputGroupFile02"
+              >Header Area Picture</label
+            >
+          </div>
+          <input type="hidden" name="id" value="<%- result.id %>" />
+          <div class="mb-3">
+            <label for="defaultFormControlInput" class="form-label"
+              >Text-2</label
+            >
+
+            <textarea
+              type="text"
+              class="form-control"
+              id="defaultFormControlInput "
+              name="text2"
+            >
+ <%- result.text2 %></textarea
+            >
+          </div>
+          <div class="input-group mb-3">
+            <input
+              type="file"
+              class="form-control"
+              id="inputGroupFile02"
+              name="miniImg1"
             />
             <label class="input-group-text" for="inputGroupFile02"
               >Mini Left Picture</label
@@ -65,7 +73,7 @@
               type="file"
               class="form-control"
               id="inputGroupFile02"
-              name=" miniImg2" 
+              name="miniImg2"
             />
             <label class="input-group-text" for="inputGroupFile02"
               >Mini Middle Picture</label
@@ -76,16 +84,33 @@
               type="file"
               class="form-control"
               id="inputGroupFile02"
-              name=" miniImg3"
+              name="miniImg3"
             />
             <label class="input-group-text" for="inputGroupFile02"
               >Mini Right Picture</label
             >
           </div>
-     
+          <input
+            type="hidden"
+            name="mainImgName"
+            value="<%- result.mainImg.imgName %>"
+          />
+          <input
+            type="hidden"
+            name="miniImg1Name"
+            value="<%- result.miniImg1.imgName %>"
+          />
+          <input
+            type="hidden"
+            name="miniImg2Name"
+            value="<%- result.miniImg2.imgName %>"
+          />
+          <input
+            type="hidden"
+            name="miniImg3Name"
+            value="<%- result.miniImg3.imgName %>"
+          />
 
-          
-          
           <div class="mb-3">
             <label for="defaultFormControlInput" class="form-label"
               >Text-3</label
@@ -95,7 +120,9 @@
               class="form-control"
               id="defaultFormControlInput "
               name="text3"
-            ><%- result.text3 %></textarea>
+            >
+<%- result.text3 %></textarea
+            >
           </div>
 
           <div class="text-center">

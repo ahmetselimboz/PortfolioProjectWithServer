@@ -13,7 +13,7 @@
     <div class="col-12">
       <div class="card">
         <div class="card-body demo-vertical-spacing demo-only-element">
-          <form action="/admin/blog-update" method="post">
+          <form action="/admin/blog-update" method="post" enctype="multipart/form-data">
             <div class="input-group mb-3">
               <input
                 type="file"
@@ -37,6 +37,8 @@
                 >Content Area Picture</label
               >
             </div>
+            <input type="hidden" name="mainImgName" value="<%- result.mainImg.imgName %>">
+            <input type="hidden" name="sideImgName" value="<%- result.sideImg.imgName %>">
             <div class="mb-3">
               <label for="defaultFormControlInput" class="form-label">Tag-1</label>
               <input

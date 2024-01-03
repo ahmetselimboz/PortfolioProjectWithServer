@@ -2,7 +2,8 @@ const multer = require('multer');
 const path = require('path');
 
 
-var name = Date.now();
+var date = new Date();
+
 
 const myStorage = multer.diskStorage({
     destination: (req, file, cb) =>{
@@ -10,7 +11,7 @@ const myStorage = multer.diskStorage({
     },
 
     filename: (req, file, cb) =>{
-        cb(null, name);
+        cb(null, file.originalname );
     }
 });
 

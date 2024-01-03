@@ -32,36 +32,30 @@
       <div class="now-row">
         <div class="now-card js-scroll fade-in-bottom">
           <i class="bx bx-code-alt" id="icon"></i>
-          <h2 id="title">Backend Developer</h2>
+          <h2 id="title"><%- result.card1.title %></h2>
           <h4 id="alt-title">
-            Although I can do something on the frontend side, I like working
-            on the backend side more. For this reason, I call myself a backend
-            developer :)
+            <%- result.card1.text %>
           </h4>
         </div>
         <div class="now-card js-scroll fade-in-bottom">
           <i class="bx bx-crown" id="icon"></i>
-          <h2 id="title">Co-Lead</h2>
+          <h2 id="title"><%- result.card2.title %></h2>
           <h4 id="alt-title">
-            I am the Co-Lead of the Google Developer Students Club Erzincan,
-            which is part of the university. We organize events and
-            conferences with our team and help other friends to improve
-            themselves.
+            <%- result.card2.text %>
           </h4>
         </div>
         <div class="now-card js-scroll fade-in-bottom">
           <i class="bx bx-book-open" id="icon"></i>
-          <h2 id="title">Computer Engineering Student</h2>
+          <h2 id="title"><%- result.card3.title %></h2>
           <h4 id="alt-title">
-            I am a 3rd year student at Erzincan Binali Yıldırım University.
-            But this does not prevent anything ;)
+            <%- result.card3.text %>
           </h4>
         </div>
         <div class="now-card js-scroll fade-in-bottom">
           <i class="bx bx-briefcase-alt" id="icon"></i>
-          <h2 id="title">Freelancer</h2>
+          <h2 id="title"><%- result.card4.title %></h2>
           <h4 id="alt-title">
-            In short, I make a website for companies sometimes.
+            <%- result.card4.text %>
           </h4>
         </div>
       </div>
@@ -79,62 +73,30 @@
         </p>src="/assets
       </div>
       <div class="work-area">
-        <div class="work-card js-scroll fade-in">
-          <div class="work-card-img-area">
-            <a href="">
-              <img
-                class="work-card-img"
-                src="/frontend/assets/Başlıadsadadsksız-1.jpg"
-                alt=""
-              />
-            </a>
-          </div>
-          <div class="work-card-text">
-            <h5>Web/Mobile</h5>
-            <a href="">Kitap Dağı</a>
-            <p>
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-              Distinctio temporibus soluta omnis? Officia laborum modi ipsam
-              saepe
-            </p>
-          </div>
+      
+     <% for( let index = 0; index < resultWork.length; index++ ) { %>
+      <div class="work-card js-scroll fade-in">
+        <div class="work-card-img-area">
+          <a href="">
+            <img
+              class="work-card-img"
+              src="../../uploads/images/<%- resultWork[index].mainImg.imgName %>"
+              alt=""
+            />
+          </a>
         </div>
-        <div class="work-card js-scroll fade-in">
-          <div class="work-card-img-area">
-            <a href="">
-              <img class="work-card-img" src="/frontend/assets/Başlı.jpg" alt="" />
-            </a>
-          </div>
-          <div class="work-card-text">
-            <h5>Web</h5>
-            <a href="">Demir Elit İnşaat</a>
-            <p>
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-              Distinctio temporibus soluta omnis? Officia laborum modi ipsam
-              saepe
-            </p>
-          </div>
-        </div>
-
-        <div class="work-card js-scroll fade-in">
-          <div class="work-card-img-area">
-            <a href="">
-              <img class="work-card-img" src="/frontend/assets/Başlı.jpg" alt="" />
-            </a>
-          </div>
-          <div class="work-card-text">
-            <h5>Web</h5>
-            <a href="">Demir Elit İnşaat</a>
-            <p>
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-              Distinctio temporibus soluta omnis? Officia laborum modi ipsam
-              saepe
-            </p>
-          </div>
+        <div class="work-card-text">
+          <h5><%- resultWork[index].tag %></h5>
+          <a href=""><%- resultWork[index].name %></a>
+          <p>
+            <%- resultWork[index].text %>
+          </p>
         </div>
       </div>
+     <% } %>
+      </div>
       <div class="work-btn js-scroll fade-in-bottom">
-        <a href=""
+        <a href="/work"
           >See all works<i id="work-icon" class="bx bx-right-arrow-alt"></i
         ></a>
       </div>
@@ -202,82 +164,31 @@
         </p>
       </div>
       <div class="blogs-area">
-        <div class="blogs-card js-scroll fade-in">
-          <div class="blogs-card-img-area">
-            <a href="">
-              <img
-                class="blogs-card-img"
-                src="/frontend/assets/Başlıadsadadsksız-1.jpg"
-                alt=""
-              />
-            </a>
-          </div>
-          <div class="blogs-card-text">
-            <h5>Web/Mobile</h5>
-            <a href="">Kitap Dağı</a>
-            <p>
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-              Distinctio temporibus soluta omnis? Officia laborum modi ipsam
-              saepe
-            </p>
-          </div>
-        </div>
-        <div class="blogs-card js-scroll fade-in">
-          <div class="blogs-card-img-area">
-            <a href="">
-              <img class="blogs-card-img" src="/frontend/assets/Başlı.jpg" alt="" />
-            </a>
-          </div>
-          <div class="blogs-card-text">
-            <h5>Web</h5>
-            <a href="">Demir Elit İnşaat</a>
-            <p>
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-              Distinctio temporibus soluta omnis? Officia laborum modi ipsam
-              saepe
-            </p>
-          </div>
-        </div>
+        
 
-        <div class="blogs-card js-scroll fade-in">
-          <div class="blogs-card-img-area">
-            <a href="">
-              <img
-                class="blogs-card-img"
-                src="/frontend/assets/Başlıadsadadsksız-1.jpg"
-                alt=""
-              />
-            </a>
+        <% for( let index = 0; index < resultBlog.length; index++ ) { %>
+          <div class="blogs-card js-scroll fade-in">
+            <div class="blogs-card-img-area">
+              <a href="">
+                <img
+                  class="blogs-card-img"
+                  src="../../uploads/images/<%- resultBlog[index].mainImg.imgName %>"
+                  alt=""
+                />
+              </a>
+            </div>
+            <div class="blogs-card-text">
+              <h5><%- resultBlog[index].tag1 %> / <%- resultBlog[index].tag2 %> / <%- resultBlog[index].tag3 %></h5>
+              <a href=""><%- resultBlog[index].shortText %></a>
+              <p>
+                <%- resultBlog[index].text1 %>
+              </p>
+            </div>
           </div>
-          <div class="blogs-card-text">
-            <h5>Web/Mobile</h5>
-            <a href="">Kitap Dağı</a>
-            <p>
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-              Distinctio temporibus soluta omnis? Officia laborum modi ipsam
-              saepe
-            </p>
-          </div>
-        </div>
-        <div class="blogs-card js-scroll fade-in">
-          <div class="blogs-card-img-area">
-            <a href="">
-              <img class="blogs-card-img" src="/frontend/assets/Başlı.jpg" alt="" />
-            </a>
-          </div>
-          <div class="blogs-card-text">
-            <h5>Web</h5>
-            <a href="">Demir Elit İnşaat</a>
-            <p>
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-              Distinctio temporibus soluta omnis? Officia laborum modi ipsam
-              saepe
-            </p>
-          </div>
-        </div>
+        <% } %>
       </div>
       <div class="work-btn js-scroll fade-in-bottom">
-        <a href=""
+        <a href="/blog"
           >See all posts<i id="work-icon" class="bx bx-right-arrow-alt"></i
         ></a>
       </div>

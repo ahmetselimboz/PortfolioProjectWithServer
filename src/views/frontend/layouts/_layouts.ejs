@@ -48,7 +48,7 @@
         </div>
 
         <div class="footer-logo-title">
-          <h6>Backend Developer</h6>
+          <h6><%- resultFooter.title %></h6>
         </div>
       </div>
       <hr class="now-underline" id="footer-line" />
@@ -64,19 +64,19 @@
       <hr class="now-underline" id="footer-line" />
       <div class="footer-box">
         <div class="footer-info-box">
-          <a href="" class="footer-social">
+          <a href="<%- resultFooter.instagramUrl %>" class="footer-social">
             <i class="bx bxl-instagram social-icon"></i>
             <h3 class="footer-h3">Instagram</h3>
           </a>
-          <a href="" class="footer-social">
+          <a href="<%- resultFooter.TwitterUrl %>" class="footer-social">
             <i class="bx bxl-twitter social-icon"></i>
             <h3 class="footer-h3">Twitter</h3>
           </a>
-          <a href="" class="footer-social">
+          <a href="<%- resultFooter.linkedinUrl %>" class="footer-social">
             <i class="bx bxl-linkedin-square social-icon"></i>
             <h3 class="footer-h3">Linkedln</h3>
           </a>
-          <a href="mailto:ahmetselimboz46@gmail.com" class="footer-social">
+          <a href="<%- resultFooter.mail %>" class="footer-social">
             <i class="bx bx-envelope social-icon"></i>
             <h3 class="footer-h3">ahmetselimbozz@gmail.com</h3>
           </a>
@@ -84,7 +84,7 @@
       </div>
     </footer>
     <div class="footer-bottom">
-      <h4>2023 © <a href="">Ahmet Selim Boz</a></h4>
+      <h4>2023 © <a href="<%- resultFooter.linkedinUrl %>">Ahmet Selim Boz</a></h4>
     </div>
     <script
       src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
