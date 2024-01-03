@@ -382,21 +382,6 @@ const postHomePage = async (req, res, next) => {
     };
 
    
-    const sideImgPath =
-      path.join(__dirname, "../uploads/images/") + oldResult.sideImg.imgName;
-
-    // Dosyayı sil
-
-
-
-    fs.unlink(sideImgPath, (err) => {
-      if (err) {
-        console.error("Dosya silinemedi:", err);
-        return;
-      }
-
-      console.log("sideImg başarıyla silindi.");
-    });
 
     await Home.findByIdAndUpdate(req.body.id, options);
     res.redirect("/admin/homepage");
