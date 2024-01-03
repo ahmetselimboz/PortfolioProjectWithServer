@@ -24,7 +24,7 @@ router.get('/register',isAuthenticated.oturumAcilmamis, adminController.getRegis
 
 
 
-router.post('/homepage',upload.any(),adminController.postHomePage);
+router.post('/homepage',multerConfig.any(),adminController.postHomePage);
 router.post("/work-add", upload.any(),adminController.postWorkAddPage)
 router.post("/work-update", upload.any(),adminController.postWorkUpdate)
 router.post('/blog-add',upload.any(), adminController.postBlogAdd);

@@ -1,16 +1,20 @@
-//const About = require("../model/_aboutModel");
-
-// const passport = require("passport");
-// require("../config/passport_local")(passport);
-//const { validationResult } = require("express-validator");
-//const bcrypt = require("bcryptjs");
+const Home = require("../models/_homeModel");
+const About = require("../models/_aboutModel");
+const Blog = require("../models/_blogModel");
+const Contact = require("../models/_contactModel");
+const Footer = require("../models/_footerModel");
+const Work = require("../models/_projectModel");
+const User = require("../models/_userModel");
 
 
 const getHomePage = async (req, res, next) => {
 
+  const result = await Home.findOne();
+
   res.render("./frontend/index", {
     layout: "./frontend/layouts/_layouts.ejs",
-    title: "Ahmet Selim Boz"
+    title: "Ahmet Selim Boz",
+    result:result
   });
 };
 

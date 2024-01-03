@@ -9,6 +9,8 @@ const passport = require("passport");
 require("../config/passport_local")(passport);
 const bcrypt = require("bcryptjs");
 const uploadFile = require("../config/multer_config");
+const fs = require("fs");
+const path = require("path");
 
 /////////////////////////HOMEPAGE//////////////////////////////////////
 const getHomePage = async (req, res, next) => {
@@ -331,7 +333,6 @@ const postLogin = async (req, res, next) => {
 const postRegister = async (req, res, next) => {
   console.log(req.body);
   try {
-   
     const _user = await User.findOne({ username: req.body.username });
 
     if (_user) {
@@ -349,39 +350,55 @@ const postRegister = async (req, res, next) => {
 };
 
 const postHomePage = async (req, res, next) => {
-
   if (!req.body) {
     res.redirect("/admin/homepage");
   } else {
-    console.log(req.file);
-    await Home.findByIdAndUpdate(req.body.id, {
+    const oldResult = await Home.findOne();
+    var options = {
       profilImg: {
         imgId: ".",
-        
       },
       sideImg: {
         imgId: ".",
+        imgName: req.files[0].filename,
       },
-    
       mainText: req.body.mainText,
-      card1:{
+      card1: {
         title: req.body.card1Title,
         text: req.body.card1Text,
       },
-      card2:{
+      card2: {
         title: req.body.card2Title,
         text: req.body.card2Text,
       },
-      card3:{
+      card3: {
         title: req.body.card3Title,
         text: req.body.card3Text,
       },
-      card4:{
+      card4: {
         title: req.body.card4Title,
         text: req.body.card4Text,
       },
-    
+    };
+
+   
+    const sideImgPath =
+      path.join(__dirname, "../uploads/images/") + oldResult.sideImg.imgName;
+
+    // Dosyayı sil
+
+
+
+    fs.unlink(sideImgPath, (err) => {
+      if (err) {
+        console.error("Dosya silinemedi:", err);
+        return;
+      }
+
+      console.log("sideImg başarıyla silindi.");
     });
+
+    await Home.findByIdAndUpdate(req.body.id, options);
     res.redirect("/admin/homepage");
   }
 };
