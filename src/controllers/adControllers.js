@@ -4,6 +4,11 @@ const Blog = require("../models/_blogModel");
 const Contact = require("../models/_contactModel");
 const Footer = require("../models/_footerModel");
 const Work = require("../models/_projectModel");
+const User = require("../models/_userModel");
+const passport = require("passport");
+require("../config/passport_local")(passport);
+const bcrypt = require("bcryptjs");
+const uploadFile = require("../config/multer_config");
 
 /////////////////////////HOMEPAGE//////////////////////////////////////
 const getHomePage = async (req, res, next) => {
@@ -125,34 +130,27 @@ const getAboutPage = async (req, res, next) => {
   if (!result) {
     res.redirect("/");
   } else {
-
     res.render("./admin/ad_about", {
       layout: "./admin/layouts/_ad_layouts.ejs",
       title: "Admin | About Page",
-      result:result
+      result: result,
     });
   }
-
-
 };
 
 /////////////////////////////CONTACT//////////////////////////////////
 
 const getContactPage = async (req, res, next) => {
-
   const result = await Contact.find({});
   if (!result) {
     res.redirect("/");
   } else {
-
     res.render("./admin/ad_contact", {
       layout: "./admin/layouts/_ad_layouts.ejs",
       title: "Admin | Contact Page",
-      result:result
+      result: result,
     });
   }
-
-
 };
 const getContactDelete = async (req, res, next) => {
   if (!req.params) {
@@ -161,27 +159,40 @@ const getContactDelete = async (req, res, next) => {
     await Contact.findByIdAndDelete(req.params.id);
     res.redirect("/admin/contact");
   }
-
 };
 
 /////////////////////////////FOOTER//////////////////////////////////
 
-const getFooterPage =async (req, res, next) => {
-
+const getFooterPage = async (req, res, next) => {
   const result = await Footer.findOne();
 
   if (!result) {
     res.redirect("/");
   } else {
-
     res.render("./admin/ad_footer", {
       layout: "./admin/layouts/_ad_layouts.ejs",
       title: "Admin | Footer Page",
-      result:result
+      result: result,
     });
   }
+};
 
+////////////////////LOGIN/////////////////////////////
 
+const getLogin = async (req, res, next) => {
+  res.render("./admin/login", {
+    layout: false,
+    title: "Admin | Login",
+  });
+};
+
+//////////////////REGISTER///////////////////////////
+
+const getRegister = async (req, res, next) => {
+  res.render("./admin/register", {
+    layout: false,
+    title: "Admin | Register",
+  });
 };
 
 //=============POSTS=================================================
@@ -246,7 +257,6 @@ const postBlogAdd = async (req, res, next) => {
 };
 
 const postBlogUpdate = async (req, res, next) => {
- 
   if (!req.body) {
     res.redirect("/admin/homepage");
   } else {
@@ -270,7 +280,6 @@ const postBlogUpdate = async (req, res, next) => {
 };
 
 const postAboutUpdate = async (req, res, next) => {
-
   if (!req.body) {
     res.redirect("/admin/homepage");
   } else {
@@ -290,7 +299,6 @@ const postAboutUpdate = async (req, res, next) => {
       text1: req.body.text1,
       text2: req.body.text2,
       text3: req.body.text3,
-
     });
     res.redirect("/admin/about");
   }
@@ -302,19 +310,81 @@ const postFooterUpdate = async (req, res, next) => {
     res.redirect("/admin/homepage");
   } else {
     await Footer.findByIdAndUpdate(req.body.id, {
-
       title: req.body.title,
       instagramUrl: req.body.instagramUrl,
       TwitterUrl: req.body.TwitterUrl,
       linkedinUrl: req.body.linkedinUrl,
       mail: req.body.mail,
-
     });
     res.redirect("/admin/footer");
   }
 };
 
-const random = async (req, res, next) => {};
+const postLogin = async (req, res, next) => {
+  passport.authenticate("local", {
+    successRedirect: "/admin/homepage",
+    failureRedirect: "/admin/login",
+    failureFlash: true,
+  })(req, res, next);
+};
+
+const postRegister = async (req, res, next) => {
+  console.log(req.body);
+  try {
+   
+    const _user = await User.findOne({ username: req.body.username });
+
+    if (_user) {
+      res.redirect("/admin/register");
+    } else {
+      const newUser = new User({
+        username: req.body.username,
+        password: await bcrypt.hash(req.body.password, 10),
+      });
+      await newUser.save();
+      console.log("Kullanici kaydedildi");
+      res.redirect("/admin/login");
+    }
+  } catch (err) {}
+};
+
+const postHomePage = async (req, res, next) => {
+
+  if (!req.body) {
+    res.redirect("/admin/homepage");
+  } else {
+    console.log(req.file);
+    await Home.findByIdAndUpdate(req.body.id, {
+      profilImg: {
+        imgId: ".",
+        
+      },
+      sideImg: {
+        imgId: ".",
+      },
+    
+      mainText: req.body.mainText,
+      card1:{
+        title: req.body.card1Title,
+        text: req.body.card1Text,
+      },
+      card2:{
+        title: req.body.card2Title,
+        text: req.body.card2Text,
+      },
+      card3:{
+        title: req.body.card3Title,
+        text: req.body.card3Text,
+      },
+      card4:{
+        title: req.body.card4Title,
+        text: req.body.card4Text,
+      },
+    
+    });
+    res.redirect("/admin/homepage");
+  }
+};
 
 module.exports = {
   getHomePage,
@@ -336,5 +406,9 @@ module.exports = {
   postBlogUpdate,
   postAboutUpdate,
   postFooterUpdate,
-  random,
+  getLogin,
+  getRegister,
+  postLogin,
+  postRegister,
+  postHomePage,
 };

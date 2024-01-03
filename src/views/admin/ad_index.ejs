@@ -16,7 +16,7 @@
     <div class="card">
       
       <div class="card-body demo-vertical-spacing demo-only-element">
-        <form action="" method="post">
+        <form action="/admin/homepage" method="post" enctype="multipart/form-data">
           <div class="input-group mb-3">
             <input type="file" class="form-control" id="inputGroupFile02" name="profilImg"/>
             <label class="input-group-text" for="inputGroupFile02"
@@ -29,6 +29,7 @@
               >Header Area Picture</label
             >
           </div>
+          <input type="hidden" name="id" value="<%- result.id %>">
           <div class=" mb-3">
             <label for="defaultFormControlInput" class="form-label"
               >Header Area Text</label
