@@ -6,7 +6,7 @@ const Footer = require("../models/_footerModel");
 const Work = require("../models/_projectModel");
 const User = require("../models/_userModel");
 const Ref = require("../models/_referenceModel");
-const Skills = require("../models/_skillsModel");
+const Skill = require("../models/_skillsModel");
 const Exp = require("../models/_experienceModel");
 const passport = require("passport");
 require("../config/passport_local")(passport);
@@ -77,6 +77,54 @@ const getWorkDelete = async (req, res, next) => {
     res.redirect("/admin/work");
   }
 };
+/////////////////////////////EXPERIENCE////////////////////////////////
+
+const getExpPage = async (req, res, next) => {
+  const ress = [];
+  const result = await Exp.find({}).sort({ createdAt: "desc" });
+
+  if (!result) {
+    res.render("./admin/ad_experience", {
+      layout: "./admin/layouts/_ad_layouts.ejs",
+      title: "Admin | Experience Page",
+      result: ress,
+    });
+  } else {
+    res.render("./admin/ad_experience", {
+      layout: "./admin/layouts/_ad_layouts.ejs",
+      title: "Admin | Experience Page",
+      result: result,
+    });
+  }
+};
+
+const getExpAddPage = async (req, res, next) => {
+  res.render("./admin/ad_experience-add", {
+    layout: "./admin/layouts/_ad_layouts.ejs",
+    title: "Admin | Experience Page",
+  });
+};
+const getExpUpdatePage = async (req, res, next) => {
+  if (!req.params.id) {
+    res.redirect("/");
+  } else {
+    const result = await Exp.findById(req.params.id);
+
+    res.render("./admin/ad_experience-update", {
+      layout: "./admin/layouts/_ad_layouts.ejs",
+      title: "Admin | Experience Page",
+      result: result,
+    });
+  }
+};
+const getExpDelete = async (req, res, next) => {
+  if (!req.params) {
+    res.redirect("/admin/homepage");
+  } else {
+    await Exp.findByIdAndDelete(req.params.id);
+    res.redirect("/admin/exp");
+  }
+};
 
 /////////////////////////////REFERENCE//////////////////////////////////
 
@@ -126,6 +174,58 @@ const getRefDelete = async (req, res, next) => {
   } else {
     await Ref.findByIdAndDelete(req.params.id);
     res.redirect("/admin/ref");
+  }
+};
+
+
+/////////////////////////////SKILLS//////////////////////////////////
+
+const getSkillsPage = async (req, res, next) => {
+  const ress = [];
+  const result = await Skill.find({}).sort({ createdAt: "desc" });
+
+  if (!result) {
+    res.render("./admin/ad_skill", {
+      layout: "./admin/layouts/_ad_layouts.ejs",
+      title: "Admin | Skills Page",
+      result: ress,
+    });
+  } else {
+    res.render("./admin/ad_skill", {
+      layout: "./admin/layouts/_ad_layouts.ejs",
+      title: "Admin | Skills Page",
+      result: result,
+    });
+  }
+};
+
+const getSkillsAddPage = async (req, res, next) => {
+  res.render("./admin/ad_skill-add", {
+    layout: "./admin/layouts/_ad_layouts.ejs",
+    title: "Admin | Skills Page",
+  });
+};
+
+const getSkillsUpdatePage = async (req, res, next) => {
+  if (!req.params.id) {
+    res.redirect("/admin/homepage");
+  } else {
+    const result = await Skill.findById(req.params.id);
+
+    res.render("./admin/ad_skill-update", {
+      layout: "./admin/layouts/_ad_layouts.ejs",
+      title: "Admin | Skills Page",
+      result: result,
+    });
+  }
+};
+
+const getSkillsDelete = async (req, res, next) => {
+  if (!req.params) {
+    res.redirect("/admin/homepage");
+  } else {
+    await Skill.findByIdAndDelete(req.params.id);
+    res.redirect("/admin/skills");
   }
 };
 
@@ -306,6 +406,8 @@ const postWorkUpdate = async (req, res, next) => {
   }
 };
 
+//----------------------------------------------------------------
+
 const postBlogAdd = async (req, res, next) => {
   if (!req.body) {
     res.redirect("/admin/homepage");
@@ -365,6 +467,8 @@ const postBlogUpdate = async (req, res, next) => {
   }
 };
 
+//----------------------------------------------------------------
+
 const postAboutUpdate = async (req, res, next) => {
   if (!req.body) {
     res.redirect("/admin/homepage");
@@ -405,6 +509,8 @@ const postAboutUpdate = async (req, res, next) => {
   }
 };
 
+//----------------------------------------------------------------
+
 const postFooterUpdate = async (req, res, next) => {
   if (!req.body) {
     res.redirect("/admin/homepage");
@@ -419,6 +525,8 @@ const postFooterUpdate = async (req, res, next) => {
     res.redirect("/admin/footer");
   }
 };
+
+//----------------------------------------------------------------
 
 const postLogin = async (req, res, next) => {
   passport.authenticate("local", {
@@ -447,17 +555,17 @@ const postRegister = async (req, res, next) => {
   } catch (err) {}
 };
 
+//----------------------------------------------------------------
+
 const postHomePage = async (req, res, next) => {
   if (!req.body) {
     res.redirect("/admin/homepage");
   } else {
-    if (req.files[0]) {
-      options.sideImg.imgName = req.files[0].filename;
-    }
+  
 
     var options = {
-      profilImg: {
-        imgId: ".",
+      sideImg:{
+        imgName: req.body.sideImgName
       },
 
       mainText: req.body.mainText,
@@ -479,10 +587,20 @@ const postHomePage = async (req, res, next) => {
       },
     };
 
+    for (let index = 0; index < req.files.length; index++) {
+      if (req.files[index].fieldname == "sideImg") {
+        options.sideImg.imgName = req.files[index].originalname;
+      }
+    }
+
+
+
     await Home.findByIdAndUpdate(req.body.id, options);
     res.redirect("/admin/homepage");
   }
 };
+
+//----------------------------------------------------------------
 
 const postRefAddPage = async (req, res, next) => {
   if (!req.body) {
@@ -532,6 +650,91 @@ const postRefUpdate = async (req, res, next) => {
   }
 };
 
+//----------------------------------------------------------------
+
+const postExpAddPage = async (req, res, next) => {
+  if (!req.body) {
+    res.redirect("/admin/homepage");
+  } else {
+    const exp = new Exp();
+
+    exp.name = req.body.name;
+    exp.tag = req.body.tag;
+    exp.date = req.body.date;
+    exp.desc = req.body.desc;
+
+
+    for (let index = 0; index < req.files.length; index++) {
+      if (req.files[index].fieldname == "mainImg") {
+        exp.mainImg.imgName = req.files[index].originalname;
+      }
+    }
+
+    exp.save();
+    res.redirect("/admin/exp");
+  }
+};
+
+const postExpUpdate = async (req, res, next) => {
+  if (!req.body) {
+    res.redirect("/admin/homepage");
+  } else {
+    var options = {
+      mainImg: {
+        imgName: req.body.mainImgName,
+      },
+
+      name: req.body.name,
+      tag: req.body.tag,
+      date: req.body.date,
+      desc: req.body.desc,
+    };
+
+    for (let index = 0; index < req.files.length; index++) {
+      if (req.files[index].fieldname == "mainImg") {
+        options.mainImg.imgName = req.files[index].originalname;
+      }
+    }
+
+    await Exp.findByIdAndUpdate(req.body.id, options);
+    res.redirect("/admin/exp");
+  }
+};
+
+
+//----------------------------------------------------------------
+
+const postSkillsAddPage = async (req, res, next) => {
+  if (!req.body) {
+    res.redirect("/admin/homepage");
+  } else {
+    const skill = new Skill();
+
+    skill.name = req.body.name;
+    skill.percent = req.body.percent;
+    skill.save();
+    res.redirect("/admin/skills");
+  }
+};
+
+const postSkillsUpdate = async (req, res, next) => {
+  if (!req.body) {
+    res.redirect("/admin/homepage");
+  } else {
+    var options = {
+   
+
+      name: req.body.name,
+      percent: req.body.percent,
+     
+    };
+
+
+    await Skill.findByIdAndUpdate(req.body.id, options);
+    res.redirect("/admin/skills");
+  }
+};
+
 module.exports = {
   getHomePage,
   getWorkPage,
@@ -563,4 +766,16 @@ module.exports = {
   postHomePage,
   postRefAddPage,
   postRefUpdate,
+  getExpPage,
+  getExpAddPage,
+  getExpUpdatePage,
+  getExpDelete,
+  postExpAddPage,
+  postExpUpdate,
+  getSkillsPage,
+  getSkillsAddPage,
+  getSkillsUpdatePage,
+  getSkillsDelete,
+  postSkillsAddPage,
+  postSkillsUpdate
 };

@@ -114,22 +114,22 @@
     </div>
     <div class="exp-area">
 
-      <!-- <% for( let index = 0; index < resultRef.length; index++ ) { %>
+      <% for( let index = 0; index < resultExp.length; index++ ) { %>
         <div class="exp-row">
           <div class="exp-card js-scroll fade-in-bottom">
             <i class="bx bx-caret-right caret"></i>
-            <img src="../../uploads/images/<%- resultRef[index].mainImg.imgName %>" class="exp-img" alt="" />
+            <img src="../../uploads/images/<%- resultExp[index].mainImg.imgName %>" class="exp-img" alt="" />
             <div class="exp-text-area">
-              <h6><%- resultRef[index].title %></h6>
-              <h2><%- resultRef[index].name %></h2>
-              <h4><%- resultRef[index].date %></h4>
-              <a href=""
+              <h6><%- resultExp[index].tag %></h6>
+              <h2><%- resultExp[index].name %></h2>
+              <h4><%- resultExp[index].date %></h4>
+              <a href="/exp-detail/<%- resultExp[index].id %>"
                 >More Info<i id="exp-icon" class="bx bx-right-arrow-alt"></i
               ></a>
             </div>
           </div>
         </div>
-      <% } %> -->
+      <% } %>
 
       
    
@@ -236,7 +236,7 @@
         </button>
       </div>
       <div class="work-btn js-scroll fade-in-bottom">
-        <a href=""
+        <a href="/work"
           >See them all<i id="work-icon" class="bx bx-right-arrow-alt"></i
         ></a>
       </div>

@@ -1,0 +1,48 @@
+<div class="row">
+  <div class="col-12">
+    <div
+      class="px-3 py-4 mb-3 rounded d-flex flex-row justify-content-center align-items-center navbar-detached bg-navbar-theme"
+      id="layout-navbar"
+    >
+      <h3 class="m-0">Skills Page</h3>
+    </div>
+  </div>
+</div>
+
+<div class="row mt-4">
+  <div class="card">
+    <div class="table-responsive text-nowrap">
+      <table class="table table-hover text-center">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Percent</th>
+            <th>Update</th>
+            <th>Delete</th>
+          </tr>
+        </thead>
+        <tbody class="table-border-bottom-0">
+          <% for( let index = 0; index < result.length; index++ ) { %> 
+            <tr>
+                <td>
+                  <span class="fw-medium"><%- result[index].name %></span>
+                </td>
+                <td><span class="fw-medium">%<%- result[index].percent %></span></td>
+                <td>
+                  <a href="/admin/skills-update/<%- result[index].id %>" class="btn btn-success">Update</a>
+                </td>
+                <td>
+                  <a href="/admin/skills-delete/<%- result[index].id %>" class="btn btn-danger">Delete</a>
+                </td>
+              </tr>
+              <% } %>
+       
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="text-center my-3">
+    <a href="/admin/skills-add" class="btn btn-primary btn-lg">Add</a>
+  </div>
+</div>

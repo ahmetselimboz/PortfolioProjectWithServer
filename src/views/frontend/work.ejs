@@ -48,34 +48,23 @@
         <hr class="section-title-line">
       </div>
       <div class="exp-area">
-        <div class="exp-row">
-          <div class="exp-card js-scroll fade-in-bottom">
-            <i class="bx bx-caret-right caret"></i>
-            <img src="/frontend/assets/EBYU_Logo.png" class="exp-img" alt="" />
-            <div class="exp-text-area">
-              <h6>Part Time</h6>
-              <h2>Erzincan Binali Yıldırım University</h2>
-              <h4>10/2023 - Present</h4>
-              <a href=""
-                >More Info<i id="exp-icon" class="bx bx-right-arrow-alt"></i
-              ></a>
+        <% for( let index = 0; index < resultExp.length; index++ ) { %>
+          <div class="exp-row">
+            <div class="exp-card js-scroll fade-in-bottom">
+              <i class="bx bx-caret-right caret"></i>
+              <img src="../../uploads/images/<%- resultExp[index].mainImg.imgName %>" class="exp-img" alt="" />
+              <div class="exp-text-area">
+                <h6><%- resultExp[index].tag %></h6>
+                <h2><%- resultExp[index].name %></h2>
+                <h4><%- resultExp[index].date %></h4>
+                <a href="/exp-detail/<%- resultExp[index].id %>"
+                  >More Info<i id="exp-icon" class="bx bx-right-arrow-alt"></i
+                ></a>
+              </div>
             </div>
           </div>
-        </div>
-        <div class="exp-row">
-          <div class="exp-card js-scroll fade-in-bottom">
-            <i class="bx bx-caret-right caret"></i>
-            <img src="/frontend/assets/Sekme_Icon.png" class="exp-img" alt="" />
-            <div class="exp-text-area">
-              <h6>Freelancer</h6>
-              <h2>Demir Elit İnşaat</h2>
-              <h4>08/2023 - 09/2023</h4>
-              <a href=""
-                >More Info<i id="exp-icon" class="bx bx-right-arrow-alt"></i
-              ></a>
-            </div>
-          </div>
-        </div>
+        <% } %>
+  
       </div>
     </div>
   </section>
@@ -87,43 +76,19 @@
         <hr class="section-title-line">
       </div>
       <div class="skills-area">
-        <div class="skills-card js-scroll fade-in">
-          <div class="skills-card-text">
-            <h5>HTML</h5>
+        <% for( let index = 0; index < resultSkill.length; index++ ) { %>
+          <div class="skills-card js-scroll fade-in">
+            <div class="skills-card-text">
+              <h5><%- resultSkill[index].name %></h5>
+  
+              <h5 style="margin-left: 0.5rem">(%)</h5>
+            </div>
+            <div class="rating"><%- resultSkill[index].percent %></div>
+          </div>
+        <% } %>
 
-            <h5 style="margin-left: 0.5rem">(%)</h5>
-          </div>
-          <div class="rating">85</div>
-        </div>
-        <div class="skills-card js-scroll fade-in">
-          <div class="skills-card-text">
-            <h5>HTML</h5>
-
-            <h5 style="margin-left: 0.5rem">(%)</h5>
-          </div>
-          <div class="rating">100</div>
-        </div>
-        <div class="skills-card js-scroll fade-in">
-          <div class="skills-card-text">
-            <h5>HTML</h5>
-            <h5 style="margin-left: 0.5rem">(%)</h5>
-          </div>
-          <div class="rating">30</div>
-        </div>
-        <div class="skills-card js-scroll fade-in">
-          <div class="skills-card-text">
-            <h5>HTML</h5>
-            <h5 style="margin-left: 0.5rem">(%)</h5>
-          </div>
-          <div class="rating">0</div>
-        </div>
-        <div class="skills-card js-scroll fade-in">
-          <div class="skills-card-text">
-            <h5>HTML</h5>
-            <h5 style="margin-left: 0.5rem">(%)</h5>
-          </div>
-          <div class="rating">5</div>
-        </div>
+        
+      
       </div>
     </div>
   </section>

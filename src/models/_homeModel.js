@@ -20,7 +20,7 @@ const homeSchema = new Schema(
       },
       imgName: {
         type: String,
-        trim: true,
+        default: "defaultUser.png",
       },
     },
 
