@@ -15,59 +15,28 @@
         <hr class="section-title-line">
       </div>
       <div class="work-area">
-        <div class="work-card ">
-          <div class="work-card-img-area">
-            <a href="./work-detail.html">
-              <img
-                class="work-card-img"
-                src="/frontend/assets/Başlıadsadadsksız-1.jpg"
-                alt=""
-              />
-            </a>
+        <% for( let index = 0; index < resultWork.length; index++ ) { %>
+          <div class="work-card ">
+            <div class="work-card-img-area">
+              <a href="/work-detail/<%- resultWork[index].id %>">
+                <img
+                  class="work-card-img"
+                  src="../../uploads/images/<%- resultWork[index].mainImg.imgName %>"
+                  alt=""
+                />
+              </a>
+            </div>
+            <div class="work-card-text">
+              <h5><%- resultWork[index].tag %></h5>
+              <a href="/work-detail/<%- resultWork[index].id %>"><%- resultWork[index].name %></a>
+              <p>
+                <%- resultWork[index].text %>
+              </p>
+            </div>
           </div>
-          <div class="work-card-text">
-            <h5>Web/Mobile</h5>
-            <a href="./work-detail.html">Kitap Dağı</a>
-            <p>
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-              Distinctio temporibus soluta omnis? Officia laborum modi ipsam
-              saepe
-            </p>
-          </div>
-        </div>
-        <div class="work-card ">
-          <div class="work-card-img-area">
-            <a href="">
-              <img class="work-card-img" src="/frontend/assets/Başlı.jpg" alt="" />
-            </a>
-          </div>
-          <div class="work-card-text">
-            <h5>Web</h5>
-            <a href="">Demir Elit İnşaat</a>
-            <p>
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-              Distinctio temporibus soluta omnis? Officia laborum modi ipsam
-              saepe
-            </p>
-          </div>
-        </div>
-
-        <div class="work-card ">
-          <div class="work-card-img-area">
-            <a href="">
-              <img class="work-card-img" src="/frontend/assets/Başlı.jpg" alt="" />
-            </a>
-          </div>
-          <div class="work-card-text">
-            <h5>Web</h5>
-            <a href="">Demir Elit İnşaat</a>
-            <p>
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-              Distinctio temporibus soluta omnis? Officia laborum modi ipsam
-              saepe
-            </p>
-          </div>
-        </div>
+        <% } %>
+     
+       
       </div>
     </div>
   </section>
@@ -171,69 +140,28 @@
         </button>
         <div class="carousel-container">
           <div class="carousel">
-            <div class="carousel-item">
-              <div class="ref-card">
-                <div class="ref-card-img">
-                  <img
-                    src="/frontend/assets/310546903_5723166694410183_3165207936879870276_n.jpg"
-                    alt=""
-                  />
-                </div>
-
-                <div class="ref-card-text">
-                  <h2>Ahmet Selim Boz</h2>
-                  <h4>Backend Developer</h4>
-                  <p>
-                    <img src="/frontend/assets/quote.png" alt="" />
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Rerum eum maxime repellat iure libero commodi ipsum odit
-                    deserunt.
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div class="carousel-item">
-              <div class="ref-card">
-                <div class="ref-card-img">
-                  <img
-                    src="/frontend/assets/310546903_5723166694410183_3165207936879870276_n.jpg"
-                    alt=""
-                  />
-                </div>
-
-                <div class="ref-card-text">
-                  <h2>Ahmet Selim Boz</h2>
-                  <h4>Backend Developer</h4>
-                  <p>
-                    <img src="/frontend/assets/quote.png" alt="" />
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Rerum eum maxime repellat iure libero commodi ipsum odit
-                    deserunt.
-                  </p>
+            <% for( let index = 0; index < resultRef.length; index++ ) { %>
+              <div class="carousel-item">
+                <div class="ref-card">
+                  <div class="ref-card-img">
+                    <img
+                      src="../../uploads/images/<%- resultRef[index].mainImg.imgName %>"
+                      alt=""
+                    />
+                  </div>
+  
+                  <div class="ref-card-text">
+                    <h2><%- resultRef[index].name %></h2>
+                    <h4><%- resultRef[index].title %></h4>
+                    <p><img src="/frontend/assets/quote.png" alt="">
+                      <%- resultRef[index].text %>
+                    </p>
+                  </div>
                 </div>
               </div>
-            </div>
-            <div class="carousel-item">
-              <div class="ref-card">
-                <div class="ref-card-img">
-                  <img
-                    src="/frontend/assets/310546903_5723166694410183_3165207936879870276_n.jpg"
-                    alt=""
-                  />
-                </div>
-
-                <div class="ref-card-text">
-                  <h2>Ahmet Selim Boz</h2>
-                  <h4>Backend Developer</h4>
-                  <p>
-                    <img src="/frontend/assets/quote.png" alt="" />
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Rerum eum maxime repellat iure libero commodi ipsum odit
-                    deserunt.
-                  </p>
-                </div>
-              </div>
-            </div>
+            <% } %>
+            
+          
             <!-- Add more slides as needed -->
           </div>
           <div class="pagination"></div>

@@ -9,9 +9,14 @@ const frontController = require("../controllers/frControllers")
 router.get('/', frontController.getHomePage);
 router.get('/homepage', frontController.getHomePage);
 router.get('/work', frontController.getWorkPage);
+router.get('/work-detail/:id', frontController.getWorkDetailPage);
 router.get('/blog', frontController.getBlogPage);
 router.get('/about', frontController.getAboutPage);
 router.get('/contact', frontController.getContactPage);
+
+
+
+router.post('/contact', frontController.postContact);
 
 
 

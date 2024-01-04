@@ -11,6 +11,10 @@ router.get('/work', isAuthenticated.oturumAcilmis,adminController.getWorkPage);
 router.get('/work-add', isAuthenticated.oturumAcilmis,adminController.getWorkAddPage);
 router.get('/work-update/:id',adminController.getWorkUpdatePage);
 router.get('/work-delete/:id', adminController.getWorkDelete);
+router.get('/ref', isAuthenticated.oturumAcilmis,adminController.getRefPage);
+router.get('/ref-add', isAuthenticated.oturumAcilmis,adminController.getRefAddPage);
+router.get('/ref-update/:id',adminController.getRefUpdatePage);
+router.get('/ref-delete/:id', adminController.getRefDelete);
 router.get('/blog', isAuthenticated.oturumAcilmis,adminController.getBlogPage);
 router.get('/blog-add', isAuthenticated.oturumAcilmis,adminController.getBlogAddPage);
 router.get('/blog-update/:id', adminController.getBlogUpdatePage);
@@ -27,6 +31,8 @@ router.get('/register',isAuthenticated.oturumAcilmamis, adminController.getRegis
 router.post('/homepage',multerConfig.any(),adminController.postHomePage);
 router.post("/work-add", multerConfig.any(),adminController.postWorkAddPage)
 router.post("/work-update", multerConfig.any(),adminController.postWorkUpdate)
+router.post("/ref-add", multerConfig.any(),adminController.postRefAddPage)
+router.post("/ref-update", multerConfig.any(),adminController.postRefUpdate)
 router.post('/blog-add',multerConfig.any(), adminController.postBlogAdd);
 router.post('/blog-update', multerConfig.any(),adminController.postBlogUpdate);
 router.post('/about-update', multerConfig.any(),adminController.postAboutUpdate);

@@ -12,79 +12,28 @@
     <div class="work-panel">
   
       <div class="blogs-area">
-        <div class="blogs-card ">
-          <div class="blogs-card-img-area">
-            <a href="">
-              <img
-                class="blogs-card-img"
-                src="/frontend/assets/Başlıadsadadsksız-1.jpg"
-                alt=""
-              />
-            </a>
+      
+   
+        <% for( let index = 0; index < resultBlog.length; index++ ) { %>
+          <div class="blogs-card ">
+            <div class="blogs-card-img-area">
+              <a href="">
+                <img
+                  class="blogs-card-img"
+                  src="../../uploads/images/<%- resultBlog[index].mainImg.imgName %>"
+                  alt=""
+                />
+              </a>
+            </div>
+            <div class="blogs-card-text">
+              <h5><%- resultBlog[index].tag1 %> / <%- resultBlog[index].tag2 %> / <%- resultBlog[index].tag3 %></h5>
+              <a href=""><%- resultBlog[index].shortText %></a>
+              <p>
+                <%- resultBlog[index].text1 %>
+              </p>
+            </div>
           </div>
-          <div class="blogs-card-text">
-            <h5>Web/Mobile</h5>
-            <a href="">Kitap Dağı</a>
-            <p>
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-              Distinctio temporibus soluta omnis? Officia laborum modi ipsam
-              saepe
-            </p>
-          </div>
-        </div>
-        <div class="blogs-card ">
-          <div class="blogs-card-img-area">
-            <a href="">
-              <img class="blogs-card-img" src="/frontend/assets/Başlı.jpg" alt="" />
-            </a>
-          </div>
-          <div class="blogs-card-text">
-            <h5>Web</h5>
-            <a href="">Demir Elit İnşaat</a>
-            <p>
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-              Distinctio temporibus soluta omnis? Officia laborum modi ipsam
-              saepe
-            </p>
-          </div>
-        </div>
-
-        <div class="blogs-card ">
-          <div class="blogs-card-img-area">
-            <a href="">
-              <img
-                class="blogs-card-img"
-                src="/frontend/assets/Başlıadsadadsksız-1.jpg"
-                alt=""
-              />
-            </a>
-          </div>
-          <div class="blogs-card-text">
-            <h5>Web/Mobile</h5>
-            <a href="">Kitap Dağı</a>
-            <p>
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-              Distinctio temporibus soluta omnis? Officia laborum modi ipsam
-              saepe
-            </p>
-          </div>
-        </div>
-        <div class="blogs-card ">
-          <div class="blogs-card-img-area">
-            <a href="">
-              <img class="blogs-card-img" src="/frontend/assets/Başlı.jpg" alt="" />
-            </a>
-          </div>
-          <div class="blogs-card-text">
-            <h5>Web</h5>
-            <a href="">Demir Elit İnşaat</a>
-            <p>
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-              Distinctio temporibus soluta omnis? Officia laborum modi ipsam
-              saepe
-            </p>
-          </div>
-        </div>
+        <% } %>
       </div>
       
     </div>

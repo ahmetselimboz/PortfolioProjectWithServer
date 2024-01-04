@@ -1,0 +1,33 @@
+<div class="work-panel">
+
+    <div class="work-detail-area">
+        <div class="work-detail-img-area">
+            <img class="work-detail-img" src="../../uploads/images/<%- result.mainImg.imgName %>" alt="">
+        </div>
+        <div class="work-detail-text-area">
+            <h6><%- result.tag %></h6>
+            <h2><%- result.name %></h2>
+            <p><%- result.text %></p>
+            <div class="work-detail-part">
+                <i class="bx bx-caret-right caret-right"></i>
+                <h3> Date: </h3>
+                <h4><%- result.date %></h4>
+            </div>
+            <div class="work-detail-part">
+                <i class="bx bx-caret-right caret-right"></i>
+                <h3>Languages: </h3>
+                <h4><%- result.lang %></h4>
+            </div>
+           
+            <div class="work-detail-part">
+                <i class="bx bx-caret-right caret-right"></i> 
+                <h3>Link: </h3>
+                <h4><a href="<%- result.link %>"><%- result.link %></a></h4>
+            </div>
+        </div>
+    </div>
+    <div class="work-detail-desc">
+        <h1><%- result.desc %></h1>
+    </div>
+
+</div>

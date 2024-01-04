@@ -5,6 +5,9 @@ const Contact = require("../models/_contactModel");
 const Footer = require("../models/_footerModel");
 const Work = require("../models/_projectModel");
 const User = require("../models/_userModel");
+const Ref = require("../models/_referenceModel");
+const Skills = require("../models/_skillsModel");
+const Exp = require("../models/_experienceModel");
 const passport = require("passport");
 require("../config/passport_local")(passport);
 const bcrypt = require("bcryptjs");
@@ -26,7 +29,7 @@ const getHomePage = async (req, res, next) => {
   }
 };
 
-/////////////////////////////WORK/////////////////////////////////////
+/////////////////////////////PROJECT//////////////////////////////////
 
 const getWorkPage = async (req, res, next) => {
   const ress = [];
@@ -61,7 +64,7 @@ const getWorkUpdatePage = async (req, res, next) => {
 
     res.render("./admin/ad_work-update", {
       layout: "./admin/layouts/_ad_layouts.ejs",
-      title: "Admin | Contact Page",
+      title: "Admin | Work Page",
       result: result,
     });
   }
@@ -72,6 +75,57 @@ const getWorkDelete = async (req, res, next) => {
   } else {
     await Work.findByIdAndDelete(req.params.id);
     res.redirect("/admin/work");
+  }
+};
+
+/////////////////////////////REFERENCE//////////////////////////////////
+
+const getRefPage = async (req, res, next) => {
+  const ress = [];
+  const result = await Ref.find({}).sort({ createdAt: "desc" });
+
+  if (!result) {
+    res.render("./admin/ad_reference", {
+      layout: "./admin/layouts/_ad_layouts.ejs",
+      title: "Admin | Reference Page",
+      result: ress,
+    });
+  } else {
+    res.render("./admin/ad_reference", {
+      layout: "./admin/layouts/_ad_layouts.ejs",
+      title: "Admin | Reference Page",
+      result: result,
+    });
+  }
+};
+
+const getRefAddPage = async (req, res, next) => {
+  res.render("./admin/ad_reference-add", {
+    layout: "./admin/layouts/_ad_layouts.ejs",
+    title: "Admin | Reference Page",
+  });
+};
+
+const getRefUpdatePage = async (req, res, next) => {
+  if (!req.params.id) {
+    res.redirect("/");
+  } else {
+    const result = await Ref.findById(req.params.id);
+
+    res.render("./admin/ad_reference-update", {
+      layout: "./admin/layouts/_ad_layouts.ejs",
+      title: "Admin | Reference Page",
+      result: result,
+    });
+  }
+};
+
+const getRefDelete = async (req, res, next) => {
+  if (!req.params) {
+    res.redirect("/admin/homepage");
+  } else {
+    await Ref.findByIdAndDelete(req.params.id);
+    res.redirect("/admin/ref");
   }
 };
 
@@ -205,7 +259,6 @@ const postWorkAddPage = async (req, res, next) => {
   } else {
     const project = new Work();
 
-
     project.tag = req.body.tag;
     project.name = req.body.name;
     project.text = req.body.text;
@@ -217,10 +270,8 @@ const postWorkAddPage = async (req, res, next) => {
     for (let index = 0; index < req.files.length; index++) {
       if (req.files[index].fieldname == "mainImg") {
         project.mainImg.imgName = req.files[index].originalname;
-      } 
+      }
     }
-
-
 
     project.save();
     res.redirect("/admin/work");
@@ -242,15 +293,13 @@ const postWorkUpdate = async (req, res, next) => {
       lang: req.body.lang,
       link: req.body.link,
       desc: req.body.desc,
-    }
-
+    };
 
     for (let index = 0; index < req.files.length; index++) {
       if (req.files[index].fieldname == "mainImg") {
         options.mainImg.imgName = req.files[index].originalname;
-      } 
+      }
     }
-
 
     await Work.findByIdAndUpdate(req.body.id, options);
     res.redirect("/admin/work");
@@ -275,9 +324,8 @@ const postBlogAdd = async (req, res, next) => {
         blog.mainImg.imgName = req.files[index].originalname;
       } else if (req.files[index].fieldname == "sideImg") {
         blog.sideImg.imgName = req.files[index].originalname;
-      } 
+      }
     }
-  
 
     blog.save();
     res.redirect("/admin/blog");
@@ -302,17 +350,15 @@ const postBlogUpdate = async (req, res, next) => {
       text1: req.body.text1,
       text2: req.body.text2,
       desc: req.body.desc,
-    }
+    };
 
     for (let index = 0; index < req.files.length; index++) {
       if (req.files[index].fieldname == "mainImg") {
         options.mainImg.imgName = req.files[index].originalname;
       } else if (req.files[index].fieldname == "sideImg") {
         options.sideImg.imgName = req.files[index].originalname;
-      } 
+      }
     }
-
-
 
     await Blog.findByIdAndUpdate(req.body.id, options);
     res.redirect("/admin/blog");
@@ -342,8 +388,6 @@ const postAboutUpdate = async (req, res, next) => {
       text3: req.body.text3,
     };
 
-
-
     for (let index = 0; index < req.files.length; index++) {
       if (req.files[index].fieldname == "mainImg") {
         options.mainImg.imgName = req.files[index].originalname;
@@ -356,15 +400,12 @@ const postAboutUpdate = async (req, res, next) => {
       }
     }
 
-    
-
     await About.findByIdAndUpdate(req.body.id, options);
     res.redirect("/admin/about");
   }
 };
 
 const postFooterUpdate = async (req, res, next) => {
-  console.log(req.body);
   if (!req.body) {
     res.redirect("/admin/homepage");
   } else {
@@ -443,12 +484,64 @@ const postHomePage = async (req, res, next) => {
   }
 };
 
+const postRefAddPage = async (req, res, next) => {
+  if (!req.body) {
+    res.redirect("/admin/homepage");
+  } else {
+    const ref = new Ref();
+
+    ref.name = req.body.name;
+    ref.title = req.body.title;
+    ref.text = req.body.text;
+
+
+    for (let index = 0; index < req.files.length; index++) {
+      if (req.files[index].fieldname == "mainImg") {
+        ref.mainImg.imgName = req.files[index].originalname;
+      }
+    }
+
+    ref.save();
+    res.redirect("/admin/ref");
+  }
+};
+
+const postRefUpdate = async (req, res, next) => {
+  if (!req.body) {
+    res.redirect("/admin/homepage");
+  } else {
+    var options = {
+      mainImg: {
+        imgName: req.body.mainImgName,
+      },
+
+      name: req.body.name,
+      title: req.body.title,
+      text: req.body.text,
+
+    };
+
+    for (let index = 0; index < req.files.length; index++) {
+      if (req.files[index].fieldname == "mainImg") {
+        options.mainImg.imgName = req.files[index].originalname;
+      }
+    }
+
+    await Ref.findByIdAndUpdate(req.body.id, options);
+    res.redirect("/admin/ref");
+  }
+};
+
 module.exports = {
   getHomePage,
   getWorkPage,
   getWorkAddPage,
   getWorkUpdatePage,
   getWorkDelete,
+  getRefPage,
+  getRefAddPage,
+  getRefUpdatePage,
+  getRefDelete,
   getBlogPage,
   getBlogAddPage,
   getBlogUpdatePage,
@@ -468,4 +561,6 @@ module.exports = {
   postLogin,
   postRegister,
   postHomePage,
+  postRefAddPage,
+  postRefUpdate,
 };
