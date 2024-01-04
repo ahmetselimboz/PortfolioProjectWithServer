@@ -14,28 +14,6 @@
       <div class="card">
         <div class="card-body demo-vertical-spacing demo-only-element">
           <form action="/admin/blog-add" method="post" enctype="multipart/form-data">
-            <div class="input-group mb-3">
-              <input
-                type="file"
-                class="form-control"
-                id="inputGroupFile02"
-                name="mainImg"
-              />
-              <label class="input-group-text" for="inputGroupFile02"
-                >Header Area Picture</label
-              >
-            </div>
-            <div class="input-group mb-3">
-              <input
-                type="file"
-                class="form-control"
-                id="inputGroupFile02"
-                name="sideImg"
-              />
-              <label class="input-group-text" for="inputGroupFile02"
-                >Content Area Picture</label
-              >
-            </div>
             <div class="mb-3">
               <label for="defaultFormControlInput" class="form-label">Tag-1</label>
               <input
@@ -63,40 +41,62 @@
                 name="tag3"
               />
             </div>
+           
+          
+            
             <div class="mb-3">
-              <label for="defaultFormControlInput" class="form-label">Short Text</label>
+              <label for="defaultFormControlInput" class="form-label">Name</label>
               <input
                 type="text"
                 class="form-control"
                 id="defaultFormControlInput "
-                name="shortText"
+                name="name"
               />
             </div>
             <div class="mb-3">
-              <label for="defaultFormControlInput" class="form-label">Text-1</label>
-              <input
-                type="text"
-                class="form-control"
-                id="defaultFormControlInput "
-                name="text1"
-              />
+              <label for="defaultFormControlInput" class="form-label">Cover Letter </label>
+              <textarea
+              class="form-control" id="exampleFormControlTextarea1" name="shortText"rows="3"   
+              ></textarea>
             </div>
-            <div class="mb-3">
-              <label for="defaultFormControlInput" class="form-label">Text-2</label>
+           
+            <div class="input-group mb-3">
               <input
-                type="text"
+                type="file"
                 class="form-control"
-                id="defaultFormControlInput "
-                name="text2"
+                id="inputGroupFile02"
+                name="mainImg"
               />
+              <label class="input-group-text" for="inputGroupFile02"
+                >Header Area Picture</label
+              >
             </div>
      
             <div class="mb-3">
-              <label for="defaultFormControlInput" class="form-label">Description</label>
+              <label for="defaultFormControlInput" class="form-label">Description-1</label>
        
     
               <textarea
-              class="form-control" id="exampleFormControlTextarea1" name="desc"rows="3"   
+              class="form-control" id="exampleFormControlTextarea1" name="desc1"rows="8"   
+              ></textarea>
+            </div>
+            <div class="input-group mb-3">
+              <input
+                type="file"
+                class="form-control"
+                id="inputGroupFile02"
+                name="sideImg"
+              />
+              <label class="input-group-text" for="inputGroupFile02"
+                >Content Area Picture</label
+              >
+            </div>
+            <div class="mb-3">
+              <label for="defaultFormControlInput" class="form-label">Description-2</label>
+       
+    
+              <textarea
+              class="form-control" id="exampleFormControlTextarea1" name="desc2"rows="8"   
               ></textarea>
             </div>
             <div class="text-center">

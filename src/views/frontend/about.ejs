@@ -1,44 +1,51 @@
+<section>
+  <div class="pages-title-area">
+    <h4>About</h4>
+    <p>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum ullam
+      consequatur repellat accusamus sit sunt,
+    </p>
+  </div>
+</section>
 
 <section>
-    <div class="pages-title-area">
-      <h4>About</h4>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum ullam
-        consequatur repellat accusamus sit sunt,
-      </p>
-    </div>
-  </section>
-
-  <section>
-    <div class="about-panel">
-      <h5>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos
-        asperiores, similique odio minus commodi deleniti necessitatibus
-        repellat in itaque natus sed! Optio repudiandae eum necessitatibus,
-        nisi officiis alias sint quaerat.
-      </h5>
-      <div class="about-img">
-        <img
+  <div class="about-panel">
+    <h5 id="text1"><%- resultAbout.text1 %></h5>
+    <div class="about-img">
+      <img
         src="../../uploads/images/<%- resultAbout.mainImg.imgName %>"
         alt=""
       />
-      </div>
-      
-      <h5>
-        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptatem
-        illo nisi excepturi distinctio unde asperiores. Sint soluta alias
-        quos, earum ab reprehenderit pariatur voluptatum fuga velit. Quae
-        commodi sit nesciunt. Sint consectetur commodi nemo asperiores at,
-        saepe nisi reiciendis consequuntur nihil ea illum velit, aliquid
-        ducimus eius voluptates pariatur repudiandae, quis consequatur
-        perspiciatis facilis temporibus ratione impedit molestiae! Alias,
-        maiores?
-      </h5>
-      <div class="about-img-area">
-        <img src="../../uploads/images/<%- resultAbout.miniImg1.imgName %>" alt="" />
-        <img src="../../uploads/images/<%- resultAbout.miniImg2.imgName %>" alt="" />
-        <img src="../../uploads/images/<%- resultAbout.miniImg3.imgName %>" alt="" />
-      </div>
-      <h5>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Illum laborum nobis adipisci dolor consequuntur cum vitae soluta officiis aspernatur enim dignissimos libero,</h5>
     </div>
-  </section>
+
+    <h5 id="text2"><%- resultAbout.text2 %></h5>
+    <div class="about-img-area">
+      <img
+        src="../../uploads/images/<%- resultAbout.miniImg1.imgName %>"
+        alt=""
+      />
+      <img
+        src="../../uploads/images/<%- resultAbout.miniImg2.imgName %>"
+        alt=""
+      />
+      <img
+        src="../../uploads/images/<%- resultAbout.miniImg3.imgName %>"
+        alt=""
+      />
+    </div>
+    <h5 id="text3"><%- resultAbout.text3 %></h5>
+  </div>
+</section>
+
+<script>
+  var h5Element1 = document.getElementById("text1");
+  var h5Element2 = document.getElementById("text2");
+  var h5Element3 = document.getElementById("text3");
+
+
+
+  h5Element1.innerText= h5Element1.innerHTML;
+  h5Element2.innerText= h5Element2.innerHTML;
+  h5Element3.innerText= h5Element3.innerHTML;
+
+</script>

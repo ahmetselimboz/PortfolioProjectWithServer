@@ -16,23 +16,23 @@ const blogSchema = new Schema(
       type: String,
       trim: true,
     },
-
+    name: {
+      type: String,
+      trim: true,
+    },
     shortText: {
       type: String,
       trim: true,
     },
 
-    text1: {
+   
+
+    desc1: {
       type: String,
       trim: true,
     },
 
-    text2: {
-      type: String,
-      trim: true,
-    },
-
-    desc: {
+    desc2: {
       type: String,
       trim: true,
     },

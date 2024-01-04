@@ -1,113 +1,152 @@
 <div class="row">
-    <div class="col-12">
-      <div
-        class="px-3 py-4 mb-3 rounded d-flex flex-row justify-content-center align-items-center navbar-detached bg-navbar-theme"
-        id="layout-navbar"
-      >
-        <h3 class="m-0"><%- result.shortText %></h3>
-      </div>
+  <div class="col-12">
+    <div
+      class="px-3 py-4 mb-3 rounded d-flex flex-row justify-content-center align-items-center navbar-detached bg-navbar-theme"
+      id="layout-navbar"
+    >
+      <h3 class="m-0"><%- result.name %></h3>
     </div>
   </div>
+</div>
 
-  <div class="row">
-    <div class="col-12">
-      <div class="card">
-        <div class="card-body demo-vertical-spacing demo-only-element">
-          <form action="/admin/blog-update" method="post" enctype="multipart/form-data">
-            <div class="input-group mb-3">
-              <input
-                type="file"
-                class="form-control"
-                id="inputGroupFile02"
-                name="mainImg"
-              />
-              <label class="input-group-text" for="inputGroupFile02"
-                >Header Area Picture</label
-              >
-            </div>
-            <input type="hidden" name="id" value="<%- result.id %>">
-            <div class="input-group mb-3">
-              <input
-                type="file"
-                class="form-control"
-                id="inputGroupFile02"
-                name="sideImg"
-              />
-              <label class="input-group-text" for="inputGroupFile02"
-                >Content Area Picture</label
-              >
-            </div>
-            <input type="hidden" name="mainImgName" value="<%- result.mainImg.imgName %>">
-            <input type="hidden" name="sideImgName" value="<%- result.sideImg.imgName %>">
-            <div class="mb-3">
-              <label for="defaultFormControlInput" class="form-label">Tag-1</label>
-              <input
-                type="text"
-                class="form-control"
-                id="defaultFormControlInput "
-                name="tag1" value="<%- result.tag1 %>"
-              />
-            </div>
-            <div class="mb-3">
-              <label for="defaultFormControlInput" class="form-label">Tag-2</label>
-              <input
-                type="text"
-                class="form-control"
-                id="defaultFormControlInput "
-                name="tag2" value="<%- result.tag2 %>"
-              />
-            </div>
-            <div class="mb-3">
-              <label for="defaultFormControlInput" class="form-label">Tag-3</label>
-              <input
-                type="text"
-                class="form-control"
-                id="defaultFormControlInput "
-                name="tag3" value="<%- result.tag3 %>"
-              />
-            </div>
-            <div class="mb-3">
-              <label for="defaultFormControlInput" class="form-label">Short Text</label>
-              <input
-                type="text"
-                class="form-control"
-                id="defaultFormControlInput "
-                name="shortText" value="<%- result.shortText %>"
-              />
-            </div>
-            <div class="mb-3">
-              <label for="defaultFormControlInput" class="form-label">Text-1</label>
-              <input
-                type="text"
-                class="form-control"
-                id="defaultFormControlInput "
-                name="text1" value="<%- result.text1 %>"
-              />
-            </div>
-            <div class="mb-3">
-              <label for="defaultFormControlInput" class="form-label">Text-2</label>
-              <input
-                type="text"
-                class="form-control"
-                id="defaultFormControlInput "
-                name="text2" value="<%- result.text2 %>"
-              />
-            </div>
-     
-            <div class="mb-3">
-              <label for="defaultFormControlInput" class="form-label">Description</label>
-       
-    
-              <textarea
-              class="form-control" id="exampleFormControlTextarea1" name="desc"rows="3"   
-              ><%- result.desc %></textarea>
-            </div>
-            <div class="text-center">
-              <button class="btn btn-success mb-3">Update</button>
-            </div>
-          </form>
-        </div>
+<div class="row">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-body demo-vertical-spacing demo-only-element">
+        <form
+          action="/admin/blog-update"
+          method="post"
+          enctype="multipart/form-data"
+        >
+          <input type="hidden" name="id" value="<%- result.id %>" />
+
+          <input
+            type="hidden"
+            name="mainImgName"
+            value="<%- result.mainImg.imgName %>"
+          />
+          <input
+            type="hidden"
+            name="sideImgName"
+            value="<%- result.sideImg.imgName %>"
+          />
+          <div class="mb-3">
+            <label for="defaultFormControlInput" class="form-label"
+              >Tag-1</label
+            >
+            <input
+              type="text"
+              class="form-control"
+              id="defaultFormControlInput "
+              name="tag1"
+              value="<%- result.tag1 %>"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="defaultFormControlInput" class="form-label"
+              >Tag-2</label
+            >
+            <input
+              type="text"
+              class="form-control"
+              id="defaultFormControlInput "
+              name="tag2"
+              value="<%- result.tag2 %>"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="defaultFormControlInput" class="form-label"
+              >Tag-3</label
+            >
+            <input
+              type="text"
+              class="form-control"
+              id="defaultFormControlInput "
+              name="tag3"
+              value="<%- result.tag3 %>"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="defaultFormControlInput" class="form-label">Name</label>
+            <input
+              type="text"
+              class="form-control"
+              id="defaultFormControlInput "
+              name="name"
+              value="<%- result.name %>"
+            />
+          </div>
+
+          <div class="mb-3">
+            <label for="defaultFormControlInput" class="form-label"
+              >Cover Letter
+            </label>
+            <textarea
+              class="form-control"
+              id="exampleFormControlTextarea1"
+              name="shortText"
+              rows="3"
+              
+            ><%- result.shortText %></textarea>
+          </div>
+
+          <div class="input-group mb-3">
+            <input
+              type="file"
+              class="form-control"
+              id="inputGroupFile02"
+              name="mainImg"
+            />
+            <label class="input-group-text" for="inputGroupFile02"
+              >Header Area Picture</label
+            >
+          </div>
+
+          <div class="mb-3">
+            <label for="defaultFormControlInput" class="form-label"
+              >Description-1</label
+            >
+
+            <textarea
+              class="form-control"
+              id="exampleFormControlTextarea1"
+              name="desc1"
+              rows="8"
+              
+            ><%- result.desc1 %></textarea>
+          </div>
+
+          <div class="input-group mb-3">
+            <input
+              type="file"
+              class="form-control"
+              id="inputGroupFile02"
+              name="sideImg"
+            />
+            <label class="input-group-text" for="inputGroupFile02"
+              >Content Area Picture</label
+            >
+          </div>
+
+          <div class="mb-3">
+            <label for="defaultFormControlInput" class="form-label"
+              >Description-2</label
+            >
+
+            <textarea
+              class="form-control"
+              id="exampleFormControlTextarea1"
+              name="desc2"
+              rows="8"
+         
+            ><%- result.desc2 %></textarea>
+          </div>
+
+          <div class="text-center">
+            <button class="btn btn-success mb-3">Update</button>
+          </div>
+        </form>
       </div>
     </div>
   </div>
-  
+</div>

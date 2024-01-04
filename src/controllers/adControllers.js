@@ -177,7 +177,6 @@ const getRefDelete = async (req, res, next) => {
   }
 };
 
-
 /////////////////////////////SKILLS//////////////////////////////////
 
 const getSkillsPage = async (req, res, next) => {
@@ -417,9 +416,10 @@ const postBlogAdd = async (req, res, next) => {
     blog.tag2 = req.body.tag2;
     blog.tag3 = req.body.tag3;
     blog.shortText = req.body.shortText;
-    blog.text1 = req.body.text1;
-    blog.text2 = req.body.text2;
-    blog.desc = req.body.desc;
+    blog.name = req.body.name;
+    blog.desc1 = req.body.desc1;
+    blog.desc2 = req.body.desc2;
+  
 
     for (let index = 0; index < req.files.length; index++) {
       if (req.files[index].fieldname == "mainImg") {
@@ -448,10 +448,11 @@ const postBlogUpdate = async (req, res, next) => {
       tag1: req.body.tag1,
       tag2: req.body.tag2,
       tag3: req.body.tag3,
+      name: req.body.name,
       shortText: req.body.shortText,
-      text1: req.body.text1,
-      text2: req.body.text2,
-      desc: req.body.desc,
+      desc1: req.body.text1,
+      desc2: req.body.text2,
+
     };
 
     for (let index = 0; index < req.files.length; index++) {
@@ -473,7 +474,6 @@ const postAboutUpdate = async (req, res, next) => {
   if (!req.body) {
     res.redirect("/admin/homepage");
   } else {
-    console.log(req.body);
     var options = {
       mainImg: {
         imgName: req.body.mainImgName,
@@ -561,11 +561,9 @@ const postHomePage = async (req, res, next) => {
   if (!req.body) {
     res.redirect("/admin/homepage");
   } else {
-  
-
     var options = {
-      sideImg:{
-        imgName: req.body.sideImgName
+      sideImg: {
+        imgName: req.body.sideImgName,
       },
 
       mainText: req.body.mainText,
@@ -593,8 +591,6 @@ const postHomePage = async (req, res, next) => {
       }
     }
 
-
-
     await Home.findByIdAndUpdate(req.body.id, options);
     res.redirect("/admin/homepage");
   }
@@ -611,7 +607,6 @@ const postRefAddPage = async (req, res, next) => {
     ref.name = req.body.name;
     ref.title = req.body.title;
     ref.text = req.body.text;
-
 
     for (let index = 0; index < req.files.length; index++) {
       if (req.files[index].fieldname == "mainImg") {
@@ -636,7 +631,6 @@ const postRefUpdate = async (req, res, next) => {
       name: req.body.name,
       title: req.body.title,
       text: req.body.text,
-
     };
 
     for (let index = 0; index < req.files.length; index++) {
@@ -662,7 +656,6 @@ const postExpAddPage = async (req, res, next) => {
     exp.tag = req.body.tag;
     exp.date = req.body.date;
     exp.desc = req.body.desc;
-
 
     for (let index = 0; index < req.files.length; index++) {
       if (req.files[index].fieldname == "mainImg") {
@@ -701,7 +694,6 @@ const postExpUpdate = async (req, res, next) => {
   }
 };
 
-
 //----------------------------------------------------------------
 
 const postSkillsAddPage = async (req, res, next) => {
@@ -722,13 +714,9 @@ const postSkillsUpdate = async (req, res, next) => {
     res.redirect("/admin/homepage");
   } else {
     var options = {
-   
-
       name: req.body.name,
       percent: req.body.percent,
-     
     };
-
 
     await Skill.findByIdAndUpdate(req.body.id, options);
     res.redirect("/admin/skills");
@@ -777,5 +765,5 @@ module.exports = {
   getSkillsUpdatePage,
   getSkillsDelete,
   postSkillsAddPage,
-  postSkillsUpdate
+  postSkillsUpdate,
 };

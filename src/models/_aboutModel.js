@@ -5,16 +5,16 @@ const aboutSchema = new Schema(
   {
     text1: {
       type: String,
-      trim: true,
+      
     },
     text2: {
       type: String,
-      trim: true,
+
     },
 
     text3: {
       type: String,
-      trim: true,
+     
     },
 
     mainImg: {
