@@ -1,0 +1,66 @@
+<section>
+    <div class="blog-panel">
+      <div class="blog-area">
+        <div class="blog-tag ">
+          <a href=""><%- result.tag1 %></a>
+          <a href=""><%- result.tag2 %></a>
+          <a href=""><%- result.tag3 %></a>
+        </div>
+        <div class="blog-title ">
+          <h5><%- result.name %></h5>
+        </div>
+        <div class="blog-letter ">
+          <h4>
+            <%- result.shortText %>
+          </h4>
+        </div>
+        <div class="blog-main-img ">
+          <img src="../../uploads/images/<%- result.mainImg.imgName %>" alt="" />
+        </div>
+        <div class="blog-letter js-scroll fade-in-bottom">
+          <h4>
+            <%- result.desc1 %>
+          </h4>
+        </div>
+        <div class="blog-main-img js-scroll fade-in-bottom">
+          <img src="../../uploads/images/<%- result.sideImg.imgName %>" alt="" />
+        </div>
+        <div class="blog-letter js-scroll fade-in-bottom">
+          <h4>
+            <%- result.desc2 %>
+          </h4>
+        </div>
+      </div>
+    </div>
+  </section>
+  <hr class="now-underline js-scroll fade-in-bottom" />
+  <section>
+      <div class="work-panel">
+        <div class="section-title js-scroll fade-in-bottom">
+          <h3>Releated Posts</h3>
+          <hr class="section-title-line">
+        </div>
+        <div class="work-area">
+            <% for( let index = 0; index < data.length; index++ ) { %>
+                <div class="blogs-card js-scroll fade-in">
+                  <div class="blogs-card-img-area">
+                    <a href="">
+                      <img
+                        class="blogs-card-img"
+                        src="../../uploads/images/<%- data[index].mainImg.imgName %>"
+                        alt=""
+                      />
+                    </a>
+                  </div>
+                  <div class="blogs-card-text">
+                    <h5><%- data[index].tag1 %> / <%- data[index].tag2 %> / <%- data[index].tag3 %></h5>
+                    <a href=""><%- data[index].name %></a>
+                    <p>
+                      <%- data[index].shortText %>
+                    </p>
+                  </div>
+                </div>
+              <% } %>
+        </div>
+      </div>
+    </section>

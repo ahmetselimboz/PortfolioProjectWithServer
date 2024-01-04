@@ -8,11 +8,12 @@ const User = require("../models/_userModel");
 const Ref = require("../models/_referenceModel");
 const Skill = require("../models/_skillsModel");
 const Exp = require("../models/_experienceModel");
+const mongoose = require('mongoose');
 
 const getHomePage = async (req, res, next) => {
   const result = await Home.findOne();
   const resultWork = await Work.find({}).sort({ createdAt: "desc" }).limit(4);
-  const resultBlog = await Blog.find({}).sort({ createdAt: "desc" });
+  const resultBlog = await Blog.find({}).sort({ createdAt: "desc" }).limit(6);
   const resultRef = await Ref.find({}).sort({ createdAt: "desc" }).limit(3);
   const resultExp = await Exp.find({}).sort({ createdAt: "desc" }).limit(3);
   const resultFooter = await Footer.findOne();
@@ -69,6 +70,26 @@ const getBlogPage = async (req, res, next) => {
     resultFooter: resultFooter,
   });
 };
+const getBlogDetailPage = async (req, res, next) => {
+  const resultFooter = await Footer.findOne();
+  const result = await Blog.findById(req.params.id);
+
+
+  try {
+    var data = await Blog.find({ _id: { $ne: (req.params.id) } }).limit(6);
+    
+  } catch (err) {
+    console.error('Sorgu hatası:', err);
+  }
+
+  res.render("./frontend/blog-detail", {
+    layout: "./frontend/layouts/_layouts.ejs",
+    title: "Blog",
+    result: result,
+    resultFooter: resultFooter,
+    data:data
+    });
+};
 const getAboutPage = async (req, res, next) => {
   const resultFooter = await Footer.findOne();
   const resultAbout = await About.findOne();
@@ -109,4 +130,5 @@ module.exports = {
   getContactPage,
   getWorkDetailPage,
   postContact,
+  getBlogDetailPage
 };

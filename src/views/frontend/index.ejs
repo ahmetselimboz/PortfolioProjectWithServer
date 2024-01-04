@@ -123,7 +123,7 @@
               <h6><%- resultExp[index].tag %></h6>
               <h2><%- resultExp[index].name %></h2>
               <h4><%- resultExp[index].date %></h4>
-              <a href="/exp-detail/<%- resultExp[index].id %>"
+              <a href="/work#<%- resultExp[index].id %>"
                 >More Info<i id="exp-icon" class="bx bx-right-arrow-alt"></i
               ></a>
             </div>
@@ -135,7 +135,7 @@
    
     </div>
     <div class="work-btn js-scroll fade-in-bottom">
-      <a href="/work"
+      <a href="/work#exp-section"
         >See all experiences<i
           id="work-icon"
           class="bx bx-right-arrow-alt"
@@ -161,7 +161,7 @@
         <% for( let index = 0; index < resultBlog.length; index++ ) { %>
           <div class="blogs-card js-scroll fade-in">
             <div class="blogs-card-img-area">
-              <a href="">
+              <a href="/blog-detail/<%- resultBlog[index].id %>">
                 <img
                   class="blogs-card-img"
                   src="../../uploads/images/<%- resultBlog[index].mainImg.imgName %>"
@@ -171,9 +171,9 @@
             </div>
             <div class="blogs-card-text">
               <h5><%- resultBlog[index].tag1 %> / <%- resultBlog[index].tag2 %> / <%- resultBlog[index].tag3 %></h5>
-              <a href=""><%- resultBlog[index].shortText %></a>
+              <a href="/blog-detail/<%- resultBlog[index].id %>"><%- resultBlog[index].name %></a>
               <p>
-                <%- resultBlog[index].text1 %>
+                <%- resultBlog[index].shortText %>
               </p>
             </div>
           </div>

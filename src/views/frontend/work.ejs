@@ -41,25 +41,23 @@
     </div>
   </section>
   <hr class="now-underline js-scroll fade-in-bottom" />
-  <section>
+  <section id="exp-section">
     <div class="work-panel">
-      <div class="section-title js-scroll fade-in-bottom">
+      <div class="section-title js-scroll fade-in-bottom" >
         <h3>Experiences</h3>
         <hr class="section-title-line">
       </div>
-      <div class="exp-area">
+      <div class="exp-area-w">
         <% for( let index = 0; index < resultExp.length; index++ ) { %>
-          <div class="exp-row">
-            <div class="exp-card js-scroll fade-in-bottom">
-              <i class="bx bx-caret-right caret"></i>
-              <img src="../../uploads/images/<%- resultExp[index].mainImg.imgName %>" class="exp-img" alt="" />
-              <div class="exp-text-area">
+          <div class="exp-row-w" id="<%- resultExp[index].id %>">
+            <div class="exp-card-w js-scroll fade-in-bottom">
+              <i class="bx bx-caret-right caret-w"></i>
+              <img src="../../uploads/images/<%- resultExp[index].mainImg.imgName %>" class="exp-img-w" alt="" />
+              <div class="exp-text-area-w">
                 <h6><%- resultExp[index].tag %></h6>
                 <h2><%- resultExp[index].name %></h2>
                 <h4><%- resultExp[index].date %></h4>
-                <a href="/exp-detail/<%- resultExp[index].id %>"
-                  >More Info<i id="exp-icon" class="bx bx-right-arrow-alt"></i
-                ></a>
+                <h3><%- resultExp[index].desc %></h3>
               </div>
             </div>
           </div>

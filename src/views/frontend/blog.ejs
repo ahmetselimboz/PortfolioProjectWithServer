@@ -17,7 +17,7 @@
         <% for( let index = 0; index < resultBlog.length; index++ ) { %>
           <div class="blogs-card ">
             <div class="blogs-card-img-area">
-              <a href="">
+              <a href="/blog-detail/<%- resultBlog[index].id %>">
                 <img
                   class="blogs-card-img"
                   src="../../uploads/images/<%- resultBlog[index].mainImg.imgName %>"
@@ -27,9 +27,9 @@
             </div>
             <div class="blogs-card-text">
               <h5><%- resultBlog[index].tag1 %> / <%- resultBlog[index].tag2 %> / <%- resultBlog[index].tag3 %></h5>
-              <a href=""><%- resultBlog[index].shortText %></a>
+              <a href="/blog-detail/<%- resultBlog[index].id %>"><%- resultBlog[index].name %></a>
               <p>
-                <%- resultBlog[index].text1 %>
+                <%- resultBlog[index].shortText %>
               </p>
             </div>
           </div>

@@ -11,6 +11,7 @@ router.get('/homepage', frontController.getHomePage);
 router.get('/work', frontController.getWorkPage);
 router.get('/work-detail/:id', frontController.getWorkDetailPage);
 router.get('/blog', frontController.getBlogPage);
+router.get('/blog-detail/:id', frontController.getBlogDetailPage);
 router.get('/about', frontController.getAboutPage);
 router.get('/contact', frontController.getContactPage);
 
