@@ -35,7 +35,7 @@ const getWorkPage = async (req, res, next) => {
   const resultWork = await Work.find({}).sort({ createdAt: "desc" });
   const resultRef = await Ref.find({}).sort({ createdAt: "desc" });
   const resultExp = await Exp.find({}).sort({ createdAt: "desc" });
-  const resultSkill = await Skill.find({}).sort({ createdAt: "desc" });
+  const resultSkill = await Skill.find({}).sort({ percent: "desc" });
 
   res.render("./frontend/work", {
     layout: "./frontend/layouts/_layouts.ejs",
