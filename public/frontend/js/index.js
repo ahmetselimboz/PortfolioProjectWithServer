@@ -124,7 +124,7 @@ ratings.forEach((rating) => {
 
   // Define if the score is good, meh or bad according to its value
   const scoreClass =
-    ratingScore < 40 ? "bad" : ratingScore < 60 ? "meh" : "good";
+    ratingScore < 40 ? "bad" : ratingScore < 76 ? "meh" : "good";
 
   // Add score class to the rating
   rating.classList.add(scoreClass);
