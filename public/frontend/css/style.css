@@ -310,7 +310,7 @@ nav {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  height: 85%;
+  height: auto;
 }
 
 .main-title-area {
