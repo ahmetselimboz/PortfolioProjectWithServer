@@ -1999,8 +1999,7 @@ nav {
   }
   .work-detail-text-area h2 {
     font-size: 28px;
-
-    margin: .5rem 0;
+    margin: 0.5rem 0;
   }
   .work-detail-text-area p {
     font-size: 18px;
@@ -2035,7 +2034,6 @@ nav {
     margin: 3rem 0rem;
   }
   .work-detail-desc h1 {
-
     font-size: 18px;
 
     width: 100%;
@@ -2150,7 +2148,7 @@ nav {
   }
   .blog-tag a {
     font-size: 14px;
-    
+
     margin: 0 0.5rem;
 
     padding: 0.2rem 0.5rem;
@@ -2212,7 +2210,7 @@ nav {
   padding: 1rem;
 }
 
-.exp-img-area-w{
+.exp-img-area-w {
 }
 
 .exp-img-w {
@@ -2297,12 +2295,12 @@ nav {
   width: fit-content;
 }
 
-.exp-text-area-w h3{
+.exp-text-area-w h3 {
   font-family: "Roboto", sans-serif;
-    font-weight: 400;
-    font-size: 18px;
-    color: var(--gray);
-    margin: 0.5rem 0;
+  font-weight: 400;
+  font-size: 18px;
+  color: var(--gray);
+  margin: 0.5rem 0;
 }
 
 #exp-icon-w {
@@ -2314,10 +2312,8 @@ nav {
 }
 
 @media screen and (max-width: 480px) {
-  .exp-text-area-w h3{
-    
-      font-size: 17px;
-    
+  .exp-text-area-w h3 {
+    font-size: 17px;
   }
   .exp-area-w {
     display: flex;
@@ -2415,14 +2411,11 @@ nav {
     -webkit-text-stroke-color: #470089;
   } */
 
-
-  
-.exp-card-w {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-
-}
+  .exp-card-w {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 }
 @media screen and (min-width: 481px) and (max-width: 768px) {
 }
