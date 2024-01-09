@@ -1253,7 +1253,7 @@ nav {
 .carousel {
   display: flex;
   transition: transform 0.5s ease-in-out;
-  height: 500px;
+  height: auto;
 }
 
 .carousel-item {
@@ -1407,7 +1407,7 @@ nav {
   }
 
   .pagination {
-    margin-top: 0px;
+    margin-top: 20px;
   }
 }
 @media screen and (min-width: 481px) and (max-width: 768px) {
