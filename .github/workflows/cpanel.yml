@@ -17,4 +17,4 @@ jobs:
         server: ftp.ahmetselimboz.com.tr
         username: ${{ secrets.FTP_USERNAME }}
         password: ${{ secrets.FTP_PASSWORD }}
-        server-dir: /ahmetselimboz.com.tr/
+        server-dir: /ahmetselimboz.com.tr
