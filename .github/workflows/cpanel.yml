@@ -1,20 +1,35 @@
-on: 
-    push:
-        branches:
-            -main
-name: 🚀 Deploy website on push
+on:
+  push:
+      branches: [ "main" ]
+
+name: 🚀 CNAD
+
 jobs:
+
   web-deploy:
-    name: 🎉 Deploy
-    runs-on: ubuntu-latest
-    steps:
-    - name: 🚚 Get latest code
-      uses: actions/checkout@v3
-    
-    - name: 📂 Sync files
-      uses: SamKirkland/FTP-Deploy-Action@v4.3.4
-      with:
-        server: ftp.ahmetselimboz.com.tr
-        username: ${{ secrets.FTP_USERNAME }}
-        password: ${{ secrets.FTP_PASSWORD }}
-        server-dir: /ahmetselimboz.com.tr
+      name: 🎉 Deploy
+      runs-on: ubuntu-latest
+
+      steps:
+          - name: Clone repository
+            uses: actions/checkout@v3
+
+    # Important step, this is use to restart your server
+          - name: Creating restart file
+            run: |
+              mkdir tmp && touch tmp/restart.txt 
+              echo $RANDOM > tmp/restart.txt
+
+    # Using FTP to upload your files to cpanel
+          - name: 📂 Sync files
+            uses: SamKirkland/FTP-Deploy-Action@4.3.2
+            with:
+              server: ftp.ahmetselimboz.com.tr
+              username: ${{ secrets.FTP_USERNAME }}
+              password: ${{ secrets.FTP_PASSWORD }}
+              exclude: |
+                  **/.github/**
+                  **/.git/**
+                  README.md
+                  .gitignore
+              

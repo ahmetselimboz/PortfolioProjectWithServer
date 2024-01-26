@@ -1,4 +1,0 @@
-deployment:
-  tasks:
-    - export DEPLOYPATH=/home/ahmetsel/ahmetselimboz.com.tr/
-    - /bin/cp -R * $DEPLOYPATH
