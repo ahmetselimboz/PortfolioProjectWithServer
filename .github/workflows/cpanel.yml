@@ -24,9 +24,11 @@ jobs:
           - name: 📂 Sync files
             uses: SamKirkland/FTP-Deploy-Action@4.3.2
             with:
-              server: ftp.ahmetselimboz.com.tr
+              server: 95.173.180.20
               username: ${{ secrets.FTP_USERNAME }}
               password: ${{ secrets.FTP_PASSWORD }}
+              server-dir: /ahmetselimboz.com.tr
+
               exclude: |
                   **/.github/**
                   **/.git/**
