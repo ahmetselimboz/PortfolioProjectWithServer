@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const dataURI = require("../config/defaultImage");
 const Schema = mongoose.Schema;
 // const buySchema = new Schema({ name: String, url: String, linkPrice: String });
 const expSchema = new Schema(
@@ -20,17 +21,13 @@ const expSchema = new Schema(
       type: String,
       trim: true,
     },
-
     mainImg: {
-      imgId: {
-        type: String,
-        trim: true,
-      },
-      imgName: {
-        type: String,
-        default: "defaultUser.png",
-      },
-    },
+      type: String,
+      trim: true,
+      default: dataURI
+    }
+
+    
   },
   { collection: "experience", timestamps: true }
 );

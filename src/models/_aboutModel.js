@@ -3,64 +3,34 @@ const Schema = mongoose.Schema;
 // const buySchema = new Schema({ name: String, url: String, linkPrice: String });
 const aboutSchema = new Schema(
   {
-    text1: {
-      type: String,
-      
+    desc1:{
+      type:String,
+      trim:true
     },
-    text2: {
-      type: String,
-
+    mainImg:{
+      type:String,
+      trim:true
     },
-
-    text3: {
-      type: String,
-     
+    desc2:{
+      type:String,
+      trim:true
     },
-
-    mainImg: {
-      imgId: {
-        type: String,
-        trim: true,
-      },
-      imgName: {
-        type: String,
-        default: "defaultUser.png",
-      },
+    sideImg1:{
+      type:String,
+      trim:true
     },
-    miniImg1: {
-      imgId: {
-        type: String,
-        trim: true,
-      },
-      imgName: {
-        type: String,
-        default: "defaultUser.png",
-      },
+    sideImg2:{
+      type:String,
+      trim:true
     },
-    miniImg2: {
-      imgId: {
-        type: String,
-        trim: true,
-      },
-      imgName: {
-        type: String,
-        default: "defaultUser.png",
-      },
+    sideImg3:{
+      type:String,
+      trim:true
     },
-    miniImg3: {
-      imgId: {
-        type: String,
-        trim: true,
-      },
-      imgName: {
-        type: String,
-        default: "defaultUser.png",
-      },
-    },
-
-
-
-   
+    desc3:{
+      type:String,
+      trim:true
+    }
   },
   { collection: "about", timestamps: true }
 );

@@ -1,62 +1,41 @@
 const mongoose = require("mongoose");
+const dataURI = require("../config/defaultImage");
 const Schema = mongoose.Schema;
 // const buySchema = new Schema({ name: String, url: String, linkPrice: String });
 const blogSchema = new Schema(
   {
-    tag1: {
+    title: {
       type: String,
       trim: true,
+      required: true,
     },
-    tag2: {
+    desc: {
       type: String,
       trim: true,
+      required: true,
     },
-
-    tag3: {
-      type: String,
+    click: {
+      type: Number,
       trim: true,
+      default: 0,
     },
-    name: {
-      type: String,
-      trim: true,
-    },
-    shortText: {
-      type: String,
-      trim: true,
-    },
-
-   
-
-    desc1: {
-      type: String,
-      trim: true,
-    },
-
-    desc2: {
-      type: String,
-      trim: true,
-    },
-
-    mainImg: {
-      imgId: {
-        type: String,
-        trim: true,
+    tags: [
+      {
+        tagName: {
+          type: String,
+          trim: true,
+        },
       },
-      imgName: {
-        type: String,
-        default: "defaultUser.png",
-      },
+    ],
+    mainImg:{
+      type: String,
+      trim: true,
+      default: dataURI
     },
-
-    sideImg: {
-      imgId: {
-        type: String,
-        trim: true,
-      },
-      imgName: {
-        type: String,
-        default: "defaultUser.png",
-      },
+    content: {
+      type: String,
+      trim: true,
+      required: true,
     },
   },
   { collection: "blog", timestamps: true }

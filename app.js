@@ -62,11 +62,11 @@ const frRouter = require("./src/routers/frRouters");
 const adminRouters = require("./src/routers/adRouters");
 
 
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+app.use(express.json({ limit: '10mb' }));
+app.use(express.urlencoded({ limit: '10mb', extended: true }));
 
 
-//require("./src/config/firstData");
+require("./src/config/firstData");
 
 app.use("/", frRouter);
  app.use("/admin", adminRouters);

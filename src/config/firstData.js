@@ -10,7 +10,7 @@ data();
 async function data() {
   const resultHome = await Home.findOne();
   const resultAbout = await About.findOne();
-  const resultBlog = await Blog.findOne();
+
   const resultContact = await Contact.findOne();
   const resultFooter = await Footer.findOne();
   const resultProject = await Project.findOne();
@@ -35,34 +35,19 @@ async function data() {
 
   if (!resultAbout) {
     const about = new About();
-    about.text1 = ".";
-    about.text2 = ".";
-    about.text3 = ".";
-    about.mainImg.imgId = ".";
+    about.desc1 = ".";
+    about.mainImg = ".";
+    about.desc2 = ".";
+    about.sideImg1 = ".";
+    about.sideImg2 = ".";
+    about.sideImg3 = ".";
+    about.desc3 = ".";
 
-    about.miniImg1.imgId = ".";
 
-    about.miniImg2.imgId = ".";
-
-    about.miniImg3.imgId = ".";
 
     about.save();
   }
-  if (!resultBlog) {
-    const blog = new Blog();
-    blog.tag1 = ".";
-    blog.tag2 = ".";
-    blog.tag3 = ".";
-    blog.shortText = ".";
-    blog.text1 = ".";
-    blog.text2 = ".";
-    blog.desc = ".";
-    blog.mainImg.imgId = ".";
 
-    blog.sideImg.imgId = ".";
-
-    blog.save();
-  }
   if (!resultContact) {
     const contact = new Contact();
     contact.name = ".";

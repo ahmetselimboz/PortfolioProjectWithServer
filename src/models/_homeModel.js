@@ -1,27 +1,22 @@
 const mongoose = require("mongoose");
+const dataURI = require("../config/defaultImage");
 const Schema = mongoose.Schema;
-// const buySchema = new Schema({ name: String, url: String, linkPrice: String });
+
+
+
+
 const homeSchema = new Schema(
   {
+    
     profilImg: {
-      imgId: {
-        type: String,
-        trim: true,
-      },
-      imgName: {
-        type: String,
-        default: "defaultUser.png",
-      },
+      type: String,
+      trim: true,
+      default: dataURI
     },
     sideImg: {
-      imgId: {
-        type: String,
-        trim: true,
-      },
-      imgName: {
-        type: String,
-        default: "defaultUser.png",
-      },
+      type: String,
+      trim: true,
+      default: dataURI
     },
 
     mainText: {

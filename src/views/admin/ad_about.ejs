@@ -22,110 +22,132 @@
             <label for="defaultFormControlInput" class="form-label"
               >Text-1</label
             >
-            <textarea
-              type="text"
-              class="form-control"
-              id="defaultFormControlInput "
-              name="text1"
-              rows="5"
-            >
- <%- result.text1 %></textarea
-            >
+            <div class="summernote" name="desc1"><%- result.desc1 %></div>
           </div>
-          <div class="input-group mb-3">
-            <input
-              type="file"
-              class="form-control"
-              id="inputGroupFile02"
-              name="mainImg"
-            />
-            <label class="input-group-text" for="inputGroupFile02"
-              >Header Area Picture</label
-            >
+          <div
+            class="d-flex flex-row align-items-center justify-content-center my-4"
+          >
+            <div class="mx-2">
+              <div class="mb-4 d-flex justify-content-center">
+                <img
+                  id="selectedImage1"
+                  src="<%- result.mainImg %>"
+                  alt="example placeholder"
+                  style="width: 300px"
+                />
+              </div>
+              <div class="d-flex justify-content-center">
+                <div class="btn btn-primary btn-rounded">
+                  <label class="form-label text-white m-1" for="customFile1"
+                    >Choose file</label
+                  >
+                  <input
+                    type="file"
+                    class="form-control d-none"
+                    name="mainImg"
+                    id="customFile1"
+                    onchange="displaySelectedImage(this, 'selectedImage1')"
+                  />
+                </div>
+              </div>
+            </div>
           </div>
+
           <input type="hidden" name="id" value="<%- result.id %>" />
           <div class="mb-3">
             <label for="defaultFormControlInput" class="form-label"
               >Text-2</label
             >
 
-            <textarea
-              type="text"
-              class="form-control"
-              id="defaultFormControlInput "
-              name="text2"
-              rows="5"
-            >
- <%- result.text2 %></textarea
-            >
+            <div class="summernote" name="desc2"><%- result.desc2 %></div>
           </div>
-          <div class="input-group mb-3">
-            <input
-              type="file"
-              class="form-control"
-              id="inputGroupFile02"
-              name="miniImg1"
-            />
-            <label class="input-group-text" for="inputGroupFile02"
-              >Mini Left Picture</label
-            >
+          <div
+            class="d-flex flex-row align-items-center justify-content-center my-4"
+          >
+            <div class="mx-2">
+              <div class="mb-4 d-flex justify-content-center">
+                <img
+                  id="selectedImage2"
+                  src="<%- result.sideImg1 %>"
+                  alt="example placeholder"
+                  style="width: 300px"
+                />
+              </div>
+              <div class="d-flex justify-content-center">
+                <div class="btn btn-primary btn-rounded">
+                  <label class="form-label text-white m-1" for="customFile2"
+                    >Choose file</label
+                  >
+                  <input
+                    type="file"
+                    class="form-control d-none"
+                    id="customFile2"
+                    name="sideImg1"
+                    onchange="displaySelectedImage(this, 'selectedImage2')"
+                  />
+                </div>
+              </div>
+            </div>
+            <div class="mx-2">
+              <div class="mb-4 d-flex justify-content-center">
+                <img
+                  id="selectedImage3"
+                  src="<%- result.sideImg2 %>"
+                  alt="example placeholder"
+                  style="width: 300px"
+                />
+              </div>
+              <div class="d-flex justify-content-center">
+                <div class="btn btn-primary btn-rounded">
+                  <label class="form-label text-white m-1" for="customFile3"
+                    >Choose file</label
+                  >
+                  <input
+                    type="file"
+                    class="form-control d-none"
+                    id="customFile3"
+                    name="sideImg2"
+                    onchange="displaySelectedImage(this, 'selectedImage3')"
+                  />
+                </div>
+              </div>
+            </div>
+            <div class="mx-2">
+              <div class="mb-4 d-flex justify-content-center">
+                <img
+                  id="selectedImage4"
+                  src="<%- result.sideImg3 %>"
+                  alt="example placeholder"
+                  style="width: 300px"
+                />
+              </div>
+              <div class="d-flex justify-content-center">
+                <div class="btn btn-primary btn-rounded">
+                  <label class="form-label text-white m-1" for="customFile4"
+                    >Choose file</label
+                  >
+                  <input
+                    type="file"
+                    class="form-control d-none"
+                    id="customFile4"
+                    name="sideImg3"
+                    onchange="displaySelectedImage(this, 'selectedImage4')"
+                  />
+                </div>
+              </div>
+            </div>
           </div>
-          <div class="input-group mb-3">
-            <input
-              type="file"
-              class="form-control"
-              id="inputGroupFile02"
-              name="miniImg2"
-            />
-            <label class="input-group-text" for="inputGroupFile02"
-              >Mini Middle Picture</label
-            >
-          </div>
-          <div class="input-group mb-3">
-            <input
-              type="file"
-              class="form-control"
-              id="inputGroupFile02"
-              name="miniImg3"
-            />
-            <label class="input-group-text" for="inputGroupFile02"
-              >Mini Right Picture</label
-            >
-          </div>
-          <input
-            type="hidden"
-            name="mainImgName"
-            value="<%- result.mainImg.imgName %>"
-          />
-          <input
-            type="hidden"
-            name="miniImg1Name"
-            value="<%- result.miniImg1.imgName %>"
-          />
-          <input
-            type="hidden"
-            name="miniImg2Name"
-            value="<%- result.miniImg2.imgName %>"
-          />
-          <input
-            type="hidden"
-            name="miniImg3Name"
-            value="<%- result.miniImg3.imgName %>"
-          />
+
+          <input type="hidden" name="mainImg" value="<%- result.mainImg %>" />
+          <input type="hidden" name="sideImg1" value="<%- result.sideImg1 %>" />
+          <input type="hidden" name="sideImg2" value="<%- result.sideImg2 %>" />
+          <input type="hidden" name="sideImg3" value="<%- result.sideImg3 %>" />
 
           <div class="mb-3">
             <label for="defaultFormControlInput" class="form-label"
               >Text-3</label
             >
-            <textarea
-              type="text"
-              class="form-control"
-              id="defaultFormControlInput "
-              name="text3"
-              rows="5"
-            >
-<%- result.text3 %></textarea
-            >
+            <div class="summernote" name="desc3"><%- result.desc3 %></div>
           </div>
 
           <div class="text-center">
@@ -136,3 +158,20 @@
     </div>
   </div>
 </div>
+<script>
+  function displaySelectedImage(event, elementId) {
+    console.log(elementId);
+    const selectedImage = document.getElementById(elementId);
+    const fileInput = event;
+
+    if (fileInput.files && fileInput.files[0]) {
+      const reader = new FileReader();
+
+      reader.onload = function (e) {
+        selectedImage.src = e.target.result;
+      };
+
+      reader.readAsDataURL(fileInput.files[0]);
+    }
+  }
+</script>

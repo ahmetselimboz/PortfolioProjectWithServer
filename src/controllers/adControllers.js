@@ -474,35 +474,19 @@ const postAboutUpdate = async (req, res, next) => {
   if (!req.body) {
     res.redirect("/admin/homepage");
   } else {
+    console.log(req.body);
+    console.log(req.files);
     var options = {
-      mainImg: {
-        imgName: req.body.mainImgName,
-      },
-      miniImg1: {
-        imgName: req.body.miniImg1Name,
-      },
-      miniImg2: {
-        imgName: req.body.miniImg2Name,
-      },
-      miniImg3: {
-        imgName: req.body.miniImg3Name,
-      },
-      text1: req.body.text1,
-      text2: req.body.text2,
-      text3: req.body.text3,
+     desc1: req.body.desc1,
+     desc2: req.body.desc2,
+     desc3: req.body.desc3,
+     mainImg: req.body.mainImg,
+     sideImg1: req.body.sideImg1,
+     sideImg2: req.body.sideImg2,
+     sideImg3: req.body.sideImg3,
     };
 
-    for (let index = 0; index < req.files.length; index++) {
-      if (req.files[index].fieldname == "mainImg") {
-        options.mainImg.imgName = req.files[index].originalname;
-      } else if (req.files[index].fieldname == "miniImg1") {
-        options.miniImg1.imgName = req.files[index].originalname;
-      } else if (req.files[index].fieldname == "miniImg2") {
-        options.miniImg2.imgName = req.files[index].originalname;
-      } else if (req.files[index].fieldname == "miniImg3") {
-        options.miniImg3.imgName = req.files[index].originalname;
-      }
-    }
+   
 
     await About.findByIdAndUpdate(req.body.id, options);
     res.redirect("/admin/about");

@@ -5,43 +5,18 @@
 </section>
 
 <section>
-  <div class="about-panel">
-    <h5 id="text1"><%- resultAbout.text1 %></h5>
+  <div class="about-panel"><%- resultAbout.desc %></div>
+
+  <%- resultAbout.desc1 %>
     <div class="about-img">
-      <img
-        src="../../uploads/images/<%- resultAbout.mainImg.imgName %>"
-        alt=""
-      />
-    </div>
-
-    <h5 id="text2"><%- resultAbout.text2 %></h5>
-    <div class="about-img-area">
-      <img
-        src="../../uploads/images/<%- resultAbout.miniImg1.imgName %>"
-        alt=""
-      />
-      <img
-        src="../../uploads/images/<%- resultAbout.miniImg2.imgName %>"
-        alt=""
-      />
-      <img
-        src="../../uploads/images/<%- resultAbout.miniImg3.imgName %>"
-        alt=""
-      />
-    </div>
-    <h5 id="text3"><%- resultAbout.text3 %></h5>
+    <img src="<%- resultAbout.mainImg %>" alt="" />
   </div>
+  <%- resultAbout.desc2 %>  
+  <div class="about-img-area">
+    <img src="<%- resultAbout.sideImg1 %>" alt="" />
+    <img src="<%- resultAbout.sideImg2 %>" alt="" />
+    <img src="<%- resultAbout.sideImg3 %>" alt="" />
+  </div>
+  <%- resultAbout.desc3 %>  
+ 
 </section>
-
-<script>
-  var h5Element1 = document.getElementById("text1");
-  var h5Element2 = document.getElementById("text2");
-  var h5Element3 = document.getElementById("text3");
-
-
-
-  h5Element1.innerText= h5Element1.innerHTML;
-  h5Element2.innerText= h5Element2.innerHTML;
-  h5Element3.innerText= h5Element3.innerHTML;
-
-</script>
