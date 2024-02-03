@@ -419,7 +419,6 @@ const postBlogAdd = async (req, res, next) => {
     blog.name = req.body.name;
     blog.desc1 = req.body.desc1;
     blog.desc2 = req.body.desc2;
-  
 
     for (let index = 0; index < req.files.length; index++) {
       if (req.files[index].fieldname == "mainImg") {
@@ -452,7 +451,6 @@ const postBlogUpdate = async (req, res, next) => {
       shortText: req.body.shortText,
       desc1: req.body.text1,
       desc2: req.body.text2,
-
     };
 
     for (let index = 0; index < req.files.length; index++) {
@@ -474,19 +472,16 @@ const postAboutUpdate = async (req, res, next) => {
   if (!req.body) {
     res.redirect("/admin/homepage");
   } else {
-    console.log(req.body);
-    console.log(req.files);
-    var options = {
-     desc1: req.body.desc1,
-     desc2: req.body.desc2,
-     desc3: req.body.desc3,
-     mainImg: req.body.mainImg,
-     sideImg1: req.body.sideImg1,
-     sideImg2: req.body.sideImg2,
-     sideImg3: req.body.sideImg3,
-    };
 
-   
+    var options = {
+      desc1: req.body.desc1,
+      desc2: req.body.desc2,
+      desc3: req.body.desc3,
+      mainImg: req.body.mainImg,
+      sideImg1: req.body.sideImg1,
+      sideImg2: req.body.sideImg2,
+      sideImg3: req.body.sideImg3,
+    };
 
     await About.findByIdAndUpdate(req.body.id, options);
     res.redirect("/admin/about");

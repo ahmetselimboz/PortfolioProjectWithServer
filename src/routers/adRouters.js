@@ -53,7 +53,7 @@ router.post("/skills-add", multerConfig.any(),adminController.postSkillsAddPage)
 router.post("/skills-update", multerConfig.any(),adminController.postSkillsUpdate)
 router.post('/blog-add',multerConfig.any(), adminController.postBlogAdd);
 router.post('/blog-update', multerConfig.any(),adminController.postBlogUpdate);
-router.post('/about-update', multerConfig.any(),adminController.postAboutUpdate);
+router.post('/about-update',adminController.postAboutUpdate);
 router.post('/footer-update',adminController.postFooterUpdate);
 router.post('/login', adminController.postLogin);
 router.post('/register', adminController.postRegister);

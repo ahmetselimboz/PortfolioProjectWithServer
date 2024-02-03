@@ -16,13 +16,13 @@
         <form
           action="/admin/about-update"
           method="post"
-          enctype="multipart/form-data"
+      
         >
           <div class="mb-3">
             <label for="defaultFormControlInput" class="form-label"
               >Text-1</label
             >
-            <div class="summernote" name="desc1"><%- result.desc1 %></div>
+            <textarea class="summernote" name="desc1"><%- result.desc1 %></textarea>
           </div>
           <div
             class="d-flex flex-row align-items-center justify-content-center my-4"
@@ -30,7 +30,7 @@
             <div class="mx-2">
               <div class="mb-4 d-flex justify-content-center">
                 <img
-                  id="selectedImage1"
+                  id="mainImg"
                   src="<%- result.mainImg %>"
                   alt="example placeholder"
                   style="width: 300px"
@@ -38,15 +38,15 @@
               </div>
               <div class="d-flex justify-content-center">
                 <div class="btn btn-primary btn-rounded">
-                  <label class="form-label text-white m-1" for="customFile1"
+                  <label role="button" class="form-label text-white m-1" for="customFile1"
                     >Choose file</label
                   >
                   <input
                     type="file"
                     class="form-control d-none"
-                    name="mainImg"
+                
                     id="customFile1"
-                    onchange="displaySelectedImage(this, 'selectedImage1')"
+                    onchange="displaySelectedImage(this, 'mainImg')"
                   />
                 </div>
               </div>
@@ -59,7 +59,7 @@
               >Text-2</label
             >
 
-            <div class="summernote" name="desc2"><%- result.desc2 %></div>
+            <textarea class="summernote" name="desc2"><%- result.desc2 %></textarea>
           </div>
           <div
             class="d-flex flex-row align-items-center justify-content-center my-4"
@@ -67,7 +67,7 @@
             <div class="mx-2">
               <div class="mb-4 d-flex justify-content-center">
                 <img
-                  id="selectedImage2"
+                  id="sideImg1"
                   src="<%- result.sideImg1 %>"
                   alt="example placeholder"
                   style="width: 300px"
@@ -75,15 +75,15 @@
               </div>
               <div class="d-flex justify-content-center">
                 <div class="btn btn-primary btn-rounded">
-                  <label class="form-label text-white m-1" for="customFile2"
+                  <label role="button" class="form-label text-white m-1" for="customFile2"
                     >Choose file</label
                   >
                   <input
                     type="file"
                     class="form-control d-none"
                     id="customFile2"
-                    name="sideImg1"
-                    onchange="displaySelectedImage(this, 'selectedImage2')"
+                 
+                    onchange="displaySelectedImage(this, 'sideImg1')"
                   />
                 </div>
               </div>
@@ -91,7 +91,7 @@
             <div class="mx-2">
               <div class="mb-4 d-flex justify-content-center">
                 <img
-                  id="selectedImage3"
+                  id="sideImg2"
                   src="<%- result.sideImg2 %>"
                   alt="example placeholder"
                   style="width: 300px"
@@ -99,15 +99,15 @@
               </div>
               <div class="d-flex justify-content-center">
                 <div class="btn btn-primary btn-rounded">
-                  <label class="form-label text-white m-1" for="customFile3"
+                  <label role="button" class="form-label text-white m-1" for="customFile3"
                     >Choose file</label
                   >
                   <input
                     type="file"
                     class="form-control d-none"
                     id="customFile3"
-                    name="sideImg2"
-                    onchange="displaySelectedImage(this, 'selectedImage3')"
+                  
+                    onchange="displaySelectedImage(this, 'sideImg2')"
                   />
                 </div>
               </div>
@@ -115,7 +115,7 @@
             <div class="mx-2">
               <div class="mb-4 d-flex justify-content-center">
                 <img
-                  id="selectedImage4"
+                  id="sideImg3"
                   src="<%- result.sideImg3 %>"
                   alt="example placeholder"
                   style="width: 300px"
@@ -123,31 +123,31 @@
               </div>
               <div class="d-flex justify-content-center">
                 <div class="btn btn-primary btn-rounded">
-                  <label class="form-label text-white m-1" for="customFile4"
+                  <label role="button" class="form-label text-white m-1" for="customFile4"
                     >Choose file</label
                   >
                   <input
                     type="file"
                     class="form-control d-none"
                     id="customFile4"
-                    name="sideImg3"
-                    onchange="displaySelectedImage(this, 'selectedImage4')"
+                
+                    onchange="displaySelectedImage(this, 'sideImg3')"
                   />
                 </div>
               </div>
             </div>
           </div>
 
-          <input type="hidden" name="mainImg" value="<%- result.mainImg %>" />
-          <input type="hidden" name="sideImg1" value="<%- result.sideImg1 %>" />
-          <input type="hidden" name="sideImg2" value="<%- result.sideImg2 %>" />
-          <input type="hidden" name="sideImg3" value="<%- result.sideImg3 %>" />
+          <input type="hidden" id="mainImg0" name="mainImg" value="<%- result.mainImg %>" />
+         <input type="hidden" id="sideImg10" name="sideImg1" value="<%- result.sideImg1 %>" />
+          <input type="hidden" id="sideImg20" name="sideImg2" value="<%- result.sideImg2 %>" />
+          <input type="hidden" id="sideImg30" name="sideImg3" value="<%- result.sideImg3 %>" /> 
 
           <div class="mb-3">
             <label for="defaultFormControlInput" class="form-label"
               >Text-3</label
             >
-            <div class="summernote" name="desc3"><%- result.desc3 %></div>
+            <textarea class="summernote" name="desc3"><%- result.desc3 %></textarea>
           </div>
 
           <div class="text-center">
@@ -169,6 +169,7 @@
 
       reader.onload = function (e) {
         selectedImage.src = e.target.result;
+        document.getElementById(elementId + "0").value = selectedImage.src;
       };
 
       reader.readAsDataURL(fileInput.files[0]);
