@@ -1705,7 +1705,6 @@ nav {
   font-family: "Roboto", sans-serif !important;
   font-weight: 400 !important;
   font-size: 20px !important;
-
   color: var(--gray) !important;
   margin: 0.5rem auto !important;
   display: block !important;
@@ -1749,10 +1748,7 @@ nav {
   }
 
   .about-panel h5 {
-    font-family: "Roboto", sans-serif;
-    font-weight: 400;
-    font-size: 20px;
-    width: 80%;
+    width: 80% !important;
   }
 
   .about-img {
