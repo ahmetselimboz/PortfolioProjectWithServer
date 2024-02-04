@@ -260,12 +260,17 @@ const getBlogUpdatePage = async (req, res, next) => {
   if (!req.params.id) {
     res.redirect("/");
   } else {
+    var tags = [];
     const result = await Blog.findById(req.params.id);
+    for (let index = 0; index < result.tags.length; index++) {
+      tags.push(result.tags[index].tagName);
+    }
 
     res.render("./admin/ad_blog-update", {
       layout: "./admin/layouts/_ad_layouts.ejs",
       title: "Admin | Blog Page",
       result: result,
+      tags: tags,
     });
   }
 };
@@ -358,6 +363,7 @@ const postWorkAddPage = async (req, res, next) => {
   } else {
     const project = new Work();
 
+    project.mainImg = req.body.mainImg;
     project.tag = req.body.tag;
     project.name = req.body.name;
     project.text = req.body.text;
@@ -365,12 +371,6 @@ const postWorkAddPage = async (req, res, next) => {
     project.lang = req.body.lang;
     project.link = req.body.link;
     project.desc = req.body.desc;
-
-    for (let index = 0; index < req.files.length; index++) {
-      if (req.files[index].fieldname == "mainImg") {
-        project.mainImg.imgName = req.files[index].originalname;
-      }
-    }
 
     project.save();
     res.redirect("/admin/work");
@@ -381,10 +381,7 @@ const postWorkUpdate = async (req, res, next) => {
     res.redirect("/admin/homepage");
   } else {
     var options = {
-      mainImg: {
-        imgName: req.body.mainImgName,
-      },
-
+      mainImg: req.body.mainImg,
       tag: req.body.tag,
       name: req.body.name,
       text: req.body.text,
@@ -393,12 +390,6 @@ const postWorkUpdate = async (req, res, next) => {
       link: req.body.link,
       desc: req.body.desc,
     };
-
-    for (let index = 0; index < req.files.length; index++) {
-      if (req.files[index].fieldname == "mainImg") {
-        options.mainImg.imgName = req.files[index].originalname;
-      }
-    }
 
     await Work.findByIdAndUpdate(req.body.id, options);
     res.redirect("/admin/work");
@@ -411,23 +402,20 @@ const postBlogAdd = async (req, res, next) => {
   if (!req.body) {
     res.redirect("/admin/homepage");
   } else {
-    const blog = new Blog();
-    blog.tag1 = req.body.tag1;
-    blog.tag2 = req.body.tag2;
-    blog.tag3 = req.body.tag3;
-    blog.shortText = req.body.shortText;
-    blog.name = req.body.name;
-    blog.desc1 = req.body.desc1;
-    blog.desc2 = req.body.desc2;
+    let tags = [];
 
-    for (let index = 0; index < req.files.length; index++) {
-      if (req.files[index].fieldname == "mainImg") {
-        blog.mainImg.imgName = req.files[index].originalname;
-      } else if (req.files[index].fieldname == "sideImg") {
-        blog.sideImg.imgName = req.files[index].originalname;
-      }
+    const values = JSON.parse(req.body.tags); // PARSE TAGS COMING IN FROM THE FRONT END
+    //console.log(values[0]);
+    for (let i = 0; i < values.length; i++) {
+      tags[i] = values[i]["value"];
     }
 
+    const blog = new Blog();
+    blog.mainImg = req.body.mainImg;
+    blog.title = req.body.title;
+    blog.desc = req.body.desc;
+    blog.content = req.body.content;
+    blog.tags = tags.map((tag) => ({ tagName: tag }));
     blog.save();
     res.redirect("/admin/blog");
   }
@@ -437,29 +425,21 @@ const postBlogUpdate = async (req, res, next) => {
   if (!req.body) {
     res.redirect("/admin/homepage");
   } else {
-    var options = {
-      mainImg: {
-        imgName: req.body.mainImgName,
-      },
-      sideImg: {
-        imgName: req.body.sideImgName,
-      },
-      tag1: req.body.tag1,
-      tag2: req.body.tag2,
-      tag3: req.body.tag3,
-      name: req.body.name,
-      shortText: req.body.shortText,
-      desc1: req.body.text1,
-      desc2: req.body.text2,
-    };
+    let taglar = [];
 
-    for (let index = 0; index < req.files.length; index++) {
-      if (req.files[index].fieldname == "mainImg") {
-        options.mainImg.imgName = req.files[index].originalname;
-      } else if (req.files[index].fieldname == "sideImg") {
-        options.sideImg.imgName = req.files[index].originalname;
-      }
+    const values = JSON.parse(req.body.tags); // PARSE TAGS COMING IN FROM THE FRONT END
+    //console.log(values[0]);
+    for (let i = 0; i < values.length; i++) {
+      taglar[i] = values[i]["value"];
     }
+
+    var options = {
+      mainImg: req.body.mainImg,
+      content: req.body.content,
+      title: req.body.title,
+      desc: req.body.desc,
+      tags: taglar.map((tag) => ({ tagName: tag })),
+    };
 
     await Blog.findByIdAndUpdate(req.body.id, options);
     res.redirect("/admin/blog");
@@ -472,7 +452,6 @@ const postAboutUpdate = async (req, res, next) => {
   if (!req.body) {
     res.redirect("/admin/homepage");
   } else {
-
     var options = {
       desc1: req.body.desc1,
       desc2: req.body.desc2,
@@ -541,9 +520,8 @@ const postHomePage = async (req, res, next) => {
     res.redirect("/admin/homepage");
   } else {
     var options = {
-      sideImg: {
-        imgName: req.body.sideImgName,
-      },
+      sideImg: req.body.sideImg,
+      profilImg: req.body.profilImg,
 
       mainText: req.body.mainText,
       card1: {
@@ -564,12 +542,6 @@ const postHomePage = async (req, res, next) => {
       },
     };
 
-    for (let index = 0; index < req.files.length; index++) {
-      if (req.files[index].fieldname == "sideImg") {
-        options.sideImg.imgName = req.files[index].originalname;
-      }
-    }
-
     await Home.findByIdAndUpdate(req.body.id, options);
     res.redirect("/admin/homepage");
   }
@@ -583,15 +555,10 @@ const postRefAddPage = async (req, res, next) => {
   } else {
     const ref = new Ref();
 
+    ref.mainImg = req.body.mainImg;
     ref.name = req.body.name;
     ref.title = req.body.title;
     ref.text = req.body.text;
-
-    for (let index = 0; index < req.files.length; index++) {
-      if (req.files[index].fieldname == "mainImg") {
-        ref.mainImg.imgName = req.files[index].originalname;
-      }
-    }
 
     ref.save();
     res.redirect("/admin/ref");
@@ -603,20 +570,11 @@ const postRefUpdate = async (req, res, next) => {
     res.redirect("/admin/homepage");
   } else {
     var options = {
-      mainImg: {
-        imgName: req.body.mainImgName,
-      },
-
+      mainImg: req.body.mainImg,
       name: req.body.name,
       title: req.body.title,
       text: req.body.text,
     };
-
-    for (let index = 0; index < req.files.length; index++) {
-      if (req.files[index].fieldname == "mainImg") {
-        options.mainImg.imgName = req.files[index].originalname;
-      }
-    }
 
     await Ref.findByIdAndUpdate(req.body.id, options);
     res.redirect("/admin/ref");
@@ -629,18 +587,14 @@ const postExpAddPage = async (req, res, next) => {
   if (!req.body) {
     res.redirect("/admin/homepage");
   } else {
+    console.log(req.body);
     const exp = new Exp();
 
     exp.name = req.body.name;
     exp.tag = req.body.tag;
     exp.date = req.body.date;
     exp.desc = req.body.desc;
-
-    for (let index = 0; index < req.files.length; index++) {
-      if (req.files[index].fieldname == "mainImg") {
-        exp.mainImg.imgName = req.files[index].originalname;
-      }
-    }
+    exp.mainImg = req.body.mainImg;
 
     exp.save();
     res.redirect("/admin/exp");
@@ -651,22 +605,14 @@ const postExpUpdate = async (req, res, next) => {
   if (!req.body) {
     res.redirect("/admin/homepage");
   } else {
+    console.log(req.body);
     var options = {
-      mainImg: {
-        imgName: req.body.mainImgName,
-      },
-
       name: req.body.name,
       tag: req.body.tag,
       date: req.body.date,
       desc: req.body.desc,
+      mainImg: req.body.mainImg,
     };
-
-    for (let index = 0; index < req.files.length; index++) {
-      if (req.files[index].fieldname == "mainImg") {
-        options.mainImg.imgName = req.files[index].originalname;
-      }
-    }
 
     await Exp.findByIdAndUpdate(req.body.id, options);
     res.redirect("/admin/exp");

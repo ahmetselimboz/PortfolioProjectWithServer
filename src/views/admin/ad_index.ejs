@@ -1,110 +1,198 @@
 <div class="row">
   <div class="col-12">
     <div
-    class="px-3 py-4 mb-3 rounded d-flex flex-row justify-content-center align-items-center navbar-detached   bg-navbar-theme"
-    id="layout-navbar">
-    <h3 class="m-0">Home Page</h3>
-    
+      class="px-3 py-4 mb-3 rounded d-flex flex-row justify-content-center align-items-center navbar-detached bg-navbar-theme"
+      id="layout-navbar"
+    >
+      <h3 class="m-0">Home Page</h3>
     </div>
   </div>
 </div>
 
-
-
 <div class="row">
   <div class="col-12">
     <div class="card">
-      
       <div class="card-body demo-vertical-spacing demo-only-element">
-        <form action="/admin/homepage" method="post" enctype="multipart/form-data">
-          <!-- <div class="input-group mb-3">
-            <input type="file" class="form-control" id="inputGroupFile02" name="profilImg"/>
-            <label class="input-group-text" for="inputGroupFile02"
-              >Profile Picture</label
-            >
-          </div> -->
-          <div class="input-group mb-3">
-            <input type="file" class="form-control" id="inputGroupFile02" name="sideImg"/>
-            <label class="input-group-text" for="inputGroupFile02"
-              >Header Area Picture</label
-            >
+        <form action="/admin/homepage" method="post">
+          <div
+            class="d-flex flex-row align-items-center justify-content-center my-4"
+          >
+            <div class="mx-2">
+              <div class="mb-4 d-flex justify-content-center">
+                <img
+                  id="profilImg"
+                  src="<%- result.profilImg %>"
+                  alt="example placeholder"
+                  style="width: 200px"
+                />
+              </div>
+              <div class="d-flex justify-content-center">
+                <div class="btn btn-primary btn-rounded">
+                  <label
+                    role="button"
+                    class="form-label text-white m-1"
+                    for="customFile2"
+                    >Choose Profile Image</label
+                  >
+                  <input
+                    type="file"
+                    class="form-control d-none"
+                    id="customFile2"
+                    onchange="displaySelectedImage(this, 'profilImg')"
+                  />
+                  <input
+                    type="hidden"
+                    id="profilImg0"
+                    name="profilImg"
+                    value="<%- result.profilImg %>"
+                  />
+                </div>
+              </div>
+            </div>
+            <div class="mx-2">
+              <div class="mb-4 d-flex justify-content-center">
+                <img
+                  id="sideImg"
+                  src="<%- result.sideImg %>"
+                  alt="example placeholder"
+                  style="width: 200px"
+                />
+              </div>
+              <div class="d-flex justify-content-center">
+                <div class="btn btn-primary btn-rounded">
+                  <label
+                    role="button"
+                    class="form-label text-white m-1"
+                    for="customFile3"
+                    >Choose Side Image</label
+                  >
+                  <input
+                    type="file"
+                    class="form-control d-none"
+                    id="customFile3"
+                    onchange="displaySelectedImage(this, 'sideImg')"
+                  />
+                  <input
+                    type="hidden"
+                    id="sideImg0"
+                    name="sideImg"
+                    value="<%- result.sideImg %>"
+                  />
+                </div>
+              </div>
+            </div>
           </div>
-          <input type="hidden" name="sideImgName" value="<%- result.sideImg.imgName %>">
-          <input type="hidden" name="id" value="<%- result.id %>">
-          <div class=" mb-3">
+
+          <input type="hidden" name="id" value="<%- result.id %>" />
+          <div class="mb-3">
             <label for="defaultFormControlInput" class="form-label"
               >Header Area Text</label
             >
             <input
               type="text"
               class="form-control"
-              id="defaultFormControlInput "name="mainText" 
+              id="defaultFormControlInput "
+              name="mainText"
               value="<%- result.mainText %>"
             />
           </div>
-          <div class=" mb-3"> 
-            <label for="defaultFormControlInput" class="form-label">Card-1</label>
+          <div class="mb-3">
+            <label for="defaultFormControlInput" class="form-label"
+              >Card-1</label
+            >
             <input
               type="text"
               class="form-control mb-3"
-              id="defaultFormControlInput" name="card1Title"
+              id="defaultFormControlInput"
+              name="card1Title"
               placeholder="Title"
               value="<%- result.card1.title %>"
             />
-  
+
             <textarea
-            class="form-control" id="exampleFormControlTextarea1" name="card1Text" rows="3"   placeholder="Text"
-            ><%- result.card1.text %></textarea>
+              class="form-control"
+              id="exampleFormControlTextarea1"
+              name="card1Text"
+              rows="3"
+              placeholder="Text"
+            >
+<%- result.card1.text %></textarea
+            >
           </div>
-          <div class=" mb-3">
-            <label for="defaultFormControlInput" class="form-label">Card-2</label>
+          <div class="mb-3">
+            <label for="defaultFormControlInput" class="form-label"
+              >Card-2</label
+            >
             <input
               type="text"
               class="form-control mb-3"
-              id="defaultFormControlInput" name="card2Title"
-              placeholder="Title" value="<%- result.card2.title %>"
+              id="defaultFormControlInput"
+              name="card2Title"
+              placeholder="Title"
+              value="<%- result.card2.title %>"
             />
-  
+
             <textarea
-            class="form-control" id="exampleFormControlTextarea1" name="card2Text"rows="3"   placeholder="Text"
-            ><%- result.card2.text %></textarea>
+              class="form-control"
+              id="exampleFormControlTextarea1"
+              name="card2Text"
+              rows="3"
+              placeholder="Text"
+            >
+<%- result.card2.text %></textarea
+            >
           </div>
-          <div class=" mb-3">
-            <label for="defaultFormControlInput" class="form-label">Card-3</label>
+          <div class="mb-3">
+            <label for="defaultFormControlInput" class="form-label"
+              >Card-3</label
+            >
             <input
               type="text"
               class="form-control mb-3"
-              id="defaultFormControlInput" name="card3Title"
+              id="defaultFormControlInput"
+              name="card3Title"
               placeholder="Title"
               value="<%- result.card3.title %>"
             />
-  
+
             <textarea
-            class="form-control" id="exampleFormControlTextarea1" name="card3Text"rows="3"   placeholder="Text"
-            ><%- result.card3.text %></textarea>
+              class="form-control"
+              id="exampleFormControlTextarea1"
+              name="card3Text"
+              rows="3"
+              placeholder="Text"
+            >
+<%- result.card3.text %></textarea
+            >
           </div>
-          <div class=" mb-3">
-            <label for="defaultFormControlInput" class="form-label">Card-4</label>
+          <div class="mb-3">
+            <label for="defaultFormControlInput" class="form-label"
+              >Card-4</label
+            >
             <input
               type="text"
               class="form-control mb-3"
-              id="defaultFormControlInput"name="card4Title"
+              id="defaultFormControlInput"
+              name="card4Title"
               placeholder="Title"
               value="<%- result.card4.title %>"
             />
-  
+
             <textarea
-            class="form-control" id="exampleFormControlTextarea1" name="card4Text"rows="3"   placeholder="Text"
-            ><%- result.card4.text %></textarea>
+              class="form-control"
+              id="exampleFormControlTextarea1"
+              name="card4Text"
+              rows="3"
+              placeholder="Text"
+            >
+<%- result.card4.text %></textarea
+            >
           </div>
           <div class="text-center">
-            <button class="btn btn-success  mb-3">Update</button>
+            <button class="btn btn-success mb-3">Update</button>
           </div>
         </form>
-   
       </div>
-     
-      
     </div>
   </div>
 </div>

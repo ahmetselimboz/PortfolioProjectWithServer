@@ -13,19 +13,40 @@
   <div class="col-12">
     <div class="card">
       <div class="card-body demo-vertical-spacing demo-only-element">
-        <form action="/admin/work-update" method="post" enctype="multipart/form-data">
-          <div class="input-group mb-3">
-            <input
-              type="file"
-              class="form-control"
-              id="inputGroupFile02"
-              name="mainImg"
-            />
-            <label class="input-group-text" for="inputGroupFile02"
-              >Header Area Picture</label
-            >
+        <form action="/admin/work-update" method="post" >
+          <div class="mx-2">
+            <div class="mb-4 d-flex justify-content-center">
+              <img
+                id="mainImg"
+                src="<%- result.mainImg %>"
+                alt="example placeholder"
+                style="width: 300px"
+              />
+            </div>
+            <div class="d-flex justify-content-center">
+              <div class="btn btn-primary btn-rounded">
+                <label
+                  role="button"
+                  class="form-label text-white m-1"
+                  for="customFile4"
+                  >Choose file</label
+                >
+                <input
+                  type="file"
+                  class="form-control d-none"
+                  id="customFile4"
+                  onchange="displaySelectedImage(this, 'mainImg')"
+                />
+                <input
+                  type="hidden"
+                  id="mainImg0"
+                  name="mainImg"
+                  value="<%- result.mainImg %>"
+                />
+              </div>
+            </div>
           </div>
-          <input type="hidden" name="mainImgName" value="<%- result.mainImg.imgName %>">
+
           <div class="mb-3">
             <label for="defaultFormControlInput" class="form-label">Tag</label>
             <input

@@ -2,6 +2,77 @@
 * demo.css
 * File include item demo only specific css only
 ******************************************************************************/
+/* .loader {
+  z-index: 1500;
+  background-color: #e4e3de;
+  position: fixed;
+  width: 100%;
+  height: inherit;
+  transition: 0.4s cubic-bezier(0.075, 0.82, 0.165, 1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.loader-hidden {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.box {
+  width: 200px;
+  height: 200px;
+  position: absolute;
+
+  overflow: hidden;
+}
+
+.box .b {
+  border-radius: 50%;
+  border-left: 4px solid;
+  border-right: 4px solid;
+  border-top: 4px solid transparent !important;
+  border-bottom: 4px solid transparent !important;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation: ro 2s infinite;
+}
+
+.box .b1 {
+  border-color: #080808;
+  width: 140px;
+  height: 140px;
+}
+
+.box .b2 {
+  border-color: #af1d1e;
+  width: 120px;
+  height: 120px;
+  animation-delay: 0.2s;
+}
+
+.box .b3 {
+  border-color: #080808;
+  width: 100px;
+  height: 100px;
+  animation-delay: 0.4s;
+}
+
+@keyframes ro {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+
+  50% {
+    transform: translate(-50%, -50%) rotate(-180deg);
+  }
+
+  100% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+} */
 
 .menu .app-brand.demo {
   height: 64px;
@@ -21,15 +92,21 @@
 
 /* ! For .layout-navbar-fixed added fix padding top to .layout-page */
 /* Detached navbar */
-.layout-navbar-fixed .layout-wrapper:not(.layout-horizontal):not(.layout-without-menu) .layout-page {
+.layout-navbar-fixed
+  .layout-wrapper:not(.layout-horizontal):not(.layout-without-menu)
+  .layout-page {
   padding-top: 76px !important;
 }
 /* Default navbar */
 .layout-navbar-fixed .layout-wrapper:not(.layout-without-menu) .layout-page {
   padding-top: 64px !important;
 }
-.docs-page .layout-navbar-fixed.layout-wrapper:not(.layout-without-menu) .layout-page,
-.docs-page .layout-menu-fixed.layout-wrapper:not(.layout-without-menu) .layout-page {
+.docs-page
+  .layout-navbar-fixed.layout-wrapper:not(.layout-without-menu)
+  .layout-page,
+.docs-page
+  .layout-menu-fixed.layout-wrapper:not(.layout-without-menu)
+  .layout-page {
   padding-top: 62px !important;
 }
 
@@ -81,7 +158,7 @@
   direction: ltr !important;
 }
 
-[dir='rtl'] .rtl-only {
+[dir="rtl"] .rtl-only {
   display: block !important;
 }
 

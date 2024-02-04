@@ -15,12 +15,12 @@
     
       <div class="col-md-6 col-lg-4 mb-3 ">
         <div class="card  ">
-          <img class="card-img-top" src="/uploads/images/<%- result[index].mainImg.imgName %>" alt="Card image cap" style="max-height: 216px; width: fit-content; margin: auto;"/>
+          <img class="card-img-top" src="<%- result[index].mainImg %>" alt="Card image cap" style="max-height: 216px; width: fit-content; margin: auto;"/>
           <div class="card-body">
     
          
             <div class="text-center">
-                <h4 class="card-title "><%- result[index].name %></h4>
+                <h4 class="card-title "><%- result[index].title %></h4>
                 <a href="/admin/blog-update/<%- result[index].id %>" class="btn btn-success mx-1">Update</a>
                 <a href="/admin/blog-delete/<%- result[index].id %>" class="btn btn-danger mx-1">Delete</a>
             </div>

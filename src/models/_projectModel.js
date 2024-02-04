@@ -1,7 +1,6 @@
 const mongoose = require("mongoose");
 const dataURI = require("../config/defaultImage");
 const Schema = mongoose.Schema;
-// const buySchema = new Schema({ name: String, url: String, linkPrice: String });
 const projectSchema = new Schema(
   {
     mainImg: {

@@ -69,7 +69,7 @@
   </head>
 
   <body>
-    <div
+    <!-- <div
       id="loader"
       class="d-none position-fixed z-3 bg-secondary d-flex flex-column justify-content-center align-items-center"
       style="width: 100%; height: 100%; opacity: 75%"
@@ -79,7 +79,15 @@
         style="opacity: 100% !important"
       ></i>
       <h3 style="opacity: 100% !important" class="text-dark">Loading...</h3>
-    </div>
+    </div> -->
+    <!-- <div class="loader position-fixed z-3 bg-secondary d-flex flex-column justify-content-center align-items-center"style="width: 100%; height: 100%">
+      <div class="box">
+    
+        <div class="b b1"></div>
+        <div class="b b2"></div>
+        <div class="b b3"></div>
+      </div>
+    </div> -->
     <!-- Layout wrapper -->
     <div class="layout-wrapper layout-content-navbar">
       <div class="layout-container">
@@ -290,19 +298,23 @@
             "h5",
             "h6",
           ],
-          fontsizes: [
+          fontSizes: [
             "8",
             "9",
             "10",
             "11",
             "12",
             "14",
-            "16",
             "18",
             "20",
             "22",
+            "23",
             "24",
-            "26",
+            "36",
+            "48",
+            "64",
+            "82",
+            "150",
           ],
           fontNames: [
             "Arial",
@@ -342,13 +354,37 @@
 
       new Tagify(input);
 
-      const btn = document.querySelectorAll(".btn");
+      function displaySelectedImage(event, elementId) {
+        const selectedImage = document.getElementById(elementId);
+        const fileInput = event;
 
-      btn.forEach((element) => {
-        element.addEventListener("click", () => {
-          document.querySelector("#loader").classList.remove("d-none");
-        });
-      });
+        if (fileInput.files && fileInput.files[0]) {
+          const reader = new FileReader();
+
+          reader.onload = function (e) {
+            selectedImage.src = e.target.result;
+            document.getElementById(elementId + "0").value = selectedImage.src;
+          };
+
+          reader.readAsDataURL(fileInput.files[0]);
+        }
+      }
+
+      // const btn = document.querySelectorAll(".btn");
+
+      // btn.forEach((element) => {
+      //   element.addEventListener("click", () => {
+      //     document.querySelector("#loader").classList.remove("d-none");
+      //   });
+      // });
+
+      // window.addEventListener("load", () => {
+      //   const loader = document.querySelector(".loader");
+      //   loader.classList.add("loader-hidden");
+      //   loader.addEventListener("transitionend", () => {
+      //     loader.style.visibility = "hidden";
+      //   });
+      // });
     </script>
     <!-- endbuild -->
 

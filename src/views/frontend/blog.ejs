@@ -1,38 +1,42 @@
 <section>
-    <div class="pages-title-area">
-      <h4>Blog</h4>
-      <p>
-        You can find the posts where I share my passion for software and technology. In my posts, I share with you the innovations in the industry, my experiences and my insights into technology.
-      </p>
-    </div>
-  </section>
-  <section>
-
-    <div class="work-panel">
-  
-      <div class="blogs-area">
-      
-   
-        <% for( let index = 0; index < resultBlog.length; index++ ) { %>
-          <div class="blogs-card ">
-            <div class="blogs-card-img-area">
-              <a href="/blog-detail/<%- resultBlog[index].id %>">
-                <img
-                  class="blogs-card-img "
-                  src="../../uploads/images/<%- resultBlog[index].mainImg.imgName %>"
-                  alt=""
-                />
-              </a>
-            </div>
-            <div class="blogs-card-text">
-              <h5><%- resultBlog[index].tag1 %> / <%- resultBlog[index].tag2 %> / <%- resultBlog[index].tag3 %></h5>
-              <a href="/blog-detail/<%- resultBlog[index].id %>"><%- resultBlog[index].name %></a>
-              <p>
-                <%- resultBlog[index].shortText %>
-              </p>
-            </div>
+  <div class="pages-title-area">
+    <h4>Blog</h4>
+    <p>
+      You can find the posts where I share my passion for software and
+      technology. In my posts, I share with you the innovations in the industry,
+      my experiences and my insights into technology.
+    </p>
+  </div>
+</section>
+<section>
+  <div class="work-panel">
+    <div class="blogs-area">
+      <% for( let index = 0; index < resultBlog.length; index++ ) { %>
+      <div class="blogs-card">
+        <a href="/blog-detail/<%- resultBlog[index].id %>">
+          <div class="blogs-card-img-area">
+            <img
+              class="blogs-card-img"
+              src="<%- resultBlog[index].mainImg %>"
+              alt=""
+            />
           </div>
-        <% } %>
+        </a>
+        <div class="blogs-card-text">
+          <div class="blogs-card-tags">
+            <% resultBlog[index].tags.forEach(element => { %>
+            <h5><%- element.tagName %></h5>
+
+            <% }) %>
+          </div>
+
+          <a href="/blog-detail/<%- resultBlog[index].id %>"
+            ><%- resultBlog[index].title %></a
+          >
+          <p><%- resultBlog[index].desc %></p>
+        </div>
       </div>
-      
+      <% } %>
     </div>
+  </div>
+</section>

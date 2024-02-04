@@ -1,137 +1,132 @@
 <section>
-    <div class="pages-title-area">
-      <h4>Work</h4>
-      <p>
-        You can find information about the projects I have realized, the work experience I have gained, the skills I have developed and the thoughts of my valuable references.
-      </p>
+  <div class="pages-title-area">
+    <h4>Work</h4>
+    <p>
+      You can find information about the projects I have realized, the work
+      experience I have gained, the skills I have developed and the thoughts of
+      my valuable references.
+    </p>
+  </div>
+</section>
+<section>
+  <div class="work-panel">
+    <div class="section-title">
+      <h3>Projects</h3>
+      <hr class="section-title-line" />
     </div>
-  </section>
-  <section>
-  
-    <div class="work-panel">
-      <div class="section-title ">
-        <h3>Projects</h3>
-        <hr class="section-title-line">
+    <div class="work-area">
+      <% for( let index = 0; index < resultWork.length; index++ ) { %>
+      <div class="work-card">
+        <div class="work-card-img-area">
+          <a href="/work-detail/<%- resultWork[index].id %>">
+            <img
+              class="work-card-img"
+              src="<%- resultWork[index].mainImg %>"
+              alt=""
+            />
+          </a>
+        </div>
+        <div class="work-card-text">
+          <h5><%- resultWork[index].tag %></h5>
+          <a href="/work-detail/<%- resultWork[index].id %>"
+            ><%- resultWork[index].name %></a
+          >
+          <p><%- resultWork[index].text %></p>
+        </div>
       </div>
-      <div class="work-area">
-        <% for( let index = 0; index < resultWork.length; index++ ) { %>
-          <div class="work-card ">
-            <div class="work-card-img-area">
-              <a href="/work-detail/<%- resultWork[index].id %>">
+      <% } %>
+    </div>
+  </div>
+</section>
+<hr class="now-underline js-scroll fade-in-bottom" />
+<section id="exp-section">
+  <div class="work-panel">
+    <div class="section-title js-scroll fade-in-bottom">
+      <h3>Experiences</h3>
+      <hr class="section-title-line" />
+    </div>
+    <div class="exp-area-w">
+      <% for( let index = 0; index < resultExp.length; index++ ) { %>
+      <div class="exp-row-w" id="<%- resultExp[index].id %>">
+        <div class="exp-card-w js-scroll fade-in-bottom">
+          <i class="bx bx-caret-right caret-w"></i>
+          <img src="<%- resultExp[index].mainImg %>" class="exp-img-w" alt="" />
+          <div class="exp-text-area-w">
+            <h6><%- resultExp[index].tag %></h6>
+            <h2><%- resultExp[index].name %></h2>
+            <h4><%- resultExp[index].date %></h4>
+            <h3><%- resultExp[index].desc %></h3>
+          </div>
+        </div>
+      </div>
+      <% } %>
+    </div>
+  </div>
+</section>
+<hr class="now-underline js-scroll fade-in-bottom" />
+<section>
+  <div class="work-panel">
+    <div class="section-title js-scroll fade-in-bottom">
+      <h3>Skills</h3>
+      <hr class="section-title-line" />
+    </div>
+    <div class="skills-area">
+      <% for( let index = 0; index < resultSkill.length; index++ ) { %>
+      <div class="skills-card js-scroll fade-in">
+        <div class="skills-card-text">
+          <h5><%- resultSkill[index].name %></h5>
+
+          <h5 style="margin-left: 0.5rem">(%)</h5>
+        </div>
+        <div class="rating"><%- resultSkill[index].percent %></div>
+      </div>
+      <% } %>
+    </div>
+  </div>
+</section>
+<hr class="now-underline js-scroll fade-in-bottom" />
+<section>
+  <div class="work-panel">
+    <div class="section-title js-scroll fade-in-bottom">
+      <h3>References</h3>
+      <hr class="section-title-line" />
+    </div>
+    <div class="ref-area js-scroll fade-in-bottom">
+      <button class="prev-button" onclick="prevSlide()">
+        <i class="bx bx-chevron-left"></i>
+      </button>
+      <div class="carousel-container">
+        <div class="carousel">
+          <% for( let index = 0; index < resultRef.length; index++ ) { %>
+          <div class="carousel-item">
+            <div class="ref-card">
+              <div class="ref-card-img">
                 <img
-                  class="work-card-img"
-                  src="../../uploads/images/<%- resultWork[index].mainImg.imgName %>"
+                  src="<%- resultRef[index].mainImg%>"
                   alt=""
                 />
-              </a>
-            </div>
-            <div class="work-card-text">
-              <h5><%- resultWork[index].tag %></h5>
-              <a href="/work-detail/<%- resultWork[index].id %>"><%- resultWork[index].name %></a>
-              <p>
-                <%- resultWork[index].text %>
-              </p>
-            </div>
-          </div>
-        <% } %>
-     
-       
-      </div>
-    </div>
-  </section>
-  <hr class="now-underline js-scroll fade-in-bottom" />
-  <section id="exp-section">
-    <div class="work-panel">
-      <div class="section-title js-scroll fade-in-bottom" >
-        <h3>Experiences</h3>
-        <hr class="section-title-line">
-      </div>
-      <div class="exp-area-w">
-        <% for( let index = 0; index < resultExp.length; index++ ) { %>
-          <div class="exp-row-w" id="<%- resultExp[index].id %>">
-            <div class="exp-card-w js-scroll fade-in-bottom">
-              <i class="bx bx-caret-right caret-w"></i>
-              <img src="../../uploads/images/<%- resultExp[index].mainImg.imgName %>" class="exp-img-w" alt="" />
-              <div class="exp-text-area-w">
-                <h6><%- resultExp[index].tag %></h6>
-                <h2><%- resultExp[index].name %></h2>
-                <h4><%- resultExp[index].date %></h4>
-                <h3><%- resultExp[index].desc %></h3>
               </div>
-            </div>
-          </div>
-        <% } %>
-  
-      </div>
-    </div>
-  </section>
-  <hr class="now-underline js-scroll fade-in-bottom" />
-  <section>
-    <div class="work-panel">
-      <div class="section-title js-scroll fade-in-bottom">
-        <h3>Skills</h3>
-        <hr class="section-title-line">
-      </div>
-      <div class="skills-area">
-        <% for( let index = 0; index < resultSkill.length; index++ ) { %>
-          <div class="skills-card js-scroll fade-in">
-            <div class="skills-card-text">
-              <h5><%- resultSkill[index].name %></h5>
-  
-              <h5 style="margin-left: 0.5rem">(%)</h5>
-            </div>
-            <div class="rating"><%- resultSkill[index].percent %></div>
-          </div>
-        <% } %>
 
-        
-      
-      </div>
-    </div>
-  </section>
-  <hr class="now-underline js-scroll fade-in-bottom" />
-  <section>
-    <div class="work-panel">
-      <div class="section-title js-scroll fade-in-bottom">
-        <h3>References</h3>
-        <hr class="section-title-line">
-      </div>
-      <div class="ref-area js-scroll fade-in-bottom">
-        <button class="prev-button" onclick="prevSlide()">
-          <i class="bx bx-chevron-left"></i>
-        </button>
-        <div class="carousel-container">
-          <div class="carousel">
-            <% for( let index = 0; index < resultRef.length; index++ ) { %>
-              <div class="carousel-item">
-                <div class="ref-card">
-                  <div class="ref-card-img">
-                    <img
-                      src="../../uploads/images/<%- resultRef[index].mainImg.imgName %>"
-                      alt=""
-                    />
-                  </div>
-  
-                  <div class="ref-card-text">
-                    <h2><%- resultRef[index].name %></h2>
-                    <h4><%- resultRef[index].title %></h4>
-                    <p><img src="/frontend/assets/quote.png" alt="">
-                      <%- resultRef[index].text %>
-                    </p>
-                  </div>
-                </div>
+              <div class="ref-card-text">
+                <h2><%- resultRef[index].name %></h2>
+                <h4><%- resultRef[index].title %></h4>
+                <p>
+                  <img src="/frontend/assets/quote.png" alt="" />
+                  <%- resultRef[index].text %>
+                </p>
               </div>
-            <% } %>
-            
-          
-            <!-- Add more slides as needed -->
+            </div>
           </div>
-          <div class="pagination"></div>
+          <% } %>
+
+          <!-- Add more slides as needed -->
         </div>
-
-        <button class="next-button" onclick="nextSlide()">
-          <i class="bx bx-chevron-right"></i>
-        </button>
+        <div class="pagination"></div>
       </div>
+
+      <button class="next-button" onclick="nextSlide()">
+        <i class="bx bx-chevron-right"></i>
+      </button>
     </div>
-  </section>
+  </div>
+</section>
