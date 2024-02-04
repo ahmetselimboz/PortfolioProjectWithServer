@@ -1,19 +1,44 @@
 <section>
-    <div class="pages-title-area">
-      <h4>Contact</h4>
-      <p style="width: 50%">
-        If you have any questions or want to work together, you can contact to me.
-      </p>
-    </div>
-  </section>
-  <div class="work-panel">
-
-    <form class="contact-form" action="/contact" method="post">
-      <div class="contact-form-area">
-        <input class="contact-input" type="text" name="name" id="" placeholder="Name" required>
-        <input class="contact-input" type="email"  placeholder="Email" name="email" required>
-        <textarea name="message" id=""  rows="5" placeholder="Message" required></textarea>
-      </div>
-      <button type="submit" class="contact-button">Send Message</button>
-    </form>
+  <div class="pages-title-area">
+    <h4>Contact</h4>
+    <p style="width: 50%">
+      If you have any questions or want to work together, you can contact to me.
+    </p>
   </div>
+</section>
+<div class="work-panel">
+  <form class="contact-form" action="/contact" method="post">
+    <div class="contact-form-area">
+      <input
+        class="contact-input"
+        type="text"
+        name="name"
+        id=""
+        placeholder="Name"
+        required
+      />
+      <input
+        class="contact-input"
+        type="email"
+        placeholder="Email"
+        name="email"
+        required
+      />
+      <textarea
+        name="message"
+        id=""
+        rows="5"
+        placeholder="Message"
+        required
+      ></textarea>
+    </div>
+    <button type="submit" onclick="btn(this)" class="contact-button">
+      Send Message
+    </button>
+  </form>
+</div>
+<script>
+  function btn(e) {
+    e.innerHTML = `<i class='bx bx-loader-circle bx-spin' ></i> Sending...`;
+  }
+</script>

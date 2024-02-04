@@ -8,7 +8,8 @@ const User = require("../models/_userModel");
 const Ref = require("../models/_referenceModel");
 const Skill = require("../models/_skillsModel");
 const Exp = require("../models/_experienceModel");
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
+const mail = require("../config/sendMail");
 
 const getHomePage = async (req, res, next) => {
   const result = await Home.findOne();
@@ -74,12 +75,10 @@ const getBlogDetailPage = async (req, res, next) => {
   const resultFooter = await Footer.findOne();
   const result = await Blog.findById(req.params.id);
 
-
   try {
-    var data = await Blog.find({ _id: { $ne: (req.params.id) } }).limit(6);
-    
+    var data = await Blog.find({ _id: { $ne: req.params.id } }).limit(6);
   } catch (err) {
-    console.error('Sorgu hatası:', err);
+    console.error("Sorgu hatası:", err);
   }
 
   res.render("./frontend/blog-detail", {
@@ -87,8 +86,8 @@ const getBlogDetailPage = async (req, res, next) => {
     title: "Blog",
     result: result,
     resultFooter: resultFooter,
-    data:data
-    });
+    data: data,
+  });
 };
 const getAboutPage = async (req, res, next) => {
   const resultFooter = await Footer.findOne();
@@ -118,6 +117,7 @@ const postContact = async (req, res, next) => {
     contact.email = req.body.email;
     contact.message = req.body.message;
     contact.save();
+    mail("<h4>Name: "+req.body.name+"</h4>"  +  "<u>Message:</u><br/><p>" + req.body.message + "</p>", req.body.email)
     res.redirect("/homepage");
   }
 };
@@ -130,5 +130,5 @@ module.exports = {
   getContactPage,
   getWorkDetailPage,
   postContact,
-  getBlogDetailPage
+  getBlogDetailPage,
 };
