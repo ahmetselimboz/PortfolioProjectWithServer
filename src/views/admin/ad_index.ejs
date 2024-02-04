@@ -17,67 +17,73 @@
           <div
             class="d-flex flex-row align-items-center justify-content-center my-4"
           >
-            <div class="mx-2">
-              <div class="mb-4 d-flex justify-content-center">
-                <img
-                  id="profilImg"
-                  src="<%- result.profilImg %>"
-                  alt="example placeholder"
-                  style="width: 200px"
-                />
-              </div>
-              <div class="d-flex justify-content-center">
-                <div class="btn btn-primary btn-rounded">
-                  <label
-                    role="button"
-                    class="form-label text-white m-1"
-                    for="customFile2"
-                    >Choose Profile Image</label
-                  >
-                  <input
-                    type="file"
-                    class="form-control d-none"
-                    id="customFile2"
-                    onchange="displaySelectedImage(this, 'profilImg')"
-                  />
-                  <input
-                    type="hidden"
-                    id="profilImg0"
-                    name="profilImg"
-                    value="<%- result.profilImg %>"
-                  />
+            <div class="row">
+              <div class="col-sm">
+                <div class="m-2">
+                  <div class="mb-4 d-flex justify-content-center">
+                    <img
+                      id="profilImg"
+                      src="<%- result.profilImg %>"
+                      alt="example placeholder"
+                      style="width: 200px"
+                    />
+                  </div>
+                  <div class="d-flex justify-content-center">
+                    <div class="btn btn-primary btn-rounded">
+                      <label
+                        role="button"
+                        class="form-label text-white m-1"
+                        for="customFile2"
+                        >Choose Profile Image</label
+                      >
+                      <input
+                        type="file"
+                        class="form-control d-none"
+                        id="customFile2"
+                        onchange="displaySelectedImage(this, 'profilImg')"
+                      />
+                      <input
+                        type="hidden"
+                        id="profilImg0"
+                        name="profilImg"
+                        value="<%- result.profilImg %>"
+                      />
+                    </div>
+                  </div>
                 </div>
               </div>
-            </div>
-            <div class="mx-2">
-              <div class="mb-4 d-flex justify-content-center">
-                <img
-                  id="sideImg"
-                  src="<%- result.sideImg %>"
-                  alt="example placeholder"
-                  style="width: 200px"
-                />
-              </div>
-              <div class="d-flex justify-content-center">
-                <div class="btn btn-primary btn-rounded">
-                  <label
-                    role="button"
-                    class="form-label text-white m-1"
-                    for="customFile3"
-                    >Choose Side Image</label
-                  >
-                  <input
-                    type="file"
-                    class="form-control d-none"
-                    id="customFile3"
-                    onchange="displaySelectedImage(this, 'sideImg')"
-                  />
-                  <input
-                    type="hidden"
-                    id="sideImg0"
-                    name="sideImg"
-                    value="<%- result.sideImg %>"
-                  />
+              <div class="col-sm">
+                <div class="m-2">
+                  <div class="mb-4 d-flex justify-content-center">
+                    <img
+                      id="sideImg"
+                      src="<%- result.sideImg %>"
+                      alt="example placeholder"
+                      style="width: 200px"
+                    />
+                  </div>
+                  <div class="d-flex justify-content-center">
+                    <div class="btn btn-primary btn-rounded">
+                      <label
+                        role="button"
+                        class="form-label text-white m-1"
+                        for="customFile3"
+                        >Choose Side Image</label
+                      >
+                      <input
+                        type="file"
+                        class="form-control d-none"
+                        id="customFile3"
+                        onchange="displaySelectedImage(this, 'sideImg')"
+                      />
+                      <input
+                        type="hidden"
+                        id="sideImg0"
+                        name="sideImg"
+                        value="<%- result.sideImg %>"
+                      />
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
