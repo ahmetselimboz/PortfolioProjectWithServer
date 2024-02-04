@@ -150,20 +150,22 @@
           <a href="/blog-detail/<%- resultBlog[index].id %>">
             <img
               class="blogs-card-img"
-              src="../../uploads/images/<%- resultBlog[index].mainImg.imgName %>"
+              src="<%- resultBlog[index].mainImg %>"
               alt=""
             />
           </a>
         </div>
         <div class="blogs-card-text">
-          <h5>
-            <%- resultBlog[index].tag1 %> / <%- resultBlog[index].tag2 %> / <%-
-            resultBlog[index].tag3 %>
-          </h5>
+          <div class="blogs-card-tags">
+            <% resultBlog[index].tags.forEach(element => { %>
+            <h5><%- element.tagName %></h5>
+
+            <% }) %>
+          </div>
           <a href="/blog-detail/<%- resultBlog[index].id %>"
-            ><%- resultBlog[index].name %></a
+            ><%- resultBlog[index].title %></a
           >
-          <p><%- resultBlog[index].shortText %></p>
+          <p><%- resultBlog[index].desc %></p>
         </div>
       </div>
       <% } %>
