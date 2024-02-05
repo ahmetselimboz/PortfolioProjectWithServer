@@ -4,10 +4,12 @@ require("dotenv").config();
 const mail = async (message, email) => {
   try {
     const transporter = nodemailer.createTransport({
-      service: "gmail",
-      host: "smtp.gmail.com",
+      host: "95.173.180.20",
       port: 465,
       secure: true,
+      tls: {
+        rejectUnauthorized: false,
+      },
       auth: {
         user: process.env.USER,
         pass: process.env.PASS,
@@ -15,15 +17,16 @@ const mail = async (message, email) => {
     });
 
     const mailOptions = {
-      from: '"'+email+'" <foo@example.com>',
+      from: process.env.USER,
       to: ["ahmetselimboz46@gmail.com"],
       subject: "Website Notification",
       text: "Notification!!",
     };
     mailOptions.html = message;
-    await transporter.sendMail(mailOptions);
-
-    
-  } catch (error) {}
+    const result = await transporter.sendMail(mailOptions);
+    console.log(result);
+  } catch (error) {
+    console.log("sendMail Error: " + error);
+  }
 };
 module.exports = mail;
