@@ -117,7 +117,7 @@ const postContact = async (req, res, next) => {
     contact.email = req.body.email;
     contact.message = req.body.message;
     contact.save();
-    mail("<h4>Name: "+req.body.name+"</h4>"  +  "<u>Message:</u><br/><p>" + req.body.message + "</p>", req.body.email)
+    mail("<h4>Name: "+req.body.name+"</h4>"  +"<h4>Email: "+req.body.email+"</h4>"  +  "<u>Message:</u><br/><p>" + req.body.message + "</p>", req.body.email)
     res.redirect("/homepage");
   }
 };
