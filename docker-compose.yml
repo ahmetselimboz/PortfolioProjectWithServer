@@ -1,0 +1,9 @@
+version: '3.4'
+services:
+    portfolio-project:
+        container_name: node-server
+        build: .
+        ports:
+            - 3000:3000
+
+
