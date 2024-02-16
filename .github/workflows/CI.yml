@@ -19,6 +19,6 @@ jobs:
         DOCKER_PASSWORD: ${{secrets.DOCKER_PASSWORD}}
       run: docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
     - name: Build the Docker image
-      run: docker build -t PortfolioProjectWithServer .
+      run: docker build -t portfolio-project-with-server .
     - name: Push to DockerHub
       run: docker push asb00/portfolio-project-with-server:latest
