@@ -14,7 +14,7 @@ const mail = require("../config/sendMail");
 const getHomePage = async (req, res, next) => {
   const result = await Home.findOne();
   const resultWork = await Work.find({}).sort({ createdAt: "desc" }).limit(4);
-  const resultBlog = await Blog.find({}).sort({ createdAt: "desc" }).limit(6);
+  const resultBlog = await Blog.find({}).sort({ createdAt: "desc" }).limit(4);
   const resultRef = await Ref.find({}).sort({ createdAt: "desc" }).limit(3);
   const resultExp = await Exp.find({}).sort({ createdAt: "desc" }).limit(3);
   const resultFooter = await Footer.findOne();

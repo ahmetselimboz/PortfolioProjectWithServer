@@ -143,28 +143,26 @@
         issues.
       </p>
     </div>
-    <div class="blogs-area">
+    <div class="blogs-index-area">
       <% for( let index = 0; index < resultBlog.length; index++ ) { %>
-      <div class="blogs-card js-scroll fade-in">
-        <div class="blogs-card-img-area">
+      <div class="blogs-index-card js-scroll fade-in">
+        <div class="blogs-index-card-img-area">
           <a href="/blog-detail/<%- resultBlog[index].id %>">
             <img
-              class="blogs-card-img"
+              class="blogs-index-card-img"
               src="<%- resultBlog[index].mainImg %>"
               alt=""
             />
           </a>
         </div>
-        <div class="blogs-card-text">
-          <div class="blogs-card-tags">
+        <div class="blogs-index-card-text">
+          <div class="blogs-index-card-tags">
             <% resultBlog[index].tags.forEach(element => { %>
             <h5><%- element.tagName %></h5>
 
             <% }) %>
           </div>
-          <a href="/blog-detail/<%- resultBlog[index].id %>"
-            ><%- resultBlog[index].title %></a
-          >
+          <a href="/blog-detail/<%- resultBlog[index].id %>"><%- resultBlog[index].title %></a>
           <p><%- resultBlog[index].desc %></p>
         </div>
       </div>
