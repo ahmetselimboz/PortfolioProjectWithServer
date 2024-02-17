@@ -13,7 +13,7 @@ const mail = async (message, email) => {
     });
 
     const mailOptions = {
-      from: email,
+      from: process.env.USER,
       to: ["ahmetselimboz46@gmail.com"],
       subject: "Website Notification",
       text: "Notification!!",
