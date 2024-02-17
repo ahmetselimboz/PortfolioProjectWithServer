@@ -2150,6 +2150,21 @@ nav {
   margin: 0 auto;
 }
 
+.blog-content img {
+  width: 90% !important;
+}
+.blog-content li {
+  list-style: inherit !important;
+}
+.blog-content a {
+  color: #337ab7 !important;
+  text-decoration: none;
+}
+.blog-content a:hover {
+  color: #337ab7 !important;
+  text-decoration: underline;
+}
+
 @media screen and (max-width: 480px) {
   .blog-panel {
     margin: 1rem 0;

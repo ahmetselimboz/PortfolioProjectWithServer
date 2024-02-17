@@ -95,7 +95,7 @@
 
         <aside
           id="layout-menu"
-          class="layout-menu menu-vertical menu bg-menu-theme pt-3 "
+          class="layout-menu menu-vertical menu bg-menu-theme pt-3"
         >
           <div class="app-brand demo">
             <a href="/admin/homepage" class="app-brand-link">
@@ -263,6 +263,25 @@
     />
     <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
     <script>
+      var HelloButton = function (context) {
+        var ui = $.summernote.ui;
+
+        // create button
+        var button = ui.button({
+          contents: "Code block",
+          tooltip: "hello",
+          click: function () {
+            $(".summernote").summernote(
+              "pasteHTML",
+              '<pre><code class="code-area">Place your code here.</code></pre>'
+            );
+            //context.invoke('editor.insertText', 'hello');
+          },
+        });
+
+        return button.render(); // return button as jquery object
+      };
+
       $(document).ready(function () {
         $(".summernote").summernote({
           placeholder: "You can text here...",
@@ -270,6 +289,7 @@
           toolbar: [
             // [groupName, [list of button]]
             ["style", ["bold", "italic", "underline", "clear"]],
+            ["mybutton", ["hello"]],
             ["font", ["strikethrough", "superscript", "subscript"]],
             ["fontsize", ["fontsize"]],
             ["color", ["color"]],
@@ -323,6 +343,7 @@
             "Courier New",
             "Merriweather",
             "Roboto",
+            "Consolas"
           ],
           fontSizeUnits: ["px", "pt"],
           popover: {
@@ -346,6 +367,9 @@
               ["table", ["table"]],
               ["insert", ["link", "picture"]],
             ],
+          },
+          buttons: {
+            hello: HelloButton,
           },
         });
       });
