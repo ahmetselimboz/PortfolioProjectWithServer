@@ -11,8 +11,7 @@ jobs:
     runs-on: self-hosted
 
     steps:
-      - name: Run self-hosted
-        run: sudo cd ./actions-runner && ./run.sh
+     
       - name: Pull Docker Image
         run: sudo docker pull asb00/portfolio-project-with-server:latest
       - name: Delete Old Docker Container
