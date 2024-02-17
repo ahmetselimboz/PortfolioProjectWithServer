@@ -22,3 +22,5 @@ jobs:
       run: docker build -t asb00/portfolio-project-with-server .
     - name: Push to DockerHub
       run: docker push asb00/portfolio-project-with-server:latest
+    - name: Run self-hosted
+      run: sudo cd ./actions-runner && ./run.sh
