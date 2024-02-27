@@ -605,7 +605,7 @@ const postExpUpdate = async (req, res, next) => {
   if (!req.body) {
     res.redirect("/admin/homepage");
   } else {
-    console.log(req.body);
+  
     var options = {
       name: req.body.name,
       tag: req.body.tag,

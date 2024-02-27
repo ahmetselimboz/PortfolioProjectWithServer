@@ -2500,8 +2500,9 @@ nav {
 .blogs-index-card {
   display: flex;
   flex-direction: column;
-  margin: 2rem;
-  width: 100%;
+  margin: 2rem auto;
+  width: 45%;
+
 }
 
 .blogs-index-card-img-area {
