@@ -13,7 +13,7 @@ const mail = require("../config/sendMail");
 
 let article_title = "Ahmet Selim Boz";
 let article_desc = "Hi everyone! I'm Selim. I am a computer engineering student who loves to develop, see, research, learn, explore and also defines himself as a backend developer.";
-let article_img = "/frontend/assets/310546903_5723166694410183_3165207936879870276_n.jpg";
+
 
 const getHomePage = async (req, res, next) => {
   const result = await Home.findOne();
@@ -34,7 +34,7 @@ const getHomePage = async (req, res, next) => {
     resultExp: resultExp,
     article_title,
     article_desc,
-    article_img
+    
   });
 };
 
@@ -55,7 +55,7 @@ const getWorkPage = async (req, res, next) => {
     resultSkill: resultSkill,
     article_title,
     article_desc,
-    article_img
+    
   });
 };
 
@@ -70,7 +70,7 @@ const getWorkDetailPage = async (req, res, next) => {
     resultFooter: resultFooter,
     article_title,
     article_desc,
-    article_img
+    
   });
 };
 const getBlogPage = async (req, res, next) => {
@@ -84,7 +84,7 @@ const getBlogPage = async (req, res, next) => {
     resultFooter: resultFooter,
     article_title,
     article_desc,
-    article_img
+    
   });
 };
 const getBlogDetailPage = async (req, res, next) => {
@@ -105,7 +105,7 @@ const getBlogDetailPage = async (req, res, next) => {
     data: data,
     article_title: result.title,
     article_desc: result.desc,
-    article_img: result.mainImg
+    
   });
 };
 const getAboutPage = async (req, res, next) => {
@@ -119,7 +119,7 @@ const getAboutPage = async (req, res, next) => {
     resultFooter: resultFooter,
     article_title,
     article_desc,
-    article_img
+    
   });
 };
 const getContactPage = async (req, res, next) => {
@@ -130,7 +130,7 @@ const getContactPage = async (req, res, next) => {
     resultFooter: resultFooter,
     article_title,
     article_desc,
-    article_img
+    
   });
 };
 const postContact = async (req, res, next) => {

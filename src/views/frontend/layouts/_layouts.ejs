@@ -6,18 +6,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <title><%- title %></title>
-    <meta property="og:title" content="<%- article_title %>">
-    <meta property="og:description" content="<%- article_desc %>">
-    <meta property="og:image" content="<%- article_img %>"> 
-    <meta property="og:url" content="ahmetselimboz.com.tr"> 
-    
+    <meta property="og:title" content="<%- article_title %>" />
+    <meta property="og:description" content="<%- article_desc %>" />
+    <meta property="og:url" content="ahmetselimboz.com.tr" />
+
     <link
-    href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
-    rel="stylesheet"
-  />
-    
-  <link rel="stylesheet" href="/frontend/css/style.css" />
-  <link rel="shortcut icon" href="/frontend/assets/qr.png" type="image/x-icon" />
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="/frontend/css/style.css" />
+    <link
+      rel="shortcut icon"
+      href="/frontend/assets/qr.png"
+      type="image/x-icon"
+    />
   </head>
   <body class="background">
     <nav>
@@ -71,15 +74,27 @@
       <hr class="now-underline" id="footer-line" />
       <div class="footer-box">
         <div class="footer-info-box">
-          <a href="<%- resultFooter.instagramUrl %>" target="_blank"class="footer-social">
+          <a
+            href="<%- resultFooter.instagramUrl %>"
+            target="_blank"
+            class="footer-social"
+          >
             <i class="bx bxl-instagram social-icon"></i>
             <h3 class="footer-h3">Instagram</h3>
           </a>
-          <a href="<%- resultFooter.TwitterUrl %>" target="_blank"class="footer-social">
+          <a
+            href="<%- resultFooter.TwitterUrl %>"
+            target="_blank"
+            class="footer-social"
+          >
             <i class="bx bxl-twitter social-icon"></i>
             <h3 class="footer-h3">Twitter</h3>
           </a>
-          <a href="<%- resultFooter.linkedinUrl %>" target="_blank" class="footer-social">
+          <a
+            href="<%- resultFooter.linkedinUrl %>"
+            target="_blank"
+            class="footer-social"
+          >
             <i class="bx bxl-linkedin-square social-icon"></i>
             <h3 class="footer-h3">Linkedln</h3>
           </a>
@@ -91,7 +106,9 @@
       </div>
     </footer>
     <div class="footer-bottom">
-      <h4>2023 © <a href="<%- resultFooter.linkedinUrl %>">Ahmet Selim Boz</a></h4>
+      <h4>
+        2023 © <a href="<%- resultFooter.linkedinUrl %>">Ahmet Selim Boz</a>
+      </h4>
     </div>
     <script
       src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
@@ -101,12 +118,19 @@
     ></script>
     <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
     <script src="/frontend/js/index.js"></script>
+
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-GVWQ2F2229"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "G-GVWQ2F2229");
+    </script>
   </body>
 </html>
-
-
-
-
-
-
-
