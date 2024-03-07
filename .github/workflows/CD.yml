@@ -12,10 +12,14 @@ jobs:
 
     steps:
      
+      - name: Stop docker container
+        run: sudo docker stop portfolio-project-with-server-container
+      - name: Delete All Container
+        run: sudo docker container prune -a -f
+      - name: Delete All Image
+        run: sudo docker image prune -a -f
       - name: Pull Docker Image
         run: sudo docker pull asb00/portfolio-project-with-server:latest
-      - name: Delete Old Docker Container
-        run: sudo docker rm -f portfolio-project-with-server-container || true
       - name: Run Docker Container
         run: sudo docker run -d -p 3000:3000 --name portfolio-project-with-server-container asb00/portfolio-project-with-server
         
