@@ -36,5 +36,5 @@ jobs:
       with:
         host: '${{ secrets.CAPROVER_SERVER }}'
         password: '${{ secrets.CAPROVER_PASSWORD }}'
-        app: portfolio
+        app: '${{ vars.PORTFOLIO_APP_NAME }}'
         image: 'asb00/portfolio-project-with-server:latest'
