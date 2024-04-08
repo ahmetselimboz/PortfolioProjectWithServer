@@ -22,4 +22,19 @@ jobs:
       run: docker build -t asb00/portfolio-project-with-server .
     - name: Push to DockerHub
       run: docker push asb00/portfolio-project-with-server:latest
-
+      
+    - uses: a7ul/tar-action@v1.1.0
+      with:
+        command: c
+        cwd: "./"
+        files: |
+          captain-definition
+        outPath: deploy.tar
+    
+    - name: Deploy to CapRover
+      uses: floms/action-caprover@v1
+      with:
+        host: '${{ secrets.CAPROVER_SERVER }}'
+        password: '${{ secrets.CAPROVER_PASSWORD }}'
+        app: 'portfolio'
+        image: 'asb00/portfolio-project-with-server'
