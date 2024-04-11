@@ -23,6 +23,8 @@
     />
   </head>
   <body class="background">
+    <div class="loader"><img class="logo" src="/frontend/assets/qr.png"></img></div>
+
     <nav>
       <div class="nav-logo">
         <a href="/"> Ahmet Selim Boz </a>
@@ -131,6 +133,19 @@
       gtag("js", new Date());
 
       gtag("config", "G-GVWQ2F2229");
+  
+      window.addEventListener("load", () => {
+        console.log("working...");
+
+        const loader = document.querySelector(".loader");
+
+        loader.classList.add("loader-hidden");
+
+        loader.addEventListener("transitionend", () => {
+          document.body.removeChild("loader");
+        });
+      });
+  
     </script>
   </body>
 </html>
