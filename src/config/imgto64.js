@@ -14,7 +14,7 @@ const bucketExists = async (bucketName) => {
 
     const exists = await minioClient.bucketExists(bucketName);
     if (!exists) {
-      await this.minioClient.makeBucket(bucketName, "us-east-1");
+      await minioClient.makeBucket(bucketName, "us-east-1");
       console.log(`Bucket "${bucketName}" created in "us-east-1" region.`);
     } else {
       console.log(`Bucket "${bucketName}" already exists.`);
@@ -48,15 +48,15 @@ const base64ToImage = async (baseUrl, name) => {
 
     if (Number(process.env.MINIO_PORT)) {
       url =
-        "http://" +
-        process.env.MINIO_ENDPOINT +
+        
+        process.env.DOMAIN +
         ":9000" +
         "/" +
         bucket +
         "/" +
         name;
     } else {
-      url = "http://" + process.env.MINIO_ENDPOINT + "/" + bucket + "/" + name;
+      url = process.env.DOMAIN + "/" + bucket + "/" + name;
     }
 
     return url;
