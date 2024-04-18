@@ -48,7 +48,7 @@ const base64ToImage = async (baseUrl, name) => {
 
     console.log(client);
 
-    if (Number(process.env.MINIO_PORT)) {
+    if (process.env.NODE_ENV == "debug") {
       url =
         
         process.env.DOMAIN +
