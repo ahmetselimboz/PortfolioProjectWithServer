@@ -46,6 +46,8 @@ const base64ToImage = async (baseUrl, name) => {
       "image/jpeg"
     );
 
+    console.log(client);
+
     if (Number(process.env.MINIO_PORT)) {
       url =
         

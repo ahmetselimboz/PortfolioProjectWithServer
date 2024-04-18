@@ -549,7 +549,7 @@ const postHomePage = async (req, res, next) => {
         text: req.body.card4Text,
       },
     };
-
+    
     if (isBase64(req.body.sideImg)) {
       console.log(req.body.sideImg);
       const sideImg = await base64ToImage(
