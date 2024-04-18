@@ -14,10 +14,16 @@ const bcrypt = require("bcryptjs");
 const uploadFile = require("../config/multer_config");
 const fs = require("fs");
 const path = require("path");
+const { base64ToImage } = require("../config/imgto64");
 
+function isBase64(link) {
+  const regex = /^([A-Za-z0-9+/]{4})*([A-Za-z0-9+/]{2}?={2}?)$/;
+  return regex.test(link);
+}
 /////////////////////////HOMEPAGE//////////////////////////////////////
 const getHomePage = async (req, res, next) => {
   const result = await Home.findOne();
+  //console.log(req.protocol + "......." +req.hostname);
   if (!result) {
     res.redirect("/");
   } else {
@@ -519,6 +525,8 @@ const postHomePage = async (req, res, next) => {
   if (!req.body) {
     res.redirect("/admin/homepage");
   } else {
+    //console.log(req.body.sideImg);
+
     var options = {
       sideImg: req.body.sideImg,
       profilImg: req.body.profilImg,
@@ -541,6 +549,23 @@ const postHomePage = async (req, res, next) => {
         text: req.body.card4Text,
       },
     };
+
+    if (isBase64(req.body.sideImg)) {
+      console.log(req.body.sideImg);
+      const sideImg = await base64ToImage(
+        req.body.sideImg,
+        "Home_Side_Img.jpeg"
+      );
+     
+      options.sideImg = sideImg;
+    }
+
+    if (isBase64(req.body.profilImg)) {
+      options.profilImg = await base64ToImage(
+        req.body.profilImg,
+        "Home_profilImg.jpeg"
+      );
+    }
 
     await Home.findByIdAndUpdate(req.body.id, options);
     res.redirect("/admin/homepage");
@@ -605,7 +630,6 @@ const postExpUpdate = async (req, res, next) => {
   if (!req.body) {
     res.redirect("/admin/homepage");
   } else {
-  
     var options = {
       name: req.body.name,
       tag: req.body.tag,

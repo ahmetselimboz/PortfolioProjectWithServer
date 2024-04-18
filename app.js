@@ -6,7 +6,7 @@ const flash = require("connect-flash");
 const session = require("express-session");
 const passport = require("passport");
 const bodyParser = require("body-parser");
-
+const { bucketExists } = require("./src/config/imgto64");
 
 
 require("ejs");
@@ -17,7 +17,7 @@ app.use("/uploads", express.static(path.join(__dirname, "/src/uploads")))
 app.set("view engine", "ejs");
 app.set("views", path.resolve(__dirname, "./src/views"));
 
-
+bucketExists("mybucket")
 
 require("./src/config/database");
 const MongoDBStore = require("connect-mongodb-session")(session);
@@ -58,6 +58,8 @@ app.use(passport.session());
 
 const frRouter = require("./src/routers/frRouters");
 const adminRouters = require("./src/routers/adRouters");
+
+
 
 
 app.use(express.json({ limit: '10mb' }));
