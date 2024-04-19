@@ -14,7 +14,7 @@ const bcrypt = require("bcryptjs");
 const uploadFile = require("../config/multer_config");
 const fs = require("fs");
 const path = require("path");
-const { base64ToImage } = require("../config/imgto64");
+const { base64ToImage, RemoveImage } = require("../config/imgto64");
 var isBase64 = require("is-base64");
 
 /////////////////////////HOMEPAGE//////////////////////////////////////
@@ -76,7 +76,9 @@ const getWorkDelete = async (req, res, next) => {
   if (!req.params) {
     res.redirect("/admin/homepage");
   } else {
-    await Work.findByIdAndDelete(req.params.id);
+    const result = await Work.findByIdAndDelete(req.params.id);
+
+    RemoveImage("Work_"+result.name+".jpeg");
     res.redirect("/admin/work");
   }
 };
@@ -124,7 +126,8 @@ const getExpDelete = async (req, res, next) => {
   if (!req.params) {
     res.redirect("/admin/homepage");
   } else {
-    await Exp.findByIdAndDelete(req.params.id);
+    const result = await Exp.findByIdAndDelete(req.params.id);
+    RemoveImage("Exp_"+result.name+".jpeg");
     res.redirect("/admin/exp");
   }
 };
@@ -175,7 +178,8 @@ const getRefDelete = async (req, res, next) => {
   if (!req.params) {
     res.redirect("/admin/homepage");
   } else {
-    await Ref.findByIdAndDelete(req.params.id);
+    const result = await Ref.findByIdAndDelete(req.params.id);
+    RemoveImage("Ref_"+result.name+".jpeg");
     res.redirect("/admin/ref");
   }
 };
@@ -281,7 +285,8 @@ const getBlogDelete = async (req, res, next) => {
   if (!req.params) {
     res.redirect("/admin/homepage");
   } else {
-    await Blog.findByIdAndDelete(req.params.id);
+    const result = await Blog.findByIdAndDelete(req.params.id);
+    RemoveImage("Blog_"+result.title.substring(0,8)+".jpeg");
     res.redirect("/admin/blog");
   }
 };
@@ -683,7 +688,6 @@ const postExpAddPage = async (req, res, next) => {
     exp.date = req.body.date;
     exp.desc = req.body.desc;
 
-
     if (isBase64(req.body.mainImg, { allowMime: true })) {
       exp.mainImg = await base64ToImage(
         req.body.mainImg,
@@ -707,6 +711,14 @@ const postExpUpdate = async (req, res, next) => {
       desc: req.body.desc,
       mainImg: req.body.mainImg,
     };
+    
+    if (isBase64(req.body.mainImg, { allowMime: true })) {
+      project.mainImg = await base64ToImage(
+        req.body.mainImg,
+        "Exp_" + req.body.name + ".jpeg"
+      );
+    }
+
 
     await Exp.findByIdAndUpdate(req.body.id, options);
     res.redirect("/admin/exp");

@@ -49,14 +49,7 @@ const base64ToImage = async (baseUrl, name) => {
     console.log(client);
 
     if (process.env.NODE_ENV == "debug") {
-      url =
-        
-        process.env.DOMAIN +
-        ":9000" +
-        "/" +
-        bucket +
-        "/" +
-        name;
+      url = process.env.DOMAIN + ":9000" + "/" + bucket + "/" + name;
     } else {
       url = process.env.DOMAIN + "/" + bucket + "/" + name;
     }
@@ -67,4 +60,19 @@ const base64ToImage = async (baseUrl, name) => {
   }
 };
 
-module.exports = { bucketExists, base64ToImage };
+const RemoveImage = async (name) => {
+  const bucket = "mybucket";
+  var url;
+  const minioClient = new Minio.Client({
+    endPoint: process.env.MINIO_ENDPOINT,
+    port: Number(process.env.MINIO_PORT),
+    useSSL: false,
+    accessKey: process.env.MINIO_ACCESS_KEY,
+    secretKey: process.env.MINIO_SECRET_KEY,
+  });
+
+  await minioClient.removeObject(bucket, name);
+  console.log("Removed the object");
+};
+
+module.exports = { bucketExists, base64ToImage, RemoveImage };
