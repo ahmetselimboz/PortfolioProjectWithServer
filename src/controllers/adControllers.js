@@ -366,7 +366,13 @@ const postWorkAddPage = async (req, res, next) => {
   } else {
     const project = new Work();
 
-    project.mainImg = req.body.mainImg;
+    if (isBase64(req.body.mainImg, { allowMime: true })) {
+      project.mainImg = await base64ToImage(
+        req.body.mainImg,
+        "Work_" + req.body.name + ".jpeg"
+      );
+    }
+
     project.tag = req.body.tag;
     project.name = req.body.name;
     project.text = req.body.text;
@@ -394,6 +400,13 @@ const postWorkUpdate = async (req, res, next) => {
       desc: req.body.desc,
     };
 
+    if (isBase64(req.body.mainImg, { allowMime: true })) {
+      project.mainImg = await base64ToImage(
+        req.body.mainImg,
+        "Work_" + req.body.name + ".jpeg"
+      );
+    }
+
     await Work.findByIdAndUpdate(req.body.id, options);
     res.redirect("/admin/work");
   }
@@ -414,6 +427,14 @@ const postBlogAdd = async (req, res, next) => {
     }
 
     const blog = new Blog();
+
+    if (isBase64(req.body.mainImg, { allowMime: true })) {
+      blog.mainImg = await base64ToImage(
+        req.body.mainImg,
+        "Blog_" + req.body.title + ".jpeg"
+      );
+    }
+
     blog.mainImg = req.body.mainImg;
     blog.title = req.body.title;
     blog.desc = req.body.desc;
@@ -444,6 +465,13 @@ const postBlogUpdate = async (req, res, next) => {
       tags: taglar.map((tag) => ({ tagName: tag })),
     };
 
+    if (isBase64(req.body.mainImg, { allowMime: true })) {
+      options.mainImg = await base64ToImage(
+        req.body.mainImg,
+        "Blog_" + req.body.title + ".jpeg"
+      );
+    }
+
     await Blog.findByIdAndUpdate(req.body.id, options);
     res.redirect("/admin/blog");
   }
@@ -464,6 +492,32 @@ const postAboutUpdate = async (req, res, next) => {
       sideImg2: req.body.sideImg2,
       sideImg3: req.body.sideImg3,
     };
+
+    if (isBase64(req.body.mainImg, { allowMime: true })) {
+      options.mainImg = await base64ToImage(
+        req.body.mainImg,
+        "About_MainImg.jpeg"
+      );
+    }
+
+    if (isBase64(req.body.sideImg1, { allowMime: true })) {
+      options.sideImg1 = await base64ToImage(
+        req.body.sideImg1,
+        "About_sideImg1.jpeg"
+      );
+    }
+    if (isBase64(req.body.sideImg2, { allowMime: true })) {
+      options.sideImg2 = await base64ToImage(
+        req.body.sideImg2,
+        "About_sideImg2.jpeg"
+      );
+    }
+    if (isBase64(req.body.sideImg3, { allowMime: true })) {
+      options.sideImg3 = await base64ToImage(
+        req.body.sideImg3,
+        "About_sideImg3.jpeg"
+      );
+    }
 
     await About.findByIdAndUpdate(req.body.id, options);
     res.redirect("/admin/about");
@@ -576,6 +630,13 @@ const postRefAddPage = async (req, res, next) => {
   } else {
     const ref = new Ref();
 
+    if (isBase64(req.body.mainImg, { allowMime: true })) {
+      ref.mainImg = await base64ToImage(
+        req.body.mainImg,
+        "Ref_" + req.body.name + ".jpeg"
+      );
+    }
+
     ref.mainImg = req.body.mainImg;
     ref.name = req.body.name;
     ref.title = req.body.title;
@@ -597,6 +658,13 @@ const postRefUpdate = async (req, res, next) => {
       text: req.body.text,
     };
 
+    if (isBase64(req.body.mainImg, { allowMime: true })) {
+      options.mainImg = await base64ToImage(
+        req.body.mainImg,
+        "Ref_" + req.body.name + ".jpeg"
+      );
+    }
+
     await Ref.findByIdAndUpdate(req.body.id, options);
     res.redirect("/admin/ref");
   }
@@ -608,14 +676,20 @@ const postExpAddPage = async (req, res, next) => {
   if (!req.body) {
     res.redirect("/admin/homepage");
   } else {
-    console.log(req.body);
     const exp = new Exp();
 
     exp.name = req.body.name;
     exp.tag = req.body.tag;
     exp.date = req.body.date;
     exp.desc = req.body.desc;
-    exp.mainImg = req.body.mainImg;
+
+
+    if (isBase64(req.body.mainImg, { allowMime: true })) {
+      exp.mainImg = await base64ToImage(
+        req.body.mainImg,
+        "Exp_" + req.body.name + ".jpeg"
+      );
+    }
 
     exp.save();
     res.redirect("/admin/exp");
