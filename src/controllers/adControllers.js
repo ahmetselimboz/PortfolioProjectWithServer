@@ -431,7 +431,7 @@ const postBlogAdd = async (req, res, next) => {
     if (isBase64(req.body.mainImg, { allowMime: true })) {
       blog.mainImg = await base64ToImage(
         req.body.mainImg,
-        "Blog_" + req.body.title.substring(0, 4) + ".jpeg"
+        "Blog_" + req.body.title.substring(0, 8) + ".jpeg"
       );
     }
 
@@ -468,7 +468,7 @@ const postBlogUpdate = async (req, res, next) => {
     if (isBase64(req.body.mainImg, { allowMime: true })) {
       options.mainImg = await base64ToImage(
         req.body.mainImg,
-        "Blog_" + req.body.title.substring(0, 4) + ".jpeg"
+        "Blog_" + req.body.title.substring(0, 8) + ".jpeg"
       );
     }
 
