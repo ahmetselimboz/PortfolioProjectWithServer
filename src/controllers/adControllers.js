@@ -401,7 +401,7 @@ const postWorkUpdate = async (req, res, next) => {
     };
 
     if (isBase64(req.body.mainImg, { allowMime: true })) {
-      project.mainImg = await base64ToImage(
+      options.mainImg = await base64ToImage(
         req.body.mainImg,
         "Work_" + req.body.name + ".jpeg"
       );
