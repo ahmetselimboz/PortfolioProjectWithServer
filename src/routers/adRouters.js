@@ -6,6 +6,7 @@ const multerConfig = require('../config/multer_config')
 const multer = require("multer");
 const upload = multer();
 
+router.get('/',isAuthenticated.oturumAcilmis, adminController.getHomePage);
 router.get('/homepage',isAuthenticated.oturumAcilmis, adminController.getHomePage);
 router.get('/work', isAuthenticated.oturumAcilmis,adminController.getWorkPage);
 router.get('/work-add', isAuthenticated.oturumAcilmis,adminController.getWorkAddPage);
