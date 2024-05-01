@@ -19,7 +19,7 @@ const contactSchema = new Schema(
 
    
   },
-  { collection: "contact", timestamps: true }
+  { collection: "contacts", timestamps: true }
 );
 
 const Contact = mongoose.model("Contact", contactSchema);

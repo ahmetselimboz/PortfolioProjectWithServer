@@ -68,8 +68,8 @@ app.use(express.urlencoded({ limit: '10mb', extended: true }));
 
 require("./src/config/firstData");
 
-app.use("/", frRouter);
- app.use("/admin", adminRouters);
+//app.use("/", frRouter);
+app.use("/", adminRouters);
 
 
 app.listen(process.env.PORT, () => {

@@ -28,7 +28,7 @@ const footerSchema = new Schema(
 
    
   },
-  { collection: "footer", timestamps: true }
+  { collection: "footers", timestamps: true }
 );
 
 const Footer = mongoose.model("Footer", footerSchema);

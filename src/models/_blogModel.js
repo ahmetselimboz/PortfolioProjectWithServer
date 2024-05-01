@@ -38,7 +38,7 @@ const blogSchema = new Schema(
       required: true,
     },
   },
-  { collection: "blog", timestamps: true }
+  { collection: "blogs", timestamps: true }
 );
 
 const Blog = mongoose.model("Blog", blogSchema);
