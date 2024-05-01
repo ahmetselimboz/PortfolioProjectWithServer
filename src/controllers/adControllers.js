@@ -25,7 +25,7 @@ const getHomePage = async (req, res, next) => {
     res.redirect("/");
   } else {
     res.render("./admin/ad_index", {
-      layout: "./layouts/_ad_layouts.ejs",
+      layout: "./admin/layouts/_ad_layouts.ejs",
       title: "Admin | Home Page",
       result: result,
     });
@@ -40,13 +40,13 @@ const getWorkPage = async (req, res, next) => {
 
   if (!result) {
     res.render("./admin/ad_work", {
-      layout: "./layouts/_ad_layouts.ejs",
+      layout: "./admin/layouts/_ad_layouts.ejs",
       title: "Admin | Work Page",
       result: ress,
     });
   } else {
     res.render("./admin/ad_work", {
-      layout: "./layouts/_ad_layouts.ejs",
+      layout: "./admin/layouts/_ad_layouts.ejs",
       title: "Admin | Work Page",
       result: result,
     });
@@ -55,7 +55,7 @@ const getWorkPage = async (req, res, next) => {
 
 const getWorkAddPage = async (req, res, next) => {
   res.render("./admin/ad_work-add", {
-    layout: "./layouts/_ad_layouts.ejs",
+    layout: "./admin/layouts/_ad_layouts.ejs",
     title: "Admin | Work Page",
   });
 };
@@ -66,7 +66,7 @@ const getWorkUpdatePage = async (req, res, next) => {
     const result = await Work.findById(req.params.id);
 
     res.render("./admin/ad_work-update", {
-      layout: "./layouts/_ad_layouts.ejs",
+      layout: "./admin/layouts/_ad_layouts.ejs",
       title: "Admin | Work Page",
       result: result,
     });
@@ -90,13 +90,13 @@ const getExpPage = async (req, res, next) => {
 
   if (!result) {
     res.render("./admin/ad_experience", {
-      layout: "./layouts/_ad_layouts.ejs",
+      layout: "./admin/layouts/_ad_layouts.ejs",
       title: "Admin | Experience Page",
       result: ress,
     });
   } else {
     res.render("./admin/ad_experience", {
-      layout: "./layouts/_ad_layouts.ejs",
+      layout: "./admin/layouts/_ad_layouts.ejs",
       title: "Admin | Experience Page",
       result: result,
     });
@@ -105,7 +105,7 @@ const getExpPage = async (req, res, next) => {
 
 const getExpAddPage = async (req, res, next) => {
   res.render("./admin/ad_experience-add", {
-    layout: "./layouts/_ad_layouts.ejs",
+    layout: "./admin/layouts/_ad_layouts.ejs",
     title: "Admin | Experience Page",
   });
 };
@@ -116,7 +116,7 @@ const getExpUpdatePage = async (req, res, next) => {
     const result = await Exp.findById(req.params.id);
 
     res.render("./admin/ad_experience-update", {
-      layout: "./layouts/_ad_layouts.ejs",
+      layout: "./admin/layouts/_ad_layouts.ejs",
       title: "Admin | Experience Page",
       result: result,
     });
@@ -140,13 +140,13 @@ const getRefPage = async (req, res, next) => {
 
   if (!result) {
     res.render("./admin/ad_reference", {
-      layout: "./layouts/_ad_layouts.ejs",
+      layout: "./admin/layouts/_ad_layouts.ejs",
       title: "Admin | Reference Page",
       result: ress,
     });
   } else {
     res.render("./admin/ad_reference", {
-      layout: "./layouts/_ad_layouts.ejs",
+      layout: "./admin/layouts/_ad_layouts.ejs",
       title: "Admin | Reference Page",
       result: result,
     });
@@ -155,7 +155,7 @@ const getRefPage = async (req, res, next) => {
 
 const getRefAddPage = async (req, res, next) => {
   res.render("./admin/ad_reference-add", {
-    layout: "./layouts/_ad_layouts.ejs",
+    layout: "./admin/layouts/_ad_layouts.ejs",
     title: "Admin | Reference Page",
   });
 };
@@ -167,7 +167,7 @@ const getRefUpdatePage = async (req, res, next) => {
     const result = await Ref.findById(req.params.id);
 
     res.render("./admin/ad_reference-update", {
-      layout: "./layouts/_ad_layouts.ejs",
+      layout: "./admin/layouts/_ad_layouts.ejs",
       title: "Admin | Reference Page",
       result: result,
     });
@@ -192,13 +192,13 @@ const getSkillsPage = async (req, res, next) => {
 
   if (!result) {
     res.render("./admin/ad_skill", {
-      layout: "./layouts/_ad_layouts.ejs",
+      layout: "./admin/layouts/_ad_layouts.ejs",
       title: "Admin | Skills Page",
       result: ress,
     });
   } else {
     res.render("./admin/ad_skill", {
-      layout: "./layouts/_ad_layouts.ejs",
+      layout: "./admin/layouts/_ad_layouts.ejs",
       title: "Admin | Skills Page",
       result: result,
     });
@@ -207,7 +207,7 @@ const getSkillsPage = async (req, res, next) => {
 
 const getSkillsAddPage = async (req, res, next) => {
   res.render("./admin/ad_skill-add", {
-    layout: "./layouts/_ad_layouts.ejs",
+    layout: "./admin/layouts/_ad_layouts.ejs",
     title: "Admin | Skills Page",
   });
 };
@@ -219,7 +219,7 @@ const getSkillsUpdatePage = async (req, res, next) => {
     const result = await Skill.findById(req.params.id);
 
     res.render("./admin/ad_skill-update", {
-      layout: "./layouts/_ad_layouts.ejs",
+      layout: "./admin/layouts/_ad_layouts.ejs",
       title: "Admin | Skills Page",
       result: result,
     });
@@ -243,13 +243,13 @@ const getBlogPage = async (req, res, next) => {
 
   if (!result) {
     res.render("./admin/ad_blog", {
-      layout: "./layouts/_ad_layouts.ejs",
+      layout: "./admin/layouts/_ad_layouts.ejs",
       title: "Admin | Blog Page",
       result: ress,
     });
   } else {
     res.render("./admin/ad_blog", {
-      layout: "./layouts/_ad_layouts.ejs",
+      layout: "./admin/layouts/_ad_layouts.ejs",
       title: "Admin | Blog Page",
       result: result,
     });
@@ -258,7 +258,7 @@ const getBlogPage = async (req, res, next) => {
 
 const getBlogAddPage = async (req, res, next) => {
   res.render("./admin/ad_blog-add", {
-    layout: "./layouts/_ad_layouts.ejs",
+    layout: "./admin/layouts/_ad_layouts.ejs",
     title: "Admin | Blog Page",
   });
 };
@@ -274,7 +274,7 @@ const getBlogUpdatePage = async (req, res, next) => {
     }
 
     res.render("./admin/ad_blog-update", {
-      layout: "./layouts/_ad_layouts.ejs",
+      layout: "./admin/layouts/_ad_layouts.ejs",
       title: "Admin | Blog Page",
       result: result,
       tags: tags,
@@ -299,7 +299,7 @@ const getAboutPage = async (req, res, next) => {
     res.redirect("/");
   } else {
     res.render("./admin/ad_about", {
-      layout: "./layouts/_ad_layouts.ejs",
+      layout: "./admin/layouts/_ad_layouts.ejs",
       title: "Admin | About Page",
       result: result,
     });
@@ -314,7 +314,7 @@ const getContactPage = async (req, res, next) => {
     res.redirect("/");
   } else {
     res.render("./admin/ad_contact", {
-      layout: "./layouts/_ad_layouts.ejs",
+      layout: "./admin/layouts/_ad_layouts.ejs",
       title: "Admin | Contact Page",
       result: result,
     });
@@ -338,7 +338,7 @@ const getFooterPage = async (req, res, next) => {
     res.redirect("/");
   } else {
     res.render("./admin/ad_footer", {
-      layout: "./layouts/_ad_layouts.ejs",
+      layout: "./admin/layouts/_ad_layouts.ejs",
       title: "Admin | Footer Page",
       result: result,
     });
