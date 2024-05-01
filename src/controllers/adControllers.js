@@ -24,8 +24,8 @@ const getHomePage = async (req, res, next) => {
   if (!result) {
     res.redirect("/");
   } else {
-    res.render("./admin/ad_index", {
-      layout: "./admin/layouts/_ad_layouts.ejs",
+    res.render("./ad_index", {
+      layout: "./layouts/_ad_layouts.ejs",
       title: "Admin | Home Page",
       result: result,
     });
@@ -39,14 +39,14 @@ const getWorkPage = async (req, res, next) => {
   const result = await Work.find({}).sort({ createdAt: "desc" });
 
   if (!result) {
-    res.render("./admin/ad_work", {
-      layout: "./admin/layouts/_ad_layouts.ejs",
+    res.render("./ad_work", {
+      layout: "./layouts/_ad_layouts.ejs",
       title: "Admin | Work Page",
       result: ress,
     });
   } else {
-    res.render("./admin/ad_work", {
-      layout: "./admin/layouts/_ad_layouts.ejs",
+    res.render("./ad_work", {
+      layout: "./layouts/_ad_layouts.ejs",
       title: "Admin | Work Page",
       result: result,
     });
@@ -54,8 +54,8 @@ const getWorkPage = async (req, res, next) => {
 };
 
 const getWorkAddPage = async (req, res, next) => {
-  res.render("./admin/ad_work-add", {
-    layout: "./admin/layouts/_ad_layouts.ejs",
+  res.render("./ad_work-add", {
+    layout: "./layouts/_ad_layouts.ejs",
     title: "Admin | Work Page",
   });
 };
@@ -65,8 +65,8 @@ const getWorkUpdatePage = async (req, res, next) => {
   } else {
     const result = await Work.findById(req.params.id);
 
-    res.render("./admin/ad_work-update", {
-      layout: "./admin/layouts/_ad_layouts.ejs",
+    res.render("./ad_work-update", {
+      layout: "./layouts/_ad_layouts.ejs",
       title: "Admin | Work Page",
       result: result,
     });
@@ -74,12 +74,12 @@ const getWorkUpdatePage = async (req, res, next) => {
 };
 const getWorkDelete = async (req, res, next) => {
   if (!req.params) {
-    res.redirect("/admin/homepage");
+    res.redirect("/homepage");
   } else {
     const result = await Work.findByIdAndDelete(req.params.id);
 
     RemoveImage("Work_"+result.name+".jpeg");
-    res.redirect("/admin/work");
+    res.redirect("/work");
   }
 };
 /////////////////////////////EXPERIENCE////////////////////////////////
@@ -89,14 +89,14 @@ const getExpPage = async (req, res, next) => {
   const result = await Exp.find({}).sort({ createdAt: "desc" });
 
   if (!result) {
-    res.render("./admin/ad_experience", {
-      layout: "./admin/layouts/_ad_layouts.ejs",
+    res.render("./ad_experience", {
+      layout: "./layouts/_ad_layouts.ejs",
       title: "Admin | Experience Page",
       result: ress,
     });
   } else {
-    res.render("./admin/ad_experience", {
-      layout: "./admin/layouts/_ad_layouts.ejs",
+    res.render("./ad_experience", {
+      layout: "./layouts/_ad_layouts.ejs",
       title: "Admin | Experience Page",
       result: result,
     });
@@ -104,8 +104,8 @@ const getExpPage = async (req, res, next) => {
 };
 
 const getExpAddPage = async (req, res, next) => {
-  res.render("./admin/ad_experience-add", {
-    layout: "./admin/layouts/_ad_layouts.ejs",
+  res.render("./ad_experience-add", {
+    layout: "./layouts/_ad_layouts.ejs",
     title: "Admin | Experience Page",
   });
 };
@@ -115,8 +115,8 @@ const getExpUpdatePage = async (req, res, next) => {
   } else {
     const result = await Exp.findById(req.params.id);
 
-    res.render("./admin/ad_experience-update", {
-      layout: "./admin/layouts/_ad_layouts.ejs",
+    res.render("./ad_experience-update", {
+      layout: "./layouts/_ad_layouts.ejs",
       title: "Admin | Experience Page",
       result: result,
     });
@@ -124,11 +124,11 @@ const getExpUpdatePage = async (req, res, next) => {
 };
 const getExpDelete = async (req, res, next) => {
   if (!req.params) {
-    res.redirect("/admin/homepage");
+    res.redirect("/homepage");
   } else {
     const result = await Exp.findByIdAndDelete(req.params.id);
     RemoveImage("Exp_"+result.name+".jpeg");
-    res.redirect("/admin/exp");
+    res.redirect("/exp");
   }
 };
 
@@ -139,14 +139,14 @@ const getRefPage = async (req, res, next) => {
   const result = await Ref.find({}).sort({ createdAt: "desc" });
 
   if (!result) {
-    res.render("./admin/ad_reference", {
-      layout: "./admin/layouts/_ad_layouts.ejs",
+    res.render("./ad_reference", {
+      layout: "./layouts/_ad_layouts.ejs",
       title: "Admin | Reference Page",
       result: ress,
     });
   } else {
-    res.render("./admin/ad_reference", {
-      layout: "./admin/layouts/_ad_layouts.ejs",
+    res.render("./ad_reference", {
+      layout: "./layouts/_ad_layouts.ejs",
       title: "Admin | Reference Page",
       result: result,
     });
@@ -154,8 +154,8 @@ const getRefPage = async (req, res, next) => {
 };
 
 const getRefAddPage = async (req, res, next) => {
-  res.render("./admin/ad_reference-add", {
-    layout: "./admin/layouts/_ad_layouts.ejs",
+  res.render("./ad_reference-add", {
+    layout: "./layouts/_ad_layouts.ejs",
     title: "Admin | Reference Page",
   });
 };
@@ -166,8 +166,8 @@ const getRefUpdatePage = async (req, res, next) => {
   } else {
     const result = await Ref.findById(req.params.id);
 
-    res.render("./admin/ad_reference-update", {
-      layout: "./admin/layouts/_ad_layouts.ejs",
+    res.render("./ad_reference-update", {
+      layout: "./layouts/_ad_layouts.ejs",
       title: "Admin | Reference Page",
       result: result,
     });
@@ -176,11 +176,11 @@ const getRefUpdatePage = async (req, res, next) => {
 
 const getRefDelete = async (req, res, next) => {
   if (!req.params) {
-    res.redirect("/admin/homepage");
+    res.redirect("/homepage");
   } else {
     const result = await Ref.findByIdAndDelete(req.params.id);
     RemoveImage("Ref_"+result.name+".jpeg");
-    res.redirect("/admin/ref");
+    res.redirect("/ref");
   }
 };
 
@@ -191,14 +191,14 @@ const getSkillsPage = async (req, res, next) => {
   const result = await Skill.find({}).sort({ createdAt: "desc" });
 
   if (!result) {
-    res.render("./admin/ad_skill", {
-      layout: "./admin/layouts/_ad_layouts.ejs",
+    res.render("./ad_skill", {
+      layout: "./layouts/_ad_layouts.ejs",
       title: "Admin | Skills Page",
       result: ress,
     });
   } else {
-    res.render("./admin/ad_skill", {
-      layout: "./admin/layouts/_ad_layouts.ejs",
+    res.render("./ad_skill", {
+      layout: "./layouts/_ad_layouts.ejs",
       title: "Admin | Skills Page",
       result: result,
     });
@@ -206,20 +206,20 @@ const getSkillsPage = async (req, res, next) => {
 };
 
 const getSkillsAddPage = async (req, res, next) => {
-  res.render("./admin/ad_skill-add", {
-    layout: "./admin/layouts/_ad_layouts.ejs",
+  res.render("./ad_skill-add", {
+    layout: "./layouts/_ad_layouts.ejs",
     title: "Admin | Skills Page",
   });
 };
 
 const getSkillsUpdatePage = async (req, res, next) => {
   if (!req.params.id) {
-    res.redirect("/admin/homepage");
+    res.redirect("/homepage");
   } else {
     const result = await Skill.findById(req.params.id);
 
-    res.render("./admin/ad_skill-update", {
-      layout: "./admin/layouts/_ad_layouts.ejs",
+    res.render("./ad_skill-update", {
+      layout: "./layouts/_ad_layouts.ejs",
       title: "Admin | Skills Page",
       result: result,
     });
@@ -228,10 +228,10 @@ const getSkillsUpdatePage = async (req, res, next) => {
 
 const getSkillsDelete = async (req, res, next) => {
   if (!req.params) {
-    res.redirect("/admin/homepage");
+    res.redirect("/homepage");
   } else {
     await Skill.findByIdAndDelete(req.params.id);
-    res.redirect("/admin/skills");
+    res.redirect("/skills");
   }
 };
 
@@ -242,14 +242,14 @@ const getBlogPage = async (req, res, next) => {
   const result = await Blog.find({}).sort({ createdAt: "desc" });
 
   if (!result) {
-    res.render("./admin/ad_blog", {
-      layout: "./admin/layouts/_ad_layouts.ejs",
+    res.render("./ad_blog", {
+      layout: "./layouts/_ad_layouts.ejs",
       title: "Admin | Blog Page",
       result: ress,
     });
   } else {
-    res.render("./admin/ad_blog", {
-      layout: "./admin/layouts/_ad_layouts.ejs",
+    res.render("./ad_blog", {
+      layout: "./layouts/_ad_layouts.ejs",
       title: "Admin | Blog Page",
       result: result,
     });
@@ -257,8 +257,8 @@ const getBlogPage = async (req, res, next) => {
 };
 
 const getBlogAddPage = async (req, res, next) => {
-  res.render("./admin/ad_blog-add", {
-    layout: "./admin/layouts/_ad_layouts.ejs",
+  res.render("./ad_blog-add", {
+    layout: "./layouts/_ad_layouts.ejs",
     title: "Admin | Blog Page",
   });
 };
@@ -273,8 +273,8 @@ const getBlogUpdatePage = async (req, res, next) => {
       tags.push(result.tags[index].tagName);
     }
 
-    res.render("./admin/ad_blog-update", {
-      layout: "./admin/layouts/_ad_layouts.ejs",
+    res.render("./ad_blog-update", {
+      layout: "./layouts/_ad_layouts.ejs",
       title: "Admin | Blog Page",
       result: result,
       tags: tags,
@@ -283,11 +283,11 @@ const getBlogUpdatePage = async (req, res, next) => {
 };
 const getBlogDelete = async (req, res, next) => {
   if (!req.params) {
-    res.redirect("/admin/homepage");
+    res.redirect("/homepage");
   } else {
     const result = await Blog.findByIdAndDelete(req.params.id);
     RemoveImage("Blog_"+result.title.substring(0,8)+".jpeg");
-    res.redirect("/admin/blog");
+    res.redirect("/blog");
   }
 };
 
@@ -298,8 +298,8 @@ const getAboutPage = async (req, res, next) => {
   if (!result) {
     res.redirect("/");
   } else {
-    res.render("./admin/ad_about", {
-      layout: "./admin/layouts/_ad_layouts.ejs",
+    res.render("./ad_about", {
+      layout: "./layouts/_ad_layouts.ejs",
       title: "Admin | About Page",
       result: result,
     });
@@ -313,8 +313,8 @@ const getContactPage = async (req, res, next) => {
   if (!result) {
     res.redirect("/");
   } else {
-    res.render("./admin/ad_contact", {
-      layout: "./admin/layouts/_ad_layouts.ejs",
+    res.render("./ad_contact", {
+      layout: "./layouts/_ad_layouts.ejs",
       title: "Admin | Contact Page",
       result: result,
     });
@@ -322,10 +322,10 @@ const getContactPage = async (req, res, next) => {
 };
 const getContactDelete = async (req, res, next) => {
   if (!req.params) {
-    res.redirect("/admin/homepage");
+    res.redirect("/homepage");
   } else {
     await Contact.findByIdAndDelete(req.params.id);
-    res.redirect("/admin/contact");
+    res.redirect("/contact");
   }
 };
 
@@ -337,8 +337,8 @@ const getFooterPage = async (req, res, next) => {
   if (!result) {
     res.redirect("/");
   } else {
-    res.render("./admin/ad_footer", {
-      layout: "./admin/layouts/_ad_layouts.ejs",
+    res.render("./ad_footer", {
+      layout: "./layouts/_ad_layouts.ejs",
       title: "Admin | Footer Page",
       result: result,
     });
@@ -348,7 +348,7 @@ const getFooterPage = async (req, res, next) => {
 ////////////////////LOGIN/////////////////////////////
 
 const getLogin = async (req, res, next) => {
-  res.render("./admin/login", {
+  res.render("./login", {
     layout: false,
     title: "Admin | Login",
   });
@@ -357,7 +357,7 @@ const getLogin = async (req, res, next) => {
 //////////////////REGISTER///////////////////////////
 
 const getRegister = async (req, res, next) => {
-  res.render("./admin/register", {
+  res.render("./register", {
     layout: false,
     title: "Admin | Register",
   });
@@ -367,7 +367,7 @@ const getRegister = async (req, res, next) => {
 
 const postWorkAddPage = async (req, res, next) => {
   if (!req.body) {
-    res.redirect("/admin/homepage");
+    res.redirect("/homepage");
   } else {
     const project = new Work();
 
@@ -387,12 +387,12 @@ const postWorkAddPage = async (req, res, next) => {
     project.desc = req.body.desc;
 
     project.save();
-    res.redirect("/admin/work");
+    res.redirect("/work");
   }
 };
 const postWorkUpdate = async (req, res, next) => {
   if (!req.body) {
-    res.redirect("/admin/homepage");
+    res.redirect("/homepage");
   } else {
     var options = {
       mainImg: req.body.mainImg,
@@ -413,7 +413,7 @@ const postWorkUpdate = async (req, res, next) => {
     }
 
     await Work.findByIdAndUpdate(req.body.id, options);
-    res.redirect("/admin/work");
+    res.redirect("/work");
   }
 };
 
@@ -421,7 +421,7 @@ const postWorkUpdate = async (req, res, next) => {
 
 const postBlogAdd = async (req, res, next) => {
   if (!req.body) {
-    res.redirect("/admin/homepage");
+    res.redirect("/homepage");
   } else {
     let tags = [];
 
@@ -446,13 +446,13 @@ const postBlogAdd = async (req, res, next) => {
     blog.content = req.body.content;
     blog.tags = tags.map((tag) => ({ tagName: tag }));
     blog.save();
-    res.redirect("/admin/blog");
+    res.redirect("/blog");
   }
 };
 
 const postBlogUpdate = async (req, res, next) => {
   if (!req.body) {
-    res.redirect("/admin/homepage");
+    res.redirect("/homepage");
   } else {
     let taglar = [];
 
@@ -478,7 +478,7 @@ const postBlogUpdate = async (req, res, next) => {
     }
 
     await Blog.findByIdAndUpdate(req.body.id, options);
-    res.redirect("/admin/blog");
+    res.redirect("/blog");
   }
 };
 
@@ -486,7 +486,7 @@ const postBlogUpdate = async (req, res, next) => {
 
 const postAboutUpdate = async (req, res, next) => {
   if (!req.body) {
-    res.redirect("/admin/homepage");
+    res.redirect("/homepage");
   } else {
     var options = {
       desc1: req.body.desc1,
@@ -525,7 +525,7 @@ const postAboutUpdate = async (req, res, next) => {
     }
 
     await About.findByIdAndUpdate(req.body.id, options);
-    res.redirect("/admin/about");
+    res.redirect("/about");
   }
 };
 
@@ -533,7 +533,7 @@ const postAboutUpdate = async (req, res, next) => {
 
 const postFooterUpdate = async (req, res, next) => {
   if (!req.body) {
-    res.redirect("/admin/homepage");
+    res.redirect("/homepage");
   } else {
     await Footer.findByIdAndUpdate(req.body.id, {
       title: req.body.title,
@@ -542,7 +542,7 @@ const postFooterUpdate = async (req, res, next) => {
       linkedinUrl: req.body.linkedinUrl,
       mail: req.body.mail,
     });
-    res.redirect("/admin/footer");
+    res.redirect("/footer");
   }
 };
 
@@ -562,7 +562,7 @@ const postRegister = async (req, res, next) => {
     const _user = await User.findOne({ username: req.body.username });
 
     if (_user) {
-      res.redirect("/admin/register");
+      res.redirect("/register");
     } else {
       const newUser = new User({
         username: req.body.username,
@@ -570,7 +570,7 @@ const postRegister = async (req, res, next) => {
       });
       await newUser.save();
       console.log("Kullanici kaydedildi");
-      res.redirect("/admin/login");
+      res.redirect("/login");
     }
   } catch (err) {}
 };
@@ -579,7 +579,7 @@ const postRegister = async (req, res, next) => {
 
 const postHomePage = async (req, res, next) => {
   if (!req.body) {
-    res.redirect("/admin/homepage");
+    res.redirect("/homepage");
   } else {
     //console.log(req.body.sideImg);
 
@@ -623,7 +623,7 @@ const postHomePage = async (req, res, next) => {
     }
 
     await Home.findByIdAndUpdate(req.body.id, options);
-    res.redirect("/admin/homepage");
+    res.redirect("/homepage");
   }
 };
 
@@ -631,7 +631,7 @@ const postHomePage = async (req, res, next) => {
 
 const postRefAddPage = async (req, res, next) => {
   if (!req.body) {
-    res.redirect("/admin/homepage");
+    res.redirect("/homepage");
   } else {
     const ref = new Ref();
 
@@ -648,13 +648,13 @@ const postRefAddPage = async (req, res, next) => {
     ref.text = req.body.text;
 
     ref.save();
-    res.redirect("/admin/ref");
+    res.redirect("/ref");
   }
 };
 
 const postRefUpdate = async (req, res, next) => {
   if (!req.body) {
-    res.redirect("/admin/homepage");
+    res.redirect("/homepage");
   } else {
     var options = {
       mainImg: req.body.mainImg,
@@ -671,7 +671,7 @@ const postRefUpdate = async (req, res, next) => {
     }
 
     await Ref.findByIdAndUpdate(req.body.id, options);
-    res.redirect("/admin/ref");
+    res.redirect("/ref");
   }
 };
 
@@ -679,7 +679,7 @@ const postRefUpdate = async (req, res, next) => {
 
 const postExpAddPage = async (req, res, next) => {
   if (!req.body) {
-    res.redirect("/admin/homepage");
+    res.redirect("/homepage");
   } else {
     const exp = new Exp();
 
@@ -696,13 +696,13 @@ const postExpAddPage = async (req, res, next) => {
     }
 
     exp.save();
-    res.redirect("/admin/exp");
+    res.redirect("/exp");
   }
 };
 
 const postExpUpdate = async (req, res, next) => {
   if (!req.body) {
-    res.redirect("/admin/homepage");
+    res.redirect("/homepage");
   } else {
     var options = {
       name: req.body.name,
@@ -721,7 +721,7 @@ const postExpUpdate = async (req, res, next) => {
 
 
     await Exp.findByIdAndUpdate(req.body.id, options);
-    res.redirect("/admin/exp");
+    res.redirect("/exp");
   }
 };
 
@@ -729,20 +729,20 @@ const postExpUpdate = async (req, res, next) => {
 
 const postSkillsAddPage = async (req, res, next) => {
   if (!req.body) {
-    res.redirect("/admin/homepage");
+    res.redirect("/homepage");
   } else {
     const skill = new Skill();
 
     skill.name = req.body.name;
     skill.percent = req.body.percent;
     skill.save();
-    res.redirect("/admin/skills");
+    res.redirect("/skills");
   }
 };
 
 const postSkillsUpdate = async (req, res, next) => {
   if (!req.body) {
-    res.redirect("/admin/homepage");
+    res.redirect("/homepage");
   } else {
     var options = {
       name: req.body.name,
@@ -750,7 +750,7 @@ const postSkillsUpdate = async (req, res, next) => {
     };
 
     await Skill.findByIdAndUpdate(req.body.id, options);
-    res.redirect("/admin/skills");
+    res.redirect("/skills");
   }
 };
 

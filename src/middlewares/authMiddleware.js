@@ -3,7 +3,7 @@ const oturumAcilmis = function(req, res, next){
         return next();
     }else{
 
-        res.redirect('/admin/login');
+        res.redirect('/login');
     }
 }
 
@@ -12,7 +12,7 @@ const oturumAcilmamis = function(req, res, next){
         return next();
     }else{
         
-        res.redirect('/admin/homepage');
+        res.redirect('/homepage');
     }
 }
 
