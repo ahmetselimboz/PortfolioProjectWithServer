@@ -550,8 +550,8 @@ const postFooterUpdate = async (req, res, next) => {
 
 const postLogin = async (req, res, next) => {
   passport.authenticate("local", {
-    successRedirect: "/admin/homepage",
-    failureRedirect: "/admin/login",
+    successRedirect: "/homepage",
+    failureRedirect: "/login",
     failureFlash: true,
   })(req, res, next);
 };
