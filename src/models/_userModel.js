@@ -7,15 +7,12 @@ const userSchema = new Schema(
       type: String,
       trim: true,
     },
-    
+
     password: {
       type: String,
       trim: true,
     },
-
-
-
-   
+    language: { type: String, default: "EN" },
   },
   { collection: "User", timestamps: true }
 );

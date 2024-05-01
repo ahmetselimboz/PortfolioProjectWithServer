@@ -64,7 +64,7 @@ const homeSchema = new Schema(
       },
     }
   },
-  { collection: "home", timestamps: true }
+  { collection: "homes", timestamps: true }
 );
 
 const Home = mongoose.model("Home", homeSchema);

@@ -28,7 +28,7 @@ const expSchema = new Schema(
 
     
   },
-  { collection: "experience", timestamps: true }
+  { collection: "experiences", timestamps: true }
 );
 
 const Exp = mongoose.model("Experience", expSchema);

@@ -32,7 +32,7 @@ const aboutSchema = new Schema(
       trim:true
     }
   },
-  { collection: "about", timestamps: true }
+  { collection: "abouts", timestamps: true }
 );
 
 const About = mongoose.model("About", aboutSchema);
