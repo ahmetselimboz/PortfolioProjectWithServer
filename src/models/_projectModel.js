@@ -42,7 +42,7 @@ const projectSchema = new Schema(
       trim: true,
     },
   },
-  { collection: "project", timestamps: true }
+  { collection: "projects", timestamps: true }
 );
 
 const Project = mongoose.model("Project", projectSchema);

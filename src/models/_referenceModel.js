@@ -17,16 +17,13 @@ const refSchema = new Schema(
       type: String,
       trim: true,
     },
-
-
-
     mainImg: {
       type: String,
       trim: true,
       default: dataURI
     },
   },
-  { collection: "reference", timestamps: true }
+  { collection: "references", timestamps: true }
 );
 
 const Ref = mongoose.model("Reference", refSchema);
